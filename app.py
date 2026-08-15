@@ -565,6 +565,32 @@ def page_curriculum_selector():
 def page_academic_dashboard():
     st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
+    # Auto-generate dashboard if missing (e.g., fresh cloud clone)
+    if not os.path.exists(OUTPUT_HTML_PATH):
+        user_config = {
+            "semester_1": {
+                "core_courses": ["ECS 5101", "ECS 5102", "EMC 5103", "EHS 5104"],
+                "elective_1": st.session_state.get("selected_electives_sem_1", ["EAI 6103"])[0]
+            },
+            "semester_2": {
+                "core_courses": ["ECS 5201", "EMC 5202", "IKS"],
+                "electives": st.session_state.get("selected_electives_sem_2", ["EAI 6202", "EAI 6204"])
+            },
+            "semester_3": {
+                "major_project": "Project I",
+                "electives": st.session_state.get("selected_electives_sem_3", ["EAI 6301", "EAI 6302"])
+            },
+            "semester_4": {
+                "major_project": "Project II",
+                "electives": st.session_state.get("selected_electives_sem_4", ["EAI 6401", "EAI 6402"])
+            }
+        }
+        main.run_curriculum_sync(
+            config=user_config,
+            target_files=[OUTPUT_HTML_PATH],
+            active_semester=st.session_state.get("active_semester", 1)
+        )
+
     # Load and Render Dashboard HTML directly using modern st.iframe API
     if os.path.exists(OUTPUT_HTML_PATH):
         with open(OUTPUT_HTML_PATH, "r", encoding="utf-8") as f:
