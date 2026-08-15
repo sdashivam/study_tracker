@@ -1741,19 +1741,141 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
       border: 1px solid rgba(67, 56, 202, 0.25);
     }}
 
-    .book-type-reference {{
-      background: rgba(2, 132, 199, 0.12);
-      color: #0284c7;
-      border: 1px solid rgba(2, 132, 199, 0.25);
+    /* Enhanced Mobile, Tablet & Multi-Screen Responsiveness */
+    @media (max-width: 1024px) {{
+      .app-container {{
+        width: 98%;
+        padding: 1rem;
+      }}
+      .attendance-hero-grid {{
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }}
+      .stat-metric-grid {{
+        grid-template-columns: repeat(2, 1fr);
+      }}
     }}
 
     @media (max-width: 768px) {{
-      .app-container {{ padding: 1rem 0.75rem; }}
-      .navbar {{ flex-direction: column; gap: 1rem; text-align: center; }}
-      .nav-actions {{ width: 100%; justify-content: center; }}
-      .brand-section {{ flex-direction: column; }}
-      .today-list {{ grid-template-columns: 1fr; }}
-      .controls-bar {{ flex-direction: column; align-items: stretch; }}
+      .app-container {{
+        width: 100%;
+        padding: 0.75rem 0.5rem;
+      }}
+      .navbar {{
+        flex-direction: column;
+        gap: 0.85rem;
+        padding: 0.85rem 1rem;
+        text-align: center;
+      }}
+      .brand-section {{
+        flex-direction: column;
+        gap: 0.5rem;
+      }}
+      .brand-details h1 {{
+        font-size: 1.05rem;
+      }}
+      .nav-actions {{
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }}
+      .sem-header-banner {{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem;
+      }}
+      .sem-header-badges {{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }}
+      .sub-tabs-nav {{
+        display: flex;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.4rem;
+        margin-bottom: 1rem;
+        gap: 0.4rem;
+        scrollbar-width: thin;
+      }}
+      .sub-tab-btn {{
+        flex-shrink: 0;
+        white-space: nowrap;
+        padding: 0.5rem 0.85rem;
+        font-size: 0.8rem;
+      }}
+      .controls-bar {{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+        padding: 0.85rem;
+      }}
+      .controls-group {{
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+      }}
+      .control-select, .control-search {{
+        width: 100%;
+      }}
+      .table-container {{
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: var(--radius-md);
+      }}
+      .schedule-table {{
+        min-width: 620px;
+      }}
+      .schedule-table th, .schedule-table td {{
+        padding: 0.75rem 0.5rem;
+      }}
+      .attendance-actions {{
+        display: flex;
+        gap: 0.25rem;
+        flex-wrap: wrap;
+      }}
+      .btn-status {{
+        padding: 0.25rem 0.45rem;
+        font-size: 0.7rem;
+      }}
+      .course-cards-grid, .calendar-cards-grid {{
+        grid-template-columns: 1fr !important;
+      }}
+      .course-modal-dialog {{
+        width: 95% !important;
+        margin: 0.5rem auto !important;
+        max-height: 92vh !important;
+      }}
+      .course-modal-header {{
+        padding: 0.85rem 1rem !important;
+      }}
+      .course-modal-body {{
+        padding: 0.85rem 1rem !important;
+      }}
+      .books-grid {{
+        grid-template-columns: 1fr !important;
+      }}
+    }}
+
+    @media (max-width: 480px) {{
+      .schedule-table {{
+        min-width: 560px;
+      }}
+      .hero-gauge-box {{
+        padding: 1rem !important;
+      }}
+      .hero-gauge-pct {{
+        font-size: 2.2rem !important;
+      }}
+      .stat-metric-card {{
+        padding: 0.75rem !important;
+      }}
+      .stat-metric-val {{
+        font-size: 1.4rem !important;
+      }}
     }}
   </style>
 </head>

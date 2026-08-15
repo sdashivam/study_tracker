@@ -266,6 +266,65 @@ CUSTOM_CSS = """
   .stButton > button * {
     color: #ffffff !important;
   }
+
+  /* Mobile & Tablet Screen Responsiveness */
+  @media (max-width: 768px) {
+    .block-container, [data-testid="stMainBlockContainer"], [data-testid="block-container"], .main .block-container {
+      max-width: 100% !important;
+      width: 100% !important;
+      padding-left: 0.6rem !important;
+      padding-right: 0.6rem !important;
+      padding-top: 0.5rem !important;
+      padding-bottom: 1.5rem !important;
+    }
+
+    .banner-container {
+      padding: 0.85rem 1rem !important;
+      border-radius: 10px !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .banner-container h1 {
+      font-size: 1.15rem !important;
+    }
+
+    .banner-container p {
+      font-size: 0.78rem !important;
+    }
+
+    div[role="radiogroup"] {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.35rem !important;
+    }
+
+    div[role="radiogroup"] label {
+      margin-right: 0 !important;
+      width: 100% !important;
+      padding: 0.45rem 0.75rem !important;
+      font-size: 0.82rem !important;
+    }
+
+    .core-card {
+      padding: 0.85rem !important;
+      border-radius: 10px !important;
+      margin-bottom: 0.6rem !important;
+    }
+
+    .core-card-title {
+      font-size: 0.95rem !important;
+    }
+
+    [data-testid="stMetric"] {
+      padding: 0.65rem 0.8rem !important;
+    }
+
+    .stButton > button, div[data-testid="stButton"] > button {
+      width: 100% !important;
+      font-size: 0.88rem !important;
+      padding: 0.6rem 1rem !important;
+    }
+  }
 </style>
 """
 
