@@ -6,7 +6,7 @@
 [![IIT Patna](https://img.shields.io/badge/IIT%20Patna-M.Tech%20AI%20%26%20DS-065f46.svg)](https://www.iitp.ac.in/)
 [![License](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
 
-A high-performance, responsive academic management dashboard and curriculum planner developed specifically for learners of the **Executive/Hybrid M.Tech in Artificial Intelligence and Data Science** at the **Indian Institute of Technology Patna (IIT Patna)**.
+A high-performance, responsive academic management dashboard and curriculum planner developed specifically for learners of the **M.Tech in Artificial Intelligence and Data Science** at the **Indian Institute of Technology Patna (IIT Patna)**.
 
 ---
 
