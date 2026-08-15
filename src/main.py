@@ -1821,26 +1821,120 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
       .control-select, .control-search {{
         width: 100%;
       }}
-      .table-container {{
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        border-radius: var(--radius-md);
+
+      /* Mobile Card Transformation for Schedule Table */
+      .schedule-table-card {{
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        margin-bottom: 1rem !important;
       }}
-      .schedule-table {{
-        min-width: 620px;
+
+      .table-responsive {{
+        overflow: visible !important;
       }}
-      .schedule-table th, .schedule-table td {{
-        padding: 0.75rem 0.5rem;
+
+      .custom-table,
+      .custom-table tbody,
+      .custom-table tr,
+      .custom-table td {{
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
       }}
+
+      .custom-table thead {{
+        display: none !important; /* Hide cramped table headers on phone screens */
+      }}
+
+      .week-header-row {{
+        display: block !important;
+        margin-top: 1.1rem !important;
+        margin-bottom: 0.6rem !important;
+        border-radius: 10px !important;
+        overflow: hidden !important;
+        border: 1px solid var(--border-color) !important;
+      }}
+
+      .week-header-row td {{
+        display: block !important;
+        width: 100% !important;
+        padding: 0.85rem 1rem !important;
+      }}
+
+      /* Each session transforms into a stacked Mobile Card */
+      .custom-table tbody tr:not(.week-header-row) {{
+        background: var(--bg-card) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 12px !important;
+        margin-bottom: 0.75rem !important;
+        padding: 0.9rem 1rem !important;
+        box-shadow: 0 2px 6px rgba(68, 64, 60, 0.04) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.45rem !important;
+      }}
+
+      .custom-table tbody tr:not(.week-header-row) td {{
+        padding: 0 !important;
+        border: none !important;
+        background: transparent !important;
+      }}
+
+      /* Date Cell (Header of the mobile card) */
+      .custom-table tbody tr:not(.week-header-row) td:nth-child(1) {{
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding-bottom: 0.4rem !important;
+        border-bottom: 1px dashed var(--border-color) !important;
+      }}
+
+      /* Time Slot Pill */
+      .custom-table tbody tr:not(.week-header-row) td:nth-child(2) {{
+        margin-top: -0.1rem !important;
+      }}
+
+      /* Course Details & Faculty */
+      .custom-table tbody tr:not(.week-header-row) td:nth-child(3) {{
+        padding: 0.2rem 0 !important;
+      }}
+
+      .course-cell-title {{
+        font-size: 0.95rem !important;
+        line-height: 1.35 !important;
+      }}
+
+      .course-cell-sub {{
+        flex-wrap: wrap !important;
+        gap: 0.35rem !important;
+        font-size: 0.75rem !important;
+      }}
+
+      /* Attendance Actions */
+      .custom-table tbody tr:not(.week-header-row) td:nth-child(4) {{
+        padding-top: 0.45rem !important;
+        border-top: 1px solid rgba(68, 64, 60, 0.08) !important;
+      }}
+
       .attendance-actions {{
-        display: flex;
-        gap: 0.25rem;
-        flex-wrap: wrap;
+        display: flex !important;
+        width: 100% !important;
+        gap: 0.35rem !important;
       }}
+
       .btn-status {{
-        padding: 0.25rem 0.45rem;
-        font-size: 0.7rem;
+        flex: 1 !important;
+        text-align: center !important;
+        padding: 0.45rem 0.2rem !important;
+        font-size: 0.76rem !important;
       }}
+
+      /* Notes */
+      .custom-table tbody tr:not(.week-header-row) td:nth-child(5) {{
+        padding-top: 0.15rem !important;
+      }}
+
       .course-cards-grid, .calendar-cards-grid {{
         grid-template-columns: 1fr !important;
       }}
