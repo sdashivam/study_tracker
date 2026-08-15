@@ -133,7 +133,7 @@ python src/main.py
 ---
 
 ## 👥 Department & Institution
-* **Programme:** M.Tech in Artificial Intelligence and Data Science (Executive / Hybrid)
+* **Programme:** M.Tech in Artificial Intelligence and Data Science
 * **Institution:** [Indian Institute of Technology Patna](https://www.iitp.ac.in/), Bihta, Patna, Bihar – 801106
 * **Academic Session:** Autumn 2026 – Spring 2028
 
