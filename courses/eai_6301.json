@@ -1,0 +1,44 @@
+{
+  "subject_code": "EAI 6301",
+  "subject_name": "Artificial Internet of Things",
+  "semester": 3,
+  "course_type": "Elective IV",
+  "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+  "description": "Focuses on deploying embedded machine learning and real-time AI models on resource-constrained edge Internet of Things (IoT) hardware and sensor networks.",
+  "learning_objectives": [
+    "Master the architecture, protocols, and edge-cloud interplay in Artificial Internet of Things (AIoT).",
+    "Design and optimize TinyML models using pruning, quantization, and specialized edge runtimes.",
+    "Interface IoT streaming protocols (MQTT, CoAP) with AI inference pipelines.",
+    "Build end-to-end smart applications in smart cities, industrial automation, and healthcare monitoring."
+  ],
+  "outline": [
+    "AIoT Fundamentals: Architecture, intersection of AI and IoT, edge computing vs. cloud computing, low-latency inferencing.",
+    "IoT Protocols & Data Acquisition: MQTT, CoAP, BLE, LoRaWAN, time-series sensor stream ingestion.",
+    "Embedded Edge AI (TinyML): Model pruning, post-training quantization, TensorFlow Lite for Microcontrollers, Edge TPU, ONNX runtime.",
+    "Domain Applications: Smart cities, Industry 4.0 predictive maintenance, connected healthcare, autonomous transportation.",
+    "AIoT Platforms & System Lifecycle: Device management, firmware over-the-air (FOTA) updates, security, edge project deployment."
+  ],
+  "books": [
+    {
+      "title": "TinyML: Machine Learning with TensorFlow Lite on Arduino and Ultra-Low-Power Microcontrollers",
+      "author": "Pete Warden, Daniel Situnayake",
+      "publisher": "O'Reilly Media",
+      "edition_year": "2019",
+      "type": "Textbook"
+    },
+    {
+      "title": "Internet of Things: A Hands-On Approach",
+      "author": "Arshdeep Bahga, Vijay Madisetti",
+      "publisher": "Universities Press",
+      "edition_year": "2014",
+      "type": "Reference"
+    },
+    {
+      "title": "Designing Embedded Systems and the Internet of Things (IoT) with the ARM Mbed",
+      "author": "Perry Xiao",
+      "publisher": "Wiley",
+      "edition_year": "2018",
+      "type": "Reference"
+    }
+  ]
+}

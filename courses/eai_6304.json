@@ -1,0 +1,44 @@
+{
+  "subject_code": "EAI 6304",
+  "subject_name": "Advanced Cloud Computing",
+  "semester": 3,
+  "course_type": "Elective Pool (DE-4/5)",
+  "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+  "description": "Covers cloud infrastructure virtualization, container orchestration with Kubernetes, serverless architectures, distributed data platforms, and cloud-native MLOps.",
+  "learning_objectives": [
+    "Analyze cloud service models (IaaS, PaaS, SaaS, FaaS) and distributed computing architectures.",
+    "Master containerization with Docker and multi-cluster orchestration with Kubernetes.",
+    "Design distributed data storage and analytics systems using HDFS, S3, Spark, and Ray.",
+    "Implement cloud security, autoscaling policies, CI/CD pipelines, and cloud-native MLOps."
+  ],
+  "outline": [
+    "Cloud Architecture: IaaS, PaaS, SaaS, serverless computing (FaaS), multi-cloud and hybrid cloud infrastructure.",
+    "Virtualization & Containers: Hypervisors, Docker containerization, Kubernetes orchestration, microservices architecture.",
+    "Distributed Storage & Processing: HDFS, Ceph, Amazon S3, MapReduce, Apache Spark, distributed machine learning.",
+    "Resource Management & Scalability: Autoscaling, load balancing, VM placement, SLA management, energy-efficient cloud systems.",
+    "Cloud Security & MLOps: Identity and Access Management (IAM), zero-trust architecture, CI/CD pipelines, MLOps deployment."
+  ],
+  "books": [
+    {
+      "title": "Distributed and Cloud Computing: From Parallel Processing to the Internet of Things",
+      "author": "Kai Hwang, Geoffrey C. Fox, Jack J. Dongarra",
+      "publisher": "Morgan Kaufmann",
+      "edition_year": "2011",
+      "type": "Textbook"
+    },
+    {
+      "title": "Mastering Cloud Computing",
+      "author": "Rajkumar Buyya, Christian Vecchiola, S. Thamarai Selvi",
+      "publisher": "McGraw Hill",
+      "edition_year": "2013",
+      "type": "Textbook"
+    },
+    {
+      "title": "Designing Distributed Systems: Patterns and Paradigms for Scalable, Reliable Services",
+      "author": "Brendan Burns",
+      "publisher": "O'Reilly Media",
+      "edition_year": "2018",
+      "type": "Reference"
+    }
+  ]
+}

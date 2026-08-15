@@ -1,0 +1,13 @@
+# =============================================================================
+# IIT Patna M.Tech (AI & Data Science) Curriculum & Tracker Requirements
+# =============================================================================
+
+# Web Application Framework
+streamlit>=1.30.0
+
+# HTML Timetable Parser
+beautifulsoup4>=4.12.0
+soupsieve>=2.5
+
+# Optional Type Utilities
+typing-extensions>=4.0.0

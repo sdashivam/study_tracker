@@ -1,0 +1,44 @@
+{
+  "subject_code": "EAI 6101",
+  "subject_name": "Computational Data Analysis",
+  "semester": 1,
+  "course_type": "Elective Pool (DE-1)",
+  "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+  "description": "Covers advanced mathematical signal processing, functional analysis, Fourier and wavelet transforms, compressed sensing, and sparse data representations.",
+  "learning_objectives": [
+    "Understand Hilbert spaces, orthogonal projections, and linear functional analysis.",
+    "Apply Fourier, wavelet, and multi-resolution analysis to high-dimensional datasets.",
+    "Formulate compressed sensing, sparse representations, and matrix completion problems.",
+    "Implement scalable computational algorithms for signal and data recovery."
+  ],
+  "outline": [
+    "Mathematical Foundations: Hilbert spaces, inner product spaces, orthogonal projections, linear functional analysis.",
+    "Transform Techniques: Fourier series, Discrete Fourier Transform (DFT), Fast Fourier Transform (FFT), wavelets, time-frequency analysis.",
+    "Stochastic Signal Processing: Random processes, stationarity, autocorrelation, power spectral density, Wiener and Kalman filtering.",
+    "High-Dimensional Analysis: Dimensionality reduction, Johnson-Lindenstrauss lemma, Compressed Sensing, sparse recovery algorithms.",
+    "Computational Optimization: Large-scale data algorithms, regularized inversion, numerical stability."
+  ],
+  "books": [
+    {
+      "title": "Signal Processing: A Mathematical Approach",
+      "author": "Charles L. Byrne",
+      "publisher": "Chapman & Hall / CRC",
+      "edition_year": "2nd Edition, 2014",
+      "type": "Textbook"
+    },
+    {
+      "title": "Discrete-Time Signal Processing",
+      "author": "Alan V. Oppenheim, Ronald W. Schafer",
+      "publisher": "Pearson",
+      "edition_year": "3rd Edition, 2009",
+      "type": "Reference"
+    },
+    {
+      "title": "A Wavelet Tour of Signal Processing: The Sparse Way",
+      "author": "Stéphane Mallat",
+      "publisher": "Academic Press",
+      "edition_year": "3rd Edition, 2008",
+      "type": "Reference"
+    }
+  ]
+}

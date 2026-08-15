@@ -1,0 +1,53 @@
+{
+  "subject_code": "ECS 5102",
+  "subject_name": "Foundations of Computer Systems",
+  "semester": 1,
+  "course_type": "Core",
+  "credits": "4 Credits (L-T-P-C: 3-0-2-4)",
+  "description": "Offers a comprehensive review of computer systems by bridging computer architecture, processor design, and operating systems principles essential for high-performance computing.",
+  "learning_objectives": [
+    "Understand computer organization, instruction set architectures, and assembly language programming.",
+    "Analyze CPU datapath, hardwired and microprogrammed control unit designs, pipelining, and memory hierarchy.",
+    "Master operating system core services including process management, CPU scheduling, concurrency, and deadlock handling.",
+    "Examine virtual memory management, file systems, disk scheduling, and I/O system architectures."
+  ],
+  "outline": [
+    "Computer Architecture & ISA: Performance measures, memory locations/operations, addressing modes, instruction sets, machine and assembly language programs.",
+    "Processing Unit Design: Registers, datapath, CPU instruction cycle, micro-operations, bus architectures, interrupt handling.",
+    "Control Unit & Pipelining: Hardwired control unit design, microprogrammed control unit, instruction pipelining, pipeline hazards, branch prediction.",
+    "Memory Hierarchy: Cache memory mapping, cache coherence, virtual memory, paging, segmentation, page replacement policies.",
+    "Process Management & Synchronization: Process lifecycle, threads, CPU scheduling algorithms, critical section problem, semaphores, mutexes, monitors.",
+    "Deadlocks & Storage Systems: Deadlock characterization, prevention, avoidance (Banker's algorithm), detection, disk scheduling, file system implementation.",
+    "Lab Component: Linux shell programming, POSIX system calls, multi-threaded programming, and architecture simulation."
+  ],
+  "books": [
+    {
+      "title": "Operating System Concepts",
+      "author": "Abraham Silberschatz, Peter B. Galvin, Greg Gagne",
+      "publisher": "John Wiley & Sons",
+      "edition_year": "7th / 9th Edition, 2004",
+      "type": "Textbook"
+    },
+    {
+      "title": "Advanced Concepts in Operating Systems",
+      "author": "Mukesh Singhal, Niranjan G. Shivaratri",
+      "publisher": "McGraw-Hill",
+      "edition_year": "1994",
+      "type": "Reference"
+    },
+    {
+      "title": "Computer Organization and Design: The Hardware/Software Interface",
+      "author": "David A. Patterson, John L. Hennessy",
+      "publisher": "Morgan Kaufmann",
+      "edition_year": "5th / 6th Edition",
+      "type": "Reference"
+    },
+    {
+      "title": "Computer Organization and Architecture: Designing for Performance",
+      "author": "William Stallings",
+      "publisher": "Pearson",
+      "edition_year": "10th Edition",
+      "type": "Reference"
+    }
+  ]
+}

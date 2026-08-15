@@ -1,0 +1,37 @@
+{
+  "subject_code": "Project I",
+  "subject_name": "Major Project I",
+  "semester": 3,
+  "course_type": "Core Project",
+  "credits": "17 Credits (L-T-P-C: 0-0-34-17)",
+  "description": "Represents the first phase of the master's research thesis, focusing on industry problem formulation, rigorous literature review, dataset preparation, and preliminary model prototyping.",
+  "learning_objectives": [
+    "Identify and formulate a high-impact applied AI or data engineering research problem.",
+    "Conduct a comprehensive literature survey analyzing state-of-the-art methodologies.",
+    "Acquire, clean, preprocess, and analyze benchmark datasets.",
+    "Develop initial mathematical formulations, baseline models, and submit the Project Phase-I dissertation report."
+  ],
+  "outline": [
+    "Problem Identification & Scope: Industry problem formulation, domain analysis, research objective definition.",
+    "Literature Review: Comprehensive survey of existing state-of-the-art AI / ML methods, gaps identification, citation analysis.",
+    "Data Engineering: Dataset acquisition, validation, cleaning, exploratory data analysis, benchmark selection.",
+    "Methodology & Prototyping: Proposed architecture design, mathematical modeling, baseline implementation.",
+    "Evaluation & Reporting: Mid-semester review, preliminary experimental evaluation, Project Phase-I report compilation, and progress viva-voce presentation."
+  ],
+  "books": [
+    {
+      "title": "Research Methodology: Methods and Techniques",
+      "author": "C. R. Kothari, Gaurav Garg",
+      "publisher": "New Age International Publishers",
+      "edition_year": "4th Edition, 2019",
+      "type": "Reference"
+    },
+    {
+      "title": "Research Design: Qualitative, Quantitative, and Mixed Methods Approaches",
+      "author": "John W. Creswell, J. David Creswell",
+      "publisher": "SAGE Publications",
+      "edition_year": "5th Edition, 2018",
+      "type": "Reference"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "subject_code": "EAI 6403",
+  "subject_name": "Selective Topics in Generative AI",
+  "semester": 4,
+  "course_type": "Elective Pool (DE-6/7)",
+  "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+  "description": "Provides an advanced exploration of cutting-edge Generative AI models including VAEs, GANs, diffusion models, Generative Pre-trained Transformers, and multimodal synthesis.",
+  "learning_objectives": [
+    "Master mathematical foundations of deep generative models: VAEs, GANs, and Diffusion models.",
+    "Design and evaluate image generation (Diffusion, StyleGAN) and text-to-image architectures.",
+    "Understand Generative Pre-trained Transformers (GPT) architecture, RLHF, and prompt engineering.",
+    "Address ethical considerations, deepfake detection, explainability, and bias in Generative AI."
+  ],
+  "outline": [
+    "Generative AI Foundations: Overview of generative vs discriminative modeling, energy-based models, normalizing flows.",
+    "Generative Adversarial Networks (GANs): DCGAN, WGAN-GP, StyleGAN, conditional GANs, image-to-image translation (Pix2Pix, CycleGAN).",
+    "Advanced Variational Autoencoders: Hierarchical VAEs, Semi-supervised VAEs, Vector Quantized VAEs (VQ-VAE).",
+    "Diffusion & Score-Based Models: DDPM, DDIM, classifier-free guidance, latent diffusion models (Stable Diffusion).",
+    "Generative Pre-trained Transformers (GPT): Transformer decoders, autoregressive text generation, fine-tuning with LoRA/PEFT, RLHF.",
+    "Multimodal Generative Systems: CLIP, text-to-image synthesis, prompt engineering, multimodal architectures.",
+    "Ethics & Explainability: Bias mitigation, deepfake detection, watermarking, mechanistic interpretability."
+  ],
+  "books": [
+    {
+      "title": "Generative Deep Learning: Teaching Machines to Paint, Write, Compose, and Play",
+      "author": "David Foster",
+      "publisher": "O'Reilly Media",
+      "edition_year": "2nd Edition, 2023",
+      "type": "Textbook"
+    },
+    {
+      "title": "Deep Generative Modeling",
+      "author": "Jakub M. Tomczak",
+      "publisher": "Springer",
+      "edition_year": "2022",
+      "type": "Textbook"
+    },
+    {
+      "title": "Deep Learning",
+      "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville",
+      "publisher": "MIT Press",
+      "edition_year": "2016",
+      "type": "Reference"
+    }
+  ]
+}

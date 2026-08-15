@@ -1,0 +1,52 @@
+{
+  "subject_code": "EHS 5104",
+  "subject_name": "Technical Writing and Soft Skill / Capstone Project",
+  "semester": 1,
+  "course_type": "Core",
+  "credits": "4 Credits (L-T-P-C: 1-2-2-4)",
+  "description": "Equips engineering professionals with technical writing mastery, academic publishing ethics, research documentation standards, corporate communication, and capstone project execution.",
+  "learning_objectives": [
+    "Write structured technical reports, research papers, and technical proposals in IEEE/ACM formats.",
+    "Master citation tools, literature survey methodologies, and plagiarism-free academic documentation.",
+    "Develop executive presentation skills, interpersonal communication, and team leadership.",
+    "Formulate, execute, and document an industry capstone project case study."
+  ],
+  "outline": [
+    "Principles of Technical Writing: Clarity, precision, audience analysis, tone, and grammatical coherence in technical documentation.",
+    "Research & Academic Documentation: Writing research papers, literature surveys, technical reports, IEEE/ACM conference format styling, and citations (BibTeX/Zotero).",
+    "Professional & Business Communication: Executive summaries, proposal writing, documentation for software systems, and data-driven presentations.",
+    "Ethics & Integrity in AI Research: Plagiarism avoidance, ethical publishing, research reproducibility, and peer review processes.",
+    "Soft Skills & Professional Leadership: Technical presentations, elevator pitch, interview communication, negotiation, and teamwork dynamics.",
+    "Capstone Project Execution: Problem definition, methodology design, implementation milestones, and final thesis report presentation."
+  ],
+  "books": [
+    {
+      "title": "The Elements of Style",
+      "author": "William Strunk Jr., E. B. White",
+      "publisher": "Pearson",
+      "edition_year": "4th Edition",
+      "type": "Textbook"
+    },
+    {
+      "title": "A Guide to Writing as an Engineer",
+      "author": "David F. Beer, David McMurrey",
+      "publisher": "John Wiley & Sons",
+      "edition_year": "4th Edition",
+      "type": "Textbook"
+    },
+    {
+      "title": "Technical Communication: Principles and Practice",
+      "author": "Meenakshi Raman, Sangeeta Sharma",
+      "publisher": "Oxford University Press",
+      "edition_year": "3rd Edition",
+      "type": "Reference"
+    },
+    {
+      "title": "Handbook of Technical Writing",
+      "author": "Gerald J. Alred, Charles T. Brusaw, Walter E. Oliu",
+      "publisher": "Bedford/St. Martin's",
+      "edition_year": "12th Edition",
+      "type": "Reference"
+    }
+  ]
+}

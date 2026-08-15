@@ -1,0 +1,45 @@
+{
+  "subject_code": "EAI 6402",
+  "subject_name": "Meta Learning",
+  "semester": 4,
+  "course_type": "Elective Pool (DE-6/7)",
+  "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+  "description": "Investigates learning-to-learn frameworks, few-shot classification, metric-based, model-based, and optimization-based meta-learning algorithms such as MAML.",
+  "learning_objectives": [
+    "Understand meta-learning concepts, N-way K-shot benchmarks, and task-distribution sampling.",
+    "Implement metric-based meta-learning including Siamese, Prototypical, and Matching Networks.",
+    "Master optimization-based meta-learning including MAML, FOMAML, Reptile, and Meta-SGD.",
+    "Apply meta-learning to few-shot vision, meta-reinforcement learning, and AutoML."
+  ],
+  "outline": [
+    "Meta-Learning Foundations: Learning-to-learn paradigms, N-way K-shot tasks, few-shot benchmarks (Omniglot, mini-ImageNet).",
+    "Metric-Based Approaches: Siamese Networks, Matching Networks, Prototypical Networks, Relation Networks.",
+    "Model-Based Approaches: Memory-Augmented Neural Networks (MANN), Meta Networks, Neural Turing Machines.",
+    "Optimization-Based Approaches: Model-Agnostic Meta-Learning (MAML), First-Order MAML (FOMAML), Reptile, Meta-SGD, implicit gradients (iMAML).",
+    "Bayesian Meta-Learning: Probabilistic MAML, uncertainty quantification in few-shot regimes.",
+    "Applications: Meta-reinforcement learning, automated machine learning (AutoML), continuous learning."
+  ],
+  "books": [
+    {
+      "title": "Meta-learning: Theory, Algorithms and Applications",
+      "author": "Liang Zou",
+      "publisher": "Springer / Academic Press",
+      "edition_year": "2022",
+      "type": "Textbook"
+    },
+    {
+      "title": "Metalearning: Applications to Data Mining and Machine Learning",
+      "author": "Pavel Brazdil, Jan N. van Rijn, Carlos Soares, Joaquin Vanschoren",
+      "publisher": "Springer",
+      "edition_year": "2nd Edition, 2022",
+      "type": "Textbook"
+    },
+    {
+      "title": "Meta-Learning in Neural Networks: A Survey",
+      "author": "Timothy Hospedales, Antreas Antoniou, Paul Micaelli, Amos Storkey",
+      "publisher": "IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)",
+      "edition_year": "2021",
+      "type": "Reference"
+    }
+  ]
+}

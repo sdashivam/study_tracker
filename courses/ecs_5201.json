@@ -1,0 +1,46 @@
+{
+  "subject_code": "ECS 5201",
+  "subject_name": "Artificial Intelligence",
+  "semester": 2,
+  "course_type": "Core",
+  "credits": "4 Credits (L-T-P-C: 3-0-2-4)",
+  "description": "Provides an in-depth foundation in artificial intelligence paradigms, state-space search, constraint satisfaction, adversarial gaming, knowledge representation, and automated planning.",
+  "learning_objectives": [
+    "Formulate problem solving using uninformed, informed, and local heuristic search strategies.",
+    "Implement adversarial game search, minimax algorithms, and alpha-beta pruning techniques.",
+    "Model and solve complex Constraint Satisfaction Problems (CSPs) with constraint propagation.",
+    "Apply knowledge representation using propositional/first-order logic and automated planning."
+  ],
+  "outline": [
+    "Intelligent Agents: Agent architectures, environment types, rationality, PEAS specifications.",
+    "Search Algorithms: Uninformed search (BFS, DFS, UCS), Informed search (Greedy Best-First, A*, IDA*, SMA*), heuristic design.",
+    "Local Search & Optimization: Hill climbing, Simulated Annealing, Genetic Algorithms, Beam Search.",
+    "Adversarial Search: Game theory, Minimax algorithm, Alpha-Beta pruning, evaluation functions, stochastic games.",
+    "Constraint Satisfaction Problems (CSPs): Backtracking search, Forward checking, Arc consistency (AC-3), MRV/degree heuristics.",
+    "Knowledge Representation & Logic: Propositional logic, First-Order Logic (FOL), resolution refutation, forward/backward chaining, classical planning.",
+    "Lab Component: Practical implementation of AI search, game playing, and logic agents in Python."
+  ],
+  "books": [
+    {
+      "title": "Artificial Intelligence: A Modern Approach",
+      "author": "Stuart J. Russell, Peter Norvig",
+      "publisher": "Pearson",
+      "edition_year": "4th Edition, 2020",
+      "type": "Textbook"
+    },
+    {
+      "title": "Artificial Intelligence: Foundations of Computational Agents",
+      "author": "David L. Poole, Alan K. Mackworth",
+      "publisher": "Cambridge University Press",
+      "edition_year": "2nd Edition, 2017",
+      "type": "Reference"
+    },
+    {
+      "title": "Artificial Intelligence: A New Synthesis",
+      "author": "Nils J. Nilsson",
+      "publisher": "Morgan Kaufmann",
+      "edition_year": "1998",
+      "type": "Reference"
+    }
+  ]
+}

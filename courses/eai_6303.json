@@ -1,0 +1,44 @@
+{
+  "subject_code": "EAI 6303",
+  "subject_name": "Blockchain Technologies: Platforms and Applications",
+  "semester": 3,
+  "course_type": "Elective Pool (DE-4/5)",
+  "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+  "description": "Explores distributed ledger technology, consensus algorithms, Ethereum smart contracts in Solidity, decentralized storage, and enterprise blockchain architectures.",
+  "learning_objectives": [
+    "Understand cryptographic hash functions, digital signatures, and consensus protocols (PoW, PoS, PBFT).",
+    "Analyze blockchain platforms including Ethereum, Hyperledger Fabric, Corda, and IPFS.",
+    "Develop, test, and deploy Solidity smart contracts and DApps using Web3 protocols.",
+    "Design enterprise blockchain applications in supply chain, DeFi, and AI data provenance."
+  ],
+  "outline": [
+    "Blockchain Fundamentals: Distributed ledgers, cryptographic primitives, public-key cryptography, consensus protocols (PoW, PoS, PBFT, Raft).",
+    "Blockchain Platforms: Ethereum, Hyperledger Fabric, Corda, Ripple, IPFS decentralized storage.",
+    "Smart Contract Development: Solidity programming, contract lifecycle, events, security vulnerabilities (reentrancy, overflows), Web3.js.",
+    "Decentralized Applications (DApps): Token standards (ERC-20, ERC-721, ERC-1155), decentralized finance (DeFi), oracle networks (Chainlink).",
+    "Enterprise Applications: Supply chain tracking, healthcare data sharing, digital identity, AI-Blockchain integration."
+  ],
+  "books": [
+    {
+      "title": "Bitcoin and Cryptocurrency Technologies: A Comprehensive Introduction",
+      "author": "Arvind Narayanan, Joseph Bonneau, Edward Felten, Andrew Miller, Steven Goldfeder",
+      "publisher": "Princeton University Press",
+      "edition_year": "2016",
+      "type": "Textbook"
+    },
+    {
+      "title": "Mastering Ethereum: Building Smart Contracts and DApps",
+      "author": "Andreas M. Antonopoulos, Gavin Wood",
+      "publisher": "O'Reilly Media",
+      "edition_year": "2018",
+      "type": "Textbook"
+    },
+    {
+      "title": "Hands-On Blockchain with Hyperledger",
+      "author": "Nitin Gaur, et al.",
+      "publisher": "Packt Publishing",
+      "edition_year": "2018",
+      "type": "Reference"
+    }
+  ]
+}

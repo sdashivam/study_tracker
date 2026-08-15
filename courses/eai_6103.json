@@ -1,0 +1,52 @@
+{
+  "subject_code": "EAI 6103",
+  "subject_name": "Advance Machine Learning",
+  "semester": 1,
+  "course_type": "Elective I",
+  "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+  "description": "Explores advanced statistical learning theory, kernel methods, ensemble architectures, probabilistic graphical models, and modern dimensionality reduction algorithms.",
+  "learning_objectives": [
+    "Analyze statistical learning theory, PAC learnability, VC-dimension, and generalization bounds.",
+    "Master kernel methods, Support Vector Machines, and Reproducing Kernel Hilbert Spaces (RKHS).",
+    "Design advanced ensemble models including AdaBoost, Gradient Boosting, XGBoost, and Stacking.",
+    "Understand probabilistic graphical models, Bayesian networks, and non-linear manifold learning."
+  ],
+  "outline": [
+    "Statistical Learning Theory: PAC learning framework, VC-dimension, Rademacher complexity, generalization error bounds, bias-variance tradeoff.",
+    "Kernel Methods & Advanced SVMs: Mercer's theorem, RKHS, Support Vector Regression, Kernel Ridge Regression.",
+    "Ensemble Learning: Bagging, Random Forests, Boosting algorithms (AdaBoost, Gradient Boosting, XGBoost, LightGBM, CatBoost), Stacking.",
+    "Probabilistic Graphical Models: Bayesian networks, Markov Random Fields (MRFs), inference algorithms (Variable Elimination, Belief Propagation), sampling methods (MCMC, Gibbs sampling).",
+    "Semi-Supervised & Active Learning: Self-training, co-training, graph-based semi-supervised learning, query strategies for active learning.",
+    "Dimensionality Reduction & Manifold Learning: t-SNE, UMAP, Isomap, Locally Linear Embedding (LLE), Autoencoders."
+  ],
+  "books": [
+    {
+      "title": "Machine Learning: A Probabilistic Perspective",
+      "author": "Kevin P. Murphy",
+      "publisher": "MIT Press",
+      "edition_year": "2012",
+      "type": "Textbook"
+    },
+    {
+      "title": "The Elements of Statistical Learning",
+      "author": "Trevor Hastie, Robert Tibshirani, Jerome Friedman",
+      "publisher": "Springer",
+      "edition_year": "2nd Edition, 2009",
+      "type": "Textbook"
+    },
+    {
+      "title": "Understanding Machine Learning: From Theory to Algorithms",
+      "author": "Shai Shalev-Shwartz, Shai Ben-David",
+      "publisher": "Cambridge University Press",
+      "edition_year": "2014",
+      "type": "Reference"
+    },
+    {
+      "title": "Probabilistic Graphical Models: Principles and Techniques",
+      "author": "Daphne Koller, Nir Friedman",
+      "publisher": "MIT Press",
+      "edition_year": "2009",
+      "type": "Reference"
+    }
+  ]
+}

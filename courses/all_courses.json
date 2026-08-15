@@ -1,0 +1,1106 @@
+[
+  {
+    "subject_code": "ECS 5101",
+    "subject_name": "Design and Analysis of Algorithms",
+    "semester": 1,
+    "course_type": "Core",
+    "credits": "4 Credits (L-T-P-C: 3-0-2-4)",
+    "description": "Provides a rigorous foundation in the design, asymptotic analysis, and implementation of efficient computational algorithms and advanced data structures to solve complex algorithmic problems.",
+    "learning_objectives": [
+      "Master asymptotic complexity analysis and recurrence relations.",
+      "Design and implement advanced data structures including balanced search trees, heaps, and disjoint sets.",
+      "Apply core algorithmic paradigms including divide-and-conquer, greedy techniques, dynamic programming, and branch-and-bound.",
+      "Implement graph algorithms, network flow, string matching, and understand NP-completeness and approximation algorithms."
+    ],
+    "outline": [
+      "Asymptotic Analysis and Recurrence Relations: Big-O, Omega, Theta notations, Master Theorem, recursion tree method.",
+      "Advanced Data Structures: AVL trees, Red-Black trees, B-Trees, Fibonacci heaps, Disjoint Set Union (DSU).",
+      "Algorithmic Paradigms: Divide and Conquer, Greedy Algorithms, Dynamic Programming (memoization & tabulation), Backtracking, Branch and Bound.",
+      "Graph Algorithms: Single-source and all-pairs shortest paths (Dijkstra, Bellman-Ford, Floyd-Warshall), Minimum Spanning Trees (Prim, Kruskal), Maximum Flow (Ford-Fulkerson).",
+      "String Matching Algorithms: Naive, Rabin-Karp, Knuth-Morris-Pratt (KMP), Boyer-Moore, Suffix Trees.",
+      "Computational Complexity: Class P, NP, NP-Complete, NP-Hard, Polynomial-time reductions, Approximation algorithms.",
+      "Lab Component: Practical implementation and performance benchmarking in C++/Python."
+    ],
+    "books": [
+      {
+        "title": "Data Structures and Algorithms in C++",
+        "author": "Mark Allen Weiss",
+        "publisher": "Addison Wesley",
+        "edition_year": "2003",
+        "type": "Textbook"
+      },
+      {
+        "title": "Data Structures and Algorithms in C++",
+        "author": "Adam Drozdek",
+        "publisher": "Brooks/Cole",
+        "edition_year": "2001",
+        "type": "Textbook"
+      },
+      {
+        "title": "Data Structures and Algorithms",
+        "author": "Alfred V. Aho, John E. Hopcroft, Jeffrey D. Ullman",
+        "publisher": "Addison-Wesley",
+        "edition_year": "1984",
+        "type": "Reference"
+      },
+      {
+        "title": "Introduction to Algorithms",
+        "author": "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein",
+        "publisher": "MIT Press",
+        "edition_year": "3rd / 4th Edition",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "ECS 5102",
+    "subject_name": "Foundations of Computer Systems",
+    "semester": 1,
+    "course_type": "Core",
+    "credits": "4 Credits (L-T-P-C: 3-0-2-4)",
+    "description": "Offers a comprehensive review of computer systems by bridging computer architecture, processor design, and operating systems principles essential for high-performance computing.",
+    "learning_objectives": [
+      "Understand computer organization, instruction set architectures, and assembly language programming.",
+      "Analyze CPU datapath, hardwired and microprogrammed control unit designs, pipelining, and memory hierarchy.",
+      "Master operating system core services including process management, CPU scheduling, concurrency, and deadlock handling.",
+      "Examine virtual memory management, file systems, disk scheduling, and I/O system architectures."
+    ],
+    "outline": [
+      "Computer Architecture & ISA: Performance measures, memory locations/operations, addressing modes, instruction sets, machine and assembly language programs.",
+      "Processing Unit Design: Registers, datapath, CPU instruction cycle, micro-operations, bus architectures, interrupt handling.",
+      "Control Unit & Pipelining: Hardwired control unit design, microprogrammed control unit, instruction pipelining, pipeline hazards, branch prediction.",
+      "Memory Hierarchy: Cache memory mapping, cache coherence, virtual memory, paging, segmentation, page replacement policies.",
+      "Process Management & Synchronization: Process lifecycle, threads, CPU scheduling algorithms, critical section problem, semaphores, mutexes, monitors.",
+      "Deadlocks & Storage Systems: Deadlock characterization, prevention, avoidance (Banker's algorithm), detection, disk scheduling, file system implementation.",
+      "Lab Component: Linux shell programming, POSIX system calls, multi-threaded programming, and architecture simulation."
+    ],
+    "books": [
+      {
+        "title": "Operating System Concepts",
+        "author": "Abraham Silberschatz, Peter B. Galvin, Greg Gagne",
+        "publisher": "John Wiley & Sons",
+        "edition_year": "7th / 9th Edition, 2004",
+        "type": "Textbook"
+      },
+      {
+        "title": "Advanced Concepts in Operating Systems",
+        "author": "Mukesh Singhal, Niranjan G. Shivaratri",
+        "publisher": "McGraw-Hill",
+        "edition_year": "1994",
+        "type": "Reference"
+      },
+      {
+        "title": "Computer Organization and Design: The Hardware/Software Interface",
+        "author": "David A. Patterson, John L. Hennessy",
+        "publisher": "Morgan Kaufmann",
+        "edition_year": "5th / 6th Edition",
+        "type": "Reference"
+      },
+      {
+        "title": "Computer Organization and Architecture: Designing for Performance",
+        "author": "William Stallings",
+        "publisher": "Pearson",
+        "edition_year": "10th Edition",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EMC 5103",
+    "subject_name": "Probability and Statistics",
+    "semester": 1,
+    "course_type": "Core",
+    "credits": "4 Credits (L-T-P-C: 3-0-2-4)",
+    "description": "Develops foundational probability theory and classical statistical inference methodologies required for rigorous data analysis, machine learning models, and stochastic modeling.",
+    "learning_objectives": [
+      "Understand probability axioms, conditional probability, Bayes theorem, and random variable distributions.",
+      "Compute moments, expectations, variances, joint distributions, and conditional expectations.",
+      "Apply asymptotic limit theorems including Chebyshev inequality, WLLN, and the Central Limit Theorem.",
+      "Perform point and interval estimation, maximum likelihood estimation, and hypothesis testing."
+    ],
+    "outline": [
+      "Probability Foundations: Sample spaces, events, conditional probability, Bayes rule, law of total probability, independence.",
+      "Random Variables: Discrete and continuous random variables, PMF, PDF, CDF, expectation, variance, moments, moment generating functions.",
+      "Joint & Conditional Distributions: Multiple random variables, joint and marginal distributions, covariance, correlation, conditional expectation.",
+      "Inequalities & Limit Theorems: Markov and Chebyshev inequalities, convergence in probability and distribution, Weak Law of Large Numbers, Central Limit Theorem.",
+      "Statistical Estimation: Unbiasedness, consistency, sufficiency, efficiency, Method of Moments, Maximum Likelihood Estimation (MLE).",
+      "Hypothesis Testing: Null/alternative hypotheses, Type I/II errors, p-values, Neyman-Pearson lemma, likelihood ratio tests, confidence intervals.",
+      "Lab Component: Statistical computing, probability simulations, and data modeling in Python/R."
+    ],
+    "books": [
+      {
+        "title": "An Introduction to Probability and Statistics",
+        "author": "Vijay K. Rohatgi, A. K. Md. Ehsanes Saleh",
+        "publisher": "John Wiley & Sons",
+        "edition_year": "2nd Edition, 2009",
+        "type": "Textbook"
+      },
+      {
+        "title": "Introduction to Probability and Statistics for Engineers and Scientists",
+        "author": "Sheldon M. Ross",
+        "publisher": "Academic Press",
+        "edition_year": "5th Edition",
+        "type": "Reference"
+      },
+      {
+        "title": "Mathematical Statistics and Data Analysis",
+        "author": "John A. Rice",
+        "publisher": "Cengage Learning",
+        "edition_year": "3rd Edition",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EHS 5104",
+    "subject_name": "Technical Writing and Soft Skill / Capstone Project",
+    "semester": 1,
+    "course_type": "Core",
+    "credits": "4 Credits (L-T-P-C: 1-2-2-4)",
+    "description": "Equips engineering professionals with technical writing mastery, academic publishing ethics, research documentation standards, corporate communication, and capstone project execution.",
+    "learning_objectives": [
+      "Write structured technical reports, research papers, and technical proposals in IEEE/ACM formats.",
+      "Master citation tools, literature survey methodologies, and plagiarism-free academic documentation.",
+      "Develop executive presentation skills, interpersonal communication, and team leadership.",
+      "Formulate, execute, and document an industry capstone project case study."
+    ],
+    "outline": [
+      "Principles of Technical Writing: Clarity, precision, audience analysis, tone, and grammatical coherence in technical documentation.",
+      "Research & Academic Documentation: Writing research papers, literature surveys, technical reports, IEEE/ACM conference format styling, and citations (BibTeX/Zotero).",
+      "Professional & Business Communication: Executive summaries, proposal writing, documentation for software systems, and data-driven presentations.",
+      "Ethics & Integrity in AI Research: Plagiarism avoidance, ethical publishing, research reproducibility, and peer review processes.",
+      "Soft Skills & Professional Leadership: Technical presentations, elevator pitch, interview communication, negotiation, and teamwork dynamics.",
+      "Capstone Project Execution: Problem definition, methodology design, implementation milestones, and final thesis report presentation."
+    ],
+    "books": [
+      {
+        "title": "The Elements of Style",
+        "author": "William Strunk Jr., E. B. White",
+        "publisher": "Pearson",
+        "edition_year": "4th Edition",
+        "type": "Textbook"
+      },
+      {
+        "title": "A Guide to Writing as an Engineer",
+        "author": "David F. Beer, David McMurrey",
+        "publisher": "John Wiley & Sons",
+        "edition_year": "4th Edition",
+        "type": "Textbook"
+      },
+      {
+        "title": "Technical Communication: Principles and Practice",
+        "author": "Meenakshi Raman, Sangeeta Sharma",
+        "publisher": "Oxford University Press",
+        "edition_year": "3rd Edition",
+        "type": "Reference"
+      },
+      {
+        "title": "Handbook of Technical Writing",
+        "author": "Gerald J. Alred, Charles T. Brusaw, Walter E. Oliu",
+        "publisher": "Bedford/St. Martin's",
+        "edition_year": "12th Edition",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EAI 6103",
+    "subject_name": "Advance Machine Learning",
+    "semester": 1,
+    "course_type": "Elective I",
+    "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+    "description": "Explores advanced statistical learning theory, kernel methods, ensemble architectures, probabilistic graphical models, and modern dimensionality reduction algorithms.",
+    "learning_objectives": [
+      "Analyze statistical learning theory, PAC learnability, VC-dimension, and generalization bounds.",
+      "Master kernel methods, Support Vector Machines, and Reproducing Kernel Hilbert Spaces (RKHS).",
+      "Design advanced ensemble models including AdaBoost, Gradient Boosting, XGBoost, and Stacking.",
+      "Understand probabilistic graphical models, Bayesian networks, and non-linear manifold learning."
+    ],
+    "outline": [
+      "Statistical Learning Theory: PAC learning framework, VC-dimension, Rademacher complexity, generalization error bounds, bias-variance tradeoff.",
+      "Kernel Methods & Advanced SVMs: Mercer's theorem, RKHS, Support Vector Regression, Kernel Ridge Regression.",
+      "Ensemble Learning: Bagging, Random Forests, Boosting algorithms (AdaBoost, Gradient Boosting, XGBoost, LightGBM, CatBoost), Stacking.",
+      "Probabilistic Graphical Models: Bayesian networks, Markov Random Fields (MRFs), inference algorithms (Variable Elimination, Belief Propagation), sampling methods (MCMC, Gibbs sampling).",
+      "Semi-Supervised & Active Learning: Self-training, co-training, graph-based semi-supervised learning, query strategies for active learning.",
+      "Dimensionality Reduction & Manifold Learning: t-SNE, UMAP, Isomap, Locally Linear Embedding (LLE), Autoencoders."
+    ],
+    "books": [
+      {
+        "title": "Machine Learning: A Probabilistic Perspective",
+        "author": "Kevin P. Murphy",
+        "publisher": "MIT Press",
+        "edition_year": "2012",
+        "type": "Textbook"
+      },
+      {
+        "title": "The Elements of Statistical Learning",
+        "author": "Trevor Hastie, Robert Tibshirani, Jerome Friedman",
+        "publisher": "Springer",
+        "edition_year": "2nd Edition, 2009",
+        "type": "Textbook"
+      },
+      {
+        "title": "Understanding Machine Learning: From Theory to Algorithms",
+        "author": "Shai Shalev-Shwartz, Shai Ben-David",
+        "publisher": "Cambridge University Press",
+        "edition_year": "2014",
+        "type": "Reference"
+      },
+      {
+        "title": "Probabilistic Graphical Models: Principles and Techniques",
+        "author": "Daphne Koller, Nir Friedman",
+        "publisher": "MIT Press",
+        "edition_year": "2009",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "ECS 5201",
+    "subject_name": "Artificial Intelligence",
+    "semester": 2,
+    "course_type": "Core",
+    "credits": "4 Credits (L-T-P-C: 3-0-2-4)",
+    "description": "Provides an in-depth foundation in artificial intelligence paradigms, state-space search, constraint satisfaction, adversarial gaming, knowledge representation, and automated planning.",
+    "learning_objectives": [
+      "Formulate problem solving using uninformed, informed, and local heuristic search strategies.",
+      "Implement adversarial game search, minimax algorithms, and alpha-beta pruning techniques.",
+      "Model and solve complex Constraint Satisfaction Problems (CSPs) with constraint propagation.",
+      "Apply knowledge representation using propositional/first-order logic and automated planning."
+    ],
+    "outline": [
+      "Intelligent Agents: Agent architectures, environment types, rationality, PEAS specifications.",
+      "Search Algorithms: Uninformed search (BFS, DFS, UCS), Informed search (Greedy Best-First, A*, IDA*, SMA*), heuristic design.",
+      "Local Search & Optimization: Hill climbing, Simulated Annealing, Genetic Algorithms, Beam Search.",
+      "Adversarial Search: Game theory, Minimax algorithm, Alpha-Beta pruning, evaluation functions, stochastic games.",
+      "Constraint Satisfaction Problems (CSPs): Backtracking search, Forward checking, Arc consistency (AC-3), MRV/degree heuristics.",
+      "Knowledge Representation & Logic: Propositional logic, First-Order Logic (FOL), resolution refutation, forward/backward chaining, classical planning.",
+      "Lab Component: Practical implementation of AI search, game playing, and logic agents in Python."
+    ],
+    "books": [
+      {
+        "title": "Artificial Intelligence: A Modern Approach",
+        "author": "Stuart J. Russell, Peter Norvig",
+        "publisher": "Pearson",
+        "edition_year": "4th Edition, 2020",
+        "type": "Textbook"
+      },
+      {
+        "title": "Artificial Intelligence: Foundations of Computational Agents",
+        "author": "David L. Poole, Alan K. Mackworth",
+        "publisher": "Cambridge University Press",
+        "edition_year": "2nd Edition, 2017",
+        "type": "Reference"
+      },
+      {
+        "title": "Artificial Intelligence: A New Synthesis",
+        "author": "Nils J. Nilsson",
+        "publisher": "Morgan Kaufmann",
+        "edition_year": "1998",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EMC 5202",
+    "subject_name": "Numerical Linear Algebra and Optimization Techniques",
+    "semester": 2,
+    "course_type": "Core",
+    "credits": "4 Credits (L-T-P-C: 3-0-2-4)",
+    "description": "Covers advanced numerical matrix decompositions, direct and iterative solvers, convex optimization theory, and constrained mathematical programming for data science.",
+    "learning_objectives": [
+      "Perform numerical matrix factorizations including LU, Cholesky, QR, SVD, and Spectral Decompositions.",
+      "Solve large linear systems using direct and iterative Krylov subspace methods.",
+      "Formulate convex optimization problems and understand duality and KKT optimality conditions.",
+      "Implement gradient-based, second-order, and constrained optimization algorithms."
+    ],
+    "outline": [
+      "Matrix Decompositions: Vector/matrix norms, conditioning, orthogonality, QR decomposition, SVD, PCA, Spectral theorem, Jordan canonical form.",
+      "Numerical Solvers: Gaussian elimination, LU, Cholesky factorization, Jacobi, Gauss-Seidel, Conjugate Gradient, GMRES.",
+      "Eigenvalue Computation: Power method, inverse iteration, QR algorithm for eigenvalue computation.",
+      "Convex Analysis: Convex sets, convex functions, epigraphs, subgradients, Jensen's inequality.",
+      "Unconstrained Optimization: Gradient descent, line search, Newton's method, Quasi-Newton methods (BFGS, L-BFGS).",
+      "Constrained Optimization: Lagrange multipliers, KKT conditions, Duality theory (Primal-Dual formulations), ADMM, Interior point methods.",
+      "Lab Component: Implementation of matrix algorithms and convex optimization solvers in Python/CVXPY."
+    ],
+    "books": [
+      {
+        "title": "Convex Optimization",
+        "author": "Stephen Boyd, Lieven Vandenberghe",
+        "publisher": "Cambridge University Press",
+        "edition_year": "2004",
+        "type": "Textbook"
+      },
+      {
+        "title": "Numerical Linear Algebra",
+        "author": "Lloyd N. Trefethen, David Bau III",
+        "publisher": "SIAM",
+        "edition_year": "1997",
+        "type": "Textbook"
+      },
+      {
+        "title": "Matrix Computations",
+        "author": "Gene H. Golub, Charles F. Van Loan",
+        "publisher": "Johns Hopkins University Press",
+        "edition_year": "4th Edition, 2013",
+        "type": "Reference"
+      },
+      {
+        "title": "Numerical Optimization",
+        "author": "Jorge Nocedal, Stephen J. Wright",
+        "publisher": "Springer",
+        "edition_year": "2nd Edition, 2006",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "IKS",
+    "subject_name": "Indian Knowledge System",
+    "semester": 2,
+    "course_type": "Core",
+    "credits": "2 Credits (L-T-P-C: 2-0-0-2)",
+    "description": "Introduces the rich indigenous scientific heritage of India, covering ancient mathematics, Paninian computational linguistics, logical epistemology, and sustainable philosophy.",
+    "learning_objectives": [
+      "Appreciate the historical evolution of scientific and philosophical thought in India.",
+      "Understand mathematical and astronomical contributions of Aryabhata, Brahmagupta, and the Kerala School.",
+      "Explore Ashtadhyayi as a formal computational generative grammar and knowledge representation system.",
+      "Analyze Nyaya logical inquiry, debate systems, and ethical governance frameworks."
+    ],
+    "outline": [
+      "Indian Knowledge Traditions: Epistemology, historical timeline, classification of Vedic and classical scientific corpus.",
+      "Mathematics & Astronomy: Sulba Sutras, binary systems in Pingala, Aryabhatiya, Brahmagupta's zero and algebra, Madhava's infinite series.",
+      "Computational Linguistics & Paninian Grammar: Panini's Ashtadhyayi formal grammar, morphological rules, Sanskrit as a computing language structure.",
+      "Logic & Scientific Inquiry: Nyaya-Vaisheshika epistemology, 16 categories of logic, Anumana (inference), debate frameworks (Vada/Jalpa/Vitanda).",
+      "Ethics, Governance & Sustainable Science: Arthashastra statecraft, ecological philosophy in traditional water management, Ayurveda holistic health principles."
+    ],
+    "books": [
+      {
+        "title": "Introduction to Indian Knowledge System: Concepts and Applications",
+        "author": "B. Mahadevan, V. R. Bhat, Nagendra Pavana R. N.",
+        "publisher": "PHI Learning",
+        "edition_year": "2022",
+        "type": "Textbook"
+      },
+      {
+        "title": "Knowledge Traditions and Practices of India",
+        "author": "Kapil Kapoor, Michel Danino",
+        "publisher": "CBSE & DK Printworld",
+        "edition_year": "2012",
+        "type": "Reference"
+      },
+      {
+        "title": "The Astronomical Code of the Rgveda",
+        "author": "Subhash Kak",
+        "publisher": "Munshiram Manoharlal Publishers",
+        "edition_year": "2000",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EAI 6202",
+    "subject_name": "Physics of Neural Network",
+    "semester": 2,
+    "course_type": "Elective II",
+    "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+    "description": "Explores the deep mathematical parallels between statistical physics, non-equilibrium thermodynamics, spin-glass models, and the computational dynamics of artificial neural networks.",
+    "learning_objectives": [
+      "Understand statistical mechanics formulations of neural associative memories and spin glass models.",
+      "Analyze energy landscapes, attractor dynamics in Hopfield networks, and Boltzmann machines.",
+      "Connect non-equilibrium thermodynamics, Langevin dynamics, and score-based diffusion models.",
+      "Apply information geometry, renormalization group methods, and Physics-Informed Neural Networks (PINNs)."
+    ],
+    "outline": [
+      "Statistical Mechanics of Neural Networks: Spin glass models, Ising model, energy landscapes, mean field theory, replicas.",
+      "Energy-Based Models: Hopfield networks, associative memory capacity, attractor dynamics, Boltzmann machines, Restricted Boltzmann Machines (RBMs).",
+      "Thermodynamics & Non-Equilibrium Systems: Free energy minimization, Langevin dynamics, Fokker-Planck equations, score-based diffusion models.",
+      "Dynamical Systems & Chaos: Neural dynamics, stability analysis, chaos in recurrent neural networks, reservoir computing.",
+      "Information Geometry & Physics of Learning: Information bottleneck theory, renormalization group in deep networks, Physics-Informed Neural Networks (PINNs)."
+    ],
+    "books": [
+      {
+        "title": "Modeling Brain Function: The World of Attractor Neural Networks",
+        "author": "David J. Amit",
+        "publisher": "Cambridge University Press",
+        "edition_year": "1989",
+        "type": "Textbook"
+      },
+      {
+        "title": "Spin Glass Theory and Beyond: An Introduction to the Replica Method and Its Applications",
+        "author": "Marc Mézard, Giorgio Parisi, Miguel A. Virasoro",
+        "publisher": "World Scientific",
+        "edition_year": "1987",
+        "type": "Textbook"
+      },
+      {
+        "title": "Statistical Physics of Spin Glasses and Information Processing: An Introduction",
+        "author": "Hidetoshi Nishimori",
+        "publisher": "Oxford University Press",
+        "edition_year": "2001",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EAI 6204",
+    "subject_name": "Federated Learning",
+    "semester": 2,
+    "course_type": "Elective III",
+    "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+    "description": "Investigates privacy-preserving distributed machine learning algorithms, non-IID optimization, differential privacy, Byzantine robustness, and federated edge architectures.",
+    "learning_objectives": [
+      "Understand cross-silo and cross-device federated learning architectures and non-IID data challenges.",
+      "Master federated optimization algorithms including FedAvg, FedProx, and SCAFFOLD.",
+      "Apply differential privacy, secure multi-party computation, and homomorphic encryption in FL.",
+      "Defend against model poisoning, backdoor attacks, and optimize communication efficiency."
+    ],
+    "outline": [
+      "Federated Learning Foundations: Core concepts, motivations, cross-silo vs. cross-device architectures, non-IID client distributions.",
+      "Federated Optimization: FedAvg, FedProx, FedNova, SCAFFOLD, convergence analysis under heterogeneous settings.",
+      "Privacy & Cryptographic Security: Differential privacy (Local/Central DP), Secure Multi-Party Computation (SMPC), Homomorphic Encryption.",
+      "Poisoning & Robustness: Byzantine attacks, model poisoning, backdoor attacks, robust aggregation rules (Krum, Coordinate-wise Median, Trimmed Mean).",
+      "Communication Efficiency: Model compression, quantization, sparsification, split learning, asynchronous federated learning.",
+      "Frameworks & Edge Deployment: PySyft, Flower, TensorFlow Federated (TFF), real-world case studies in healthcare and finance."
+    ],
+    "books": [
+      {
+        "title": "Federated Learning",
+        "author": "Qiang Yang, Yang Liu, Yong Cheng, Yan Kang, Tianjian Chen, Han Yu",
+        "publisher": "Morgan & Claypool Publishers",
+        "edition_year": "2019",
+        "type": "Textbook"
+      },
+      {
+        "title": "Advances and Open Problems in Federated Learning",
+        "author": "Peter Kairouz et al.",
+        "publisher": "Foundations and Trends in Machine Learning",
+        "edition_year": "2021",
+        "type": "Reference"
+      },
+      {
+        "title": "Privacy and Security in Federated Learning",
+        "author": "Lingjuan Lyu, et al.",
+        "publisher": "Springer",
+        "edition_year": "2023",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EAI 6301",
+    "subject_name": "Artificial Internet of Things",
+    "semester": 3,
+    "course_type": "Elective IV",
+    "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+    "description": "Focuses on deploying embedded machine learning and real-time AI models on resource-constrained edge Internet of Things (IoT) hardware and sensor networks.",
+    "learning_objectives": [
+      "Master the architecture, protocols, and edge-cloud interplay in Artificial Internet of Things (AIoT).",
+      "Design and optimize TinyML models using pruning, quantization, and specialized edge runtimes.",
+      "Interface IoT streaming protocols (MQTT, CoAP) with AI inference pipelines.",
+      "Build end-to-end smart applications in smart cities, industrial automation, and healthcare monitoring."
+    ],
+    "outline": [
+      "AIoT Fundamentals: Architecture, intersection of AI and IoT, edge computing vs. cloud computing, low-latency inferencing.",
+      "IoT Protocols & Data Acquisition: MQTT, CoAP, BLE, LoRaWAN, time-series sensor stream ingestion.",
+      "Embedded Edge AI (TinyML): Model pruning, post-training quantization, TensorFlow Lite for Microcontrollers, Edge TPU, ONNX runtime.",
+      "Domain Applications: Smart cities, Industry 4.0 predictive maintenance, connected healthcare, autonomous transportation.",
+      "AIoT Platforms & System Lifecycle: Device management, firmware over-the-air (FOTA) updates, security, edge project deployment."
+    ],
+    "books": [
+      {
+        "title": "TinyML: Machine Learning with TensorFlow Lite on Arduino and Ultra-Low-Power Microcontrollers",
+        "author": "Pete Warden, Daniel Situnayake",
+        "publisher": "O'Reilly Media",
+        "edition_year": "2019",
+        "type": "Textbook"
+      },
+      {
+        "title": "Internet of Things: A Hands-On Approach",
+        "author": "Arshdeep Bahga, Vijay Madisetti",
+        "publisher": "Universities Press",
+        "edition_year": "2014",
+        "type": "Reference"
+      },
+      {
+        "title": "Designing Embedded Systems and the Internet of Things (IoT) with the ARM Mbed",
+        "author": "Perry Xiao",
+        "publisher": "Wiley",
+        "edition_year": "2018",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EAI 6302",
+    "subject_name": "Natural Language Processing",
+    "semester": 3,
+    "course_type": "Elective V",
+    "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+    "description": "Provides comprehensive coverage of computational linguistics, neural language models, sequence-to-sequence transformers, and Large Language Model fine-tuning.",
+    "learning_objectives": [
+      "Understand linguistic preprocessing, n-gram statistical language models, and distributed word vectors.",
+      "Implement sequence models for Named Entity Recognition, POS tagging, and sentiment classification.",
+      "Master Transformer architectures, self-attention mechanisms, BERT, and GPT models.",
+      "Fine-tune and evaluate Large Language Models using prompt engineering, LoRA, and PEFT."
+    ],
+    "outline": [
+      "NLP Fundamentals: Tokenization, morphology, POS tagging, lemmatization, N-gram language models, perplexity.",
+      "Word Embeddings: Word2Vec (Skip-gram, CBOW), GloVe, FastText, subword tokenization (BPE, WordPiece).",
+      "Sequence Modeling: Hidden Markov Models (HMM), Conditional Random Fields (CRF), RNNs, LSTMs for text classification.",
+      "Attention & Transformers: Encoder-Decoder models, self-attention, Multi-Head Attention, Transformer architecture (BERT, T5, GPT).",
+      "Modern LLM Engineering: Pre-training, fine-tuning (LoRA, PEFT), prompt engineering, text generation evaluation (BLEU, ROUGE, METEOR)."
+    ],
+    "books": [
+      {
+        "title": "Speech and Language Processing",
+        "author": "Daniel Jurafsky, James H. Martin",
+        "publisher": "Pearson",
+        "edition_year": "3rd Edition Draft, 2023",
+        "type": "Textbook"
+      },
+      {
+        "title": "Foundations of Statistical Natural Language Processing",
+        "author": "Christopher D. Manning, Hinrich Schütze",
+        "publisher": "MIT Press",
+        "edition_year": "1999",
+        "type": "Reference"
+      },
+      {
+        "title": "Introduction to Natural Language Processing",
+        "author": "Jacob Eisenstein",
+        "publisher": "MIT Press",
+        "edition_year": "2019",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EAI 6401",
+    "subject_name": "Reinforcement Learning",
+    "semester": 4,
+    "course_type": "Elective VI",
+    "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+    "description": "Presents the theoretical and algorithmic foundations of decision-making under uncertainty, dynamic programming, deep Q-networks, policy gradients, and actor-critic methods.",
+    "learning_objectives": [
+      "Formulate sequential decision-making problems as Markov Decision Processes (MDPs).",
+      "Solve MDPs using dynamic programming (Policy/Value Iteration) and model-free TD methods.",
+      "Implement Deep Q-Networks (DQN) with experience replay and target networks.",
+      "Master Policy Gradient methods including Actor-Critic, PPO, TRPO, DDPG, and SAC."
+    ],
+    "outline": [
+      "Markov Decision Processes: States, actions, transition probabilities, rewards, return, discount factor, Bellman equations.",
+      "Dynamic Programming: Policy evaluation, policy iteration, value iteration, dynamic programming optimality.",
+      "Model-Free Learning: Monte Carlo methods, Temporal-Difference learning (TD(0), TD(lambda)), SARSA, Q-Learning.",
+      "Deep Q-Learning: Function approximation, Deep Q-Networks (DQN), Double DQN, Dueling DQN, Prioritized Experience Replay.",
+      "Policy Gradient Methods: REINFORCE theorem, Actor-Critic methods, Advantage Actor-Critic (A2C/A3C), PPO, TRPO, DDPG, SAC.",
+      "Exploration & Advanced RL: Multi-armed bandits (UCB, Thompson sampling), Inverse RL, Hierarchical RL, Multi-Agent RL."
+    ],
+    "books": [
+      {
+        "title": "Reinforcement Learning: An Introduction",
+        "author": "Richard S. Sutton, Andrew G. Barto",
+        "publisher": "MIT Press",
+        "edition_year": "2nd Edition, 2018",
+        "type": "Textbook"
+      },
+      {
+        "title": "Algorithms for Reinforcement Learning",
+        "author": "Csaba Szepesvári",
+        "publisher": "Morgan & Claypool Publishers",
+        "edition_year": "2010",
+        "type": "Reference"
+      },
+      {
+        "title": "Deep Reinforcement Learning Hands-On",
+        "author": "Maxim Lapan",
+        "publisher": "Packt Publishing",
+        "edition_year": "2nd Edition, 2020",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EAI 6101",
+    "subject_name": "Computational Data Analysis",
+    "semester": 1,
+    "course_type": "Elective Pool (DE-1)",
+    "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+    "description": "Covers advanced mathematical signal processing, functional analysis, Fourier and wavelet transforms, compressed sensing, and sparse data representations.",
+    "learning_objectives": [
+      "Understand Hilbert spaces, orthogonal projections, and linear functional analysis.",
+      "Apply Fourier, wavelet, and multi-resolution analysis to high-dimensional datasets.",
+      "Formulate compressed sensing, sparse representations, and matrix completion problems.",
+      "Implement scalable computational algorithms for signal and data recovery."
+    ],
+    "outline": [
+      "Mathematical Foundations: Hilbert spaces, inner product spaces, orthogonal projections, linear functional analysis.",
+      "Transform Techniques: Fourier series, Discrete Fourier Transform (DFT), Fast Fourier Transform (FFT), wavelets, time-frequency analysis.",
+      "Stochastic Signal Processing: Random processes, stationarity, autocorrelation, power spectral density, Wiener and Kalman filtering.",
+      "High-Dimensional Analysis: Dimensionality reduction, Johnson-Lindenstrauss lemma, Compressed Sensing, sparse recovery algorithms.",
+      "Computational Optimization: Large-scale data algorithms, regularized inversion, numerical stability."
+    ],
+    "books": [
+      {
+        "title": "Signal Processing: A Mathematical Approach",
+        "author": "Charles L. Byrne",
+        "publisher": "Chapman & Hall / CRC",
+        "edition_year": "2nd Edition, 2014",
+        "type": "Textbook"
+      },
+      {
+        "title": "Discrete-Time Signal Processing",
+        "author": "Alan V. Oppenheim, Ronald W. Schafer",
+        "publisher": "Pearson",
+        "edition_year": "3rd Edition, 2009",
+        "type": "Reference"
+      },
+      {
+        "title": "A Wavelet Tour of Signal Processing: The Sparse Way",
+        "author": "Stéphane Mallat",
+        "publisher": "Academic Press",
+        "edition_year": "3rd Edition, 2008",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EAI 6102",
+    "subject_name": "Pattern Recognition",
+    "semester": 1,
+    "course_type": "Elective Pool (DE-1)",
+    "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+    "description": "Provides classical and statistical pattern recognition principles, Bayesian decision theory, parametric and non-parametric classifiers, and feature extraction techniques.",
+    "learning_objectives": [
+      "Formulate Bayesian decision theory, discriminant functions, and Bayes risk minimization.",
+      "Perform maximum likelihood parameter estimation and Expectation-Maximization for mixture models.",
+      "Implement non-parametric estimation, linear discriminants, and Support Vector Machines.",
+      "Apply unsupervised clustering and dimensionality reduction methods."
+    ],
+    "outline": [
+      "Bayesian Decision Theory: Classifiers, discriminant functions, decision surfaces, normal density, Bayes risk minimization.",
+      "Parameter Estimation: Maximum Likelihood Estimation (MLE), Bayesian parameter estimation, Expectation-Maximization (EM), Gaussian Mixture Models (GMM).",
+      "Non-Parametric Techniques: Parzen windows, k-Nearest Neighbor (k-NN) classification.",
+      "Linear Discriminants: Perceptron, Linear Discriminant Analysis (LDA), Fisher's linear discriminant, Support Vector Machines (SVM).",
+      "Feature Engineering: Feature selection (wrapper/filter), PCA, Kernel PCA, ICA.",
+      "Clustering: K-means, Hierarchical clustering, DBSCAN, Spectral clustering."
+    ],
+    "books": [
+      {
+        "title": "Pattern Recognition and Machine Learning",
+        "author": "Christopher M. Bishop",
+        "publisher": "Springer",
+        "edition_year": "2006",
+        "type": "Textbook"
+      },
+      {
+        "title": "Pattern Classification",
+        "author": "Richard O. Duda, Peter E. Hart, David G. Stork",
+        "publisher": "John Wiley & Sons",
+        "edition_year": "2nd Edition, 2001",
+        "type": "Textbook"
+      },
+      {
+        "title": "Pattern Recognition",
+        "author": "Sergios Theodoridis, Konstantinos Koutroumbas",
+        "publisher": "Academic Press",
+        "edition_year": "4th Edition, 2008",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EAI 6201",
+    "subject_name": "Deep Learning",
+    "semester": 2,
+    "course_type": "Elective Pool (DE-2/3)",
+    "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+    "description": "Covers deep neural network architectures, backpropagation dynamics, convolutional networks, recurrent architectures, transformers, and deep generative models.",
+    "learning_objectives": [
+      "Understand deep neural network fundamentals, loss functions, and backpropagation.",
+      "Master optimization and regularization techniques including Adam, BatchNorm, and ResNet skip connections.",
+      "Build Convolutional Neural Networks (CNNs) for vision and Recurrent Neural Networks (RNNs/LSTMs) for sequences.",
+      "Explore Transformer self-attention mechanisms, Autoencoders, and Generative Adversarial Networks (GANs)."
+    ],
+    "outline": [
+      "Neural Network Fundamentals: MLPs, activation functions, loss functions, computational graphs, backpropagation.",
+      "Optimization & Regularization: SGD, Momentum, Adam, RMSprop, weight decay, dropout, Batch Normalization, Layer Normalization.",
+      "Convolutional Networks (CNNs): Convolutions, pooling, architectures (AlexNet, VGG, ResNet, EfficientNet), object detection, segmentation.",
+      "Sequence Models (RNNs): Vanilla RNN, LSTM, GRU, sequence-to-sequence models, bidirectional architectures.",
+      "Transformers & Self-Attention: Multi-head attention, positional encoding, encoder-decoder architectures (BERT, GPT).",
+      "Generative Models: Autoencoders, Variational Autoencoders (VAEs), Generative Adversarial Networks (GANs), Diffusion models overview."
+    ],
+    "books": [
+      {
+        "title": "Deep Learning",
+        "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville",
+        "publisher": "MIT Press",
+        "edition_year": "2016",
+        "type": "Textbook"
+      },
+      {
+        "title": "Dive into Deep Learning",
+        "author": "Aston Zhang, Zachary C. Lipton, Mu Li, Alexander J. Smola",
+        "publisher": "Cambridge University Press",
+        "edition_year": "2023",
+        "type": "Textbook"
+      },
+      {
+        "title": "Deep Learning with Python",
+        "author": "Francois Chollet",
+        "publisher": "Manning Publications",
+        "edition_year": "2nd Edition, 2021",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EAI 6203",
+    "subject_name": "Predictive Analytics",
+    "semester": 2,
+    "course_type": "Elective Pool (DE-2/3)",
+    "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+    "description": "Focuses on statistical modeling, time series forecasting, survival analysis, and predictive feature engineering across commercial and industrial domains.",
+    "learning_objectives": [
+      "Formulate predictive modeling workflows, feature engineering, and cross-validation strategies.",
+      "Master multiple linear regression, regularized regression (Lasso/Ridge/ElasticNet), and GLMs.",
+      "Model time series data using ARIMA, SARIMA, exponential smoothing, and deep neural forecasters.",
+      "Apply survival analysis, customer churn modeling, and predictive maintenance techniques."
+    ],
+    "outline": [
+      "Predictive Modeling Lifecycle: Data exploration, feature engineering, imputation, outlier handling, cross-validation.",
+      "Regression Models: Multiple linear regression, Ridge, Lasso, ElasticNet, Generalized Linear Models (GLM), logistic regression.",
+      "Time Series Analytics: Stationarity, ACF/PACF, ARIMA, SARIMA, VAR models, exponential smoothing, Prophet, deep time series models.",
+      "Survival Analysis: Kaplan-Meier estimator, Cox proportional hazards model, accelerated failure time models.",
+      "Applications: Churn prediction, credit scoring, demand forecasting, predictive maintenance, uplift modeling."
+    ],
+    "books": [
+      {
+        "title": "Applied Predictive Modeling",
+        "author": "Max Kuhn, Kjell Johnson",
+        "publisher": "Springer",
+        "edition_year": "2013",
+        "type": "Textbook"
+      },
+      {
+        "title": "Time Series Analysis: Forecasting and Control",
+        "author": "George E. P. Box, Gwilym M. Jenkins, Gregory C. Reinsel, Greta M. Ljung",
+        "publisher": "John Wiley & Sons",
+        "edition_year": "5th Edition, 2015",
+        "type": "Reference"
+      },
+      {
+        "title": "Applied Logistic Regression",
+        "author": "David W. Hosmer Jr., Stanley Lemeshow, Rodney X. Sturdivant",
+        "publisher": "John Wiley & Sons",
+        "edition_year": "3rd Edition, 2013",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EAI 6303",
+    "subject_name": "Blockchain Technologies: Platforms and Applications",
+    "semester": 3,
+    "course_type": "Elective Pool (DE-4/5)",
+    "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+    "description": "Explores distributed ledger technology, consensus algorithms, Ethereum smart contracts in Solidity, decentralized storage, and enterprise blockchain architectures.",
+    "learning_objectives": [
+      "Understand cryptographic hash functions, digital signatures, and consensus protocols (PoW, PoS, PBFT).",
+      "Analyze blockchain platforms including Ethereum, Hyperledger Fabric, Corda, and IPFS.",
+      "Develop, test, and deploy Solidity smart contracts and DApps using Web3 protocols.",
+      "Design enterprise blockchain applications in supply chain, DeFi, and AI data provenance."
+    ],
+    "outline": [
+      "Blockchain Fundamentals: Distributed ledgers, cryptographic primitives, public-key cryptography, consensus protocols (PoW, PoS, PBFT, Raft).",
+      "Blockchain Platforms: Ethereum, Hyperledger Fabric, Corda, Ripple, IPFS decentralized storage.",
+      "Smart Contract Development: Solidity programming, contract lifecycle, events, security vulnerabilities (reentrancy, overflows), Web3.js.",
+      "Decentralized Applications (DApps): Token standards (ERC-20, ERC-721, ERC-1155), decentralized finance (DeFi), oracle networks (Chainlink).",
+      "Enterprise Applications: Supply chain tracking, healthcare data sharing, digital identity, AI-Blockchain integration."
+    ],
+    "books": [
+      {
+        "title": "Bitcoin and Cryptocurrency Technologies: A Comprehensive Introduction",
+        "author": "Arvind Narayanan, Joseph Bonneau, Edward Felten, Andrew Miller, Steven Goldfeder",
+        "publisher": "Princeton University Press",
+        "edition_year": "2016",
+        "type": "Textbook"
+      },
+      {
+        "title": "Mastering Ethereum: Building Smart Contracts and DApps",
+        "author": "Andreas M. Antonopoulos, Gavin Wood",
+        "publisher": "O'Reilly Media",
+        "edition_year": "2018",
+        "type": "Textbook"
+      },
+      {
+        "title": "Hands-On Blockchain with Hyperledger",
+        "author": "Nitin Gaur, et al.",
+        "publisher": "Packt Publishing",
+        "edition_year": "2018",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EAI 6304",
+    "subject_name": "Advanced Cloud Computing",
+    "semester": 3,
+    "course_type": "Elective Pool (DE-4/5)",
+    "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+    "description": "Covers cloud infrastructure virtualization, container orchestration with Kubernetes, serverless architectures, distributed data platforms, and cloud-native MLOps.",
+    "learning_objectives": [
+      "Analyze cloud service models (IaaS, PaaS, SaaS, FaaS) and distributed computing architectures.",
+      "Master containerization with Docker and multi-cluster orchestration with Kubernetes.",
+      "Design distributed data storage and analytics systems using HDFS, S3, Spark, and Ray.",
+      "Implement cloud security, autoscaling policies, CI/CD pipelines, and cloud-native MLOps."
+    ],
+    "outline": [
+      "Cloud Architecture: IaaS, PaaS, SaaS, serverless computing (FaaS), multi-cloud and hybrid cloud infrastructure.",
+      "Virtualization & Containers: Hypervisors, Docker containerization, Kubernetes orchestration, microservices architecture.",
+      "Distributed Storage & Processing: HDFS, Ceph, Amazon S3, MapReduce, Apache Spark, distributed machine learning.",
+      "Resource Management & Scalability: Autoscaling, load balancing, VM placement, SLA management, energy-efficient cloud systems.",
+      "Cloud Security & MLOps: Identity and Access Management (IAM), zero-trust architecture, CI/CD pipelines, MLOps deployment."
+    ],
+    "books": [
+      {
+        "title": "Distributed and Cloud Computing: From Parallel Processing to the Internet of Things",
+        "author": "Kai Hwang, Geoffrey C. Fox, Jack J. Dongarra",
+        "publisher": "Morgan Kaufmann",
+        "edition_year": "2011",
+        "type": "Textbook"
+      },
+      {
+        "title": "Mastering Cloud Computing",
+        "author": "Rajkumar Buyya, Christian Vecchiola, S. Thamarai Selvi",
+        "publisher": "McGraw Hill",
+        "edition_year": "2013",
+        "type": "Textbook"
+      },
+      {
+        "title": "Designing Distributed Systems: Patterns and Paradigms for Scalable, Reliable Services",
+        "author": "Brendan Burns",
+        "publisher": "O'Reilly Media",
+        "edition_year": "2018",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EAI 6402",
+    "subject_name": "Meta Learning",
+    "semester": 4,
+    "course_type": "Elective Pool (DE-6/7)",
+    "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+    "description": "Investigates learning-to-learn frameworks, few-shot classification, metric-based, model-based, and optimization-based meta-learning algorithms such as MAML.",
+    "learning_objectives": [
+      "Understand meta-learning concepts, N-way K-shot benchmarks, and task-distribution sampling.",
+      "Implement metric-based meta-learning including Siamese, Prototypical, and Matching Networks.",
+      "Master optimization-based meta-learning including MAML, FOMAML, Reptile, and Meta-SGD.",
+      "Apply meta-learning to few-shot vision, meta-reinforcement learning, and AutoML."
+    ],
+    "outline": [
+      "Meta-Learning Foundations: Learning-to-learn paradigms, N-way K-shot tasks, few-shot benchmarks (Omniglot, mini-ImageNet).",
+      "Metric-Based Approaches: Siamese Networks, Matching Networks, Prototypical Networks, Relation Networks.",
+      "Model-Based Approaches: Memory-Augmented Neural Networks (MANN), Meta Networks, Neural Turing Machines.",
+      "Optimization-Based Approaches: Model-Agnostic Meta-Learning (MAML), First-Order MAML (FOMAML), Reptile, Meta-SGD, implicit gradients (iMAML).",
+      "Bayesian Meta-Learning: Probabilistic MAML, uncertainty quantification in few-shot regimes.",
+      "Applications: Meta-reinforcement learning, automated machine learning (AutoML), continuous learning."
+    ],
+    "books": [
+      {
+        "title": "Meta-learning: Theory, Algorithms and Applications",
+        "author": "Liang Zou",
+        "publisher": "Springer / Academic Press",
+        "edition_year": "2022",
+        "type": "Textbook"
+      },
+      {
+        "title": "Metalearning: Applications to Data Mining and Machine Learning",
+        "author": "Pavel Brazdil, Jan N. van Rijn, Carlos Soares, Joaquin Vanschoren",
+        "publisher": "Springer",
+        "edition_year": "2nd Edition, 2022",
+        "type": "Textbook"
+      },
+      {
+        "title": "Meta-Learning in Neural Networks: A Survey",
+        "author": "Timothy Hospedales, Antreas Antoniou, Paul Micaelli, Amos Storkey",
+        "publisher": "IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)",
+        "edition_year": "2021",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EAI 6403",
+    "subject_name": "Selective Topics in Generative AI",
+    "semester": 4,
+    "course_type": "Elective Pool (DE-6/7)",
+    "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+    "description": "Provides an advanced exploration of cutting-edge Generative AI models including VAEs, GANs, diffusion models, Generative Pre-trained Transformers, and multimodal synthesis.",
+    "learning_objectives": [
+      "Master mathematical foundations of deep generative models: VAEs, GANs, and Diffusion models.",
+      "Design and evaluate image generation (Diffusion, StyleGAN) and text-to-image architectures.",
+      "Understand Generative Pre-trained Transformers (GPT) architecture, RLHF, and prompt engineering.",
+      "Address ethical considerations, deepfake detection, explainability, and bias in Generative AI."
+    ],
+    "outline": [
+      "Generative AI Foundations: Overview of generative vs discriminative modeling, energy-based models, normalizing flows.",
+      "Generative Adversarial Networks (GANs): DCGAN, WGAN-GP, StyleGAN, conditional GANs, image-to-image translation (Pix2Pix, CycleGAN).",
+      "Advanced Variational Autoencoders: Hierarchical VAEs, Semi-supervised VAEs, Vector Quantized VAEs (VQ-VAE).",
+      "Diffusion & Score-Based Models: DDPM, DDIM, classifier-free guidance, latent diffusion models (Stable Diffusion).",
+      "Generative Pre-trained Transformers (GPT): Transformer decoders, autoregressive text generation, fine-tuning with LoRA/PEFT, RLHF.",
+      "Multimodal Generative Systems: CLIP, text-to-image synthesis, prompt engineering, multimodal architectures.",
+      "Ethics & Explainability: Bias mitigation, deepfake detection, watermarking, mechanistic interpretability."
+    ],
+    "books": [
+      {
+        "title": "Generative Deep Learning: Teaching Machines to Paint, Write, Compose, and Play",
+        "author": "David Foster",
+        "publisher": "O'Reilly Media",
+        "edition_year": "2nd Edition, 2023",
+        "type": "Textbook"
+      },
+      {
+        "title": "Deep Generative Modeling",
+        "author": "Jakub M. Tomczak",
+        "publisher": "Springer",
+        "edition_year": "2022",
+        "type": "Textbook"
+      },
+      {
+        "title": "Deep Learning",
+        "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville",
+        "publisher": "MIT Press",
+        "edition_year": "2016",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "EAI 6404",
+    "subject_name": "Text Mining and Analytics",
+    "semester": 4,
+    "course_type": "Elective Pool (DE-6/7)",
+    "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+    "description": "Covers unstructured text data ingestion, knowledge graph construction, frequent pattern mining, topic modeling with LDA, sentiment analysis, and text summarization.",
+    "learning_objectives": [
+      "Collect, clean, normalize, and preprocess massive unstructured text corpora.",
+      "Construct knowledge graphs using entity linking and relationship extraction.",
+      "Mine frequent, closed, and sequential patterns from text data using Apriori and FP-Growth.",
+      "Perform text classification, topic modeling (LDA/BERTopic), sentiment analysis, and summarization."
+    ],
+    "outline": [
+      "Text Mining Introduction: Overview, motivation, unstructured data challenges, data collection techniques.",
+      "Data Preprocessing: Tokenization, stemming, lemmatization, stopword filtering, regex cleaning, text normalization.",
+      "Knowledge Graphs & Information Extraction: Graph representations, entity linking, relationship extraction, knowledge graph embedding.",
+      "Pattern Mining: Frequent itemsets, closed patterns, max-patterns, association rules, Apriori algorithm, FP-Growth, sequential pattern mining.",
+      "Feature Extraction & Topic Modeling: Bag-of-Words, TF-IDF, word embeddings, Expectation-Maximization (EM), Latent Dirichlet Allocation (LDA), BERTopic.",
+      "Applications & Case Studies: Sentiment analysis, aspect-based opinion mining, text summarization, end-to-end text analytics project."
+    ],
+    "books": [
+      {
+        "title": "Text Mining: Classification, Clustering, and Applications",
+        "author": "Ashok N. Srivastava, Mehran Sahami (Eds.)",
+        "publisher": "CRC Press",
+        "edition_year": "2009",
+        "type": "Textbook"
+      },
+      {
+        "title": "Text Mining and Analysis: Practical Methods, Examples, and Case Studies Using SAS",
+        "author": "Goutam Chakraborty, Murali Pagolu, Satish Garla",
+        "publisher": "SAS Institute",
+        "edition_year": "2014",
+        "type": "Textbook"
+      },
+      {
+        "title": "Text Analytics with Python: A Practitioner's Guide to Natural Language Processing",
+        "author": "Dipanjan Sarkar",
+        "publisher": "Apress",
+        "edition_year": "2nd Edition, 2019",
+        "type": "Reference"
+      },
+      {
+        "title": "Data Mining: Practical Machine Learning Tools and Techniques",
+        "author": "Ian H. Witten, Eibe Frank, Mark A. Hall, Christopher J. Pal",
+        "publisher": "Elsevier / Morgan Kaufmann",
+        "edition_year": "4th Edition, 2016",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "Project I",
+    "subject_name": "Major Project I",
+    "semester": 3,
+    "course_type": "Core Project",
+    "credits": "17 Credits (L-T-P-C: 0-0-34-17)",
+    "description": "Represents the first phase of the master's research thesis, focusing on industry problem formulation, rigorous literature review, dataset preparation, and preliminary model prototyping.",
+    "learning_objectives": [
+      "Identify and formulate a high-impact applied AI or data engineering research problem.",
+      "Conduct a comprehensive literature survey analyzing state-of-the-art methodologies.",
+      "Acquire, clean, preprocess, and analyze benchmark datasets.",
+      "Develop initial mathematical formulations, baseline models, and submit the Project Phase-I dissertation report."
+    ],
+    "outline": [
+      "Problem Identification & Scope: Industry problem formulation, domain analysis, research objective definition.",
+      "Literature Review: Comprehensive survey of existing state-of-the-art AI / ML methods, gaps identification, citation analysis.",
+      "Data Engineering: Dataset acquisition, validation, cleaning, exploratory data analysis, benchmark selection.",
+      "Methodology & Prototyping: Proposed architecture design, mathematical modeling, baseline implementation.",
+      "Evaluation & Reporting: Mid-semester review, preliminary experimental evaluation, Project Phase-I report compilation, and progress viva-voce presentation."
+    ],
+    "books": [
+      {
+        "title": "Research Methodology: Methods and Techniques",
+        "author": "C. R. Kothari, Gaurav Garg",
+        "publisher": "New Age International Publishers",
+        "edition_year": "4th Edition, 2019",
+        "type": "Reference"
+      },
+      {
+        "title": "Research Design: Qualitative, Quantitative, and Mixed Methods Approaches",
+        "author": "John W. Creswell, J. David Creswell",
+        "publisher": "SAGE Publications",
+        "edition_year": "5th Edition, 2018",
+        "type": "Reference"
+      }
+    ]
+  },
+  {
+    "subject_code": "Project II",
+    "subject_name": "Major Project II",
+    "semester": 4,
+    "course_type": "Core Project",
+    "credits": "20 Credits (L-T-P-C: 0-0-40-20)",
+    "description": "Represents the culminating master thesis phase encompassing advanced algorithm implementation, ablation studies, benchmark evaluation, research publication, and master thesis defense.",
+    "learning_objectives": [
+      "Implement, optimize, and deploy proposed AI/ML models at scale.",
+      "Conduct rigorous ablation studies, hyperparameter optimization, and comparative benchmarking.",
+      "Prepare scientific research papers, patents, or production-ready open-source software artifacts.",
+      "Defend the final master's thesis dissertation before the Senate examination board."
+    ],
+    "outline": [
+      "Advanced Implementation: Full-scale development of proposed algorithms, deep neural architectures, or distributed pipelines.",
+      "Experimental Evaluation: Extensive benchmarking against state-of-the-art baselines, ablation studies, statistical significance testing.",
+      "System Optimization & Deployment: Model compression, inference latency optimization, cloud/edge deployment validation.",
+      "Research Publication: Scientific paper writing, peer-reviewed journal/conference manuscript submission.",
+      "Final Thesis Defense: Comprehensive master dissertation report writing, final presentation, and oral defense before the Senate evaluation committee."
+    ],
+    "books": [
+      {
+        "title": "Research Methodology: Methods and Techniques",
+        "author": "C. R. Kothari, Gaurav Garg",
+        "publisher": "New Age International Publishers",
+        "edition_year": "4th Edition, 2019",
+        "type": "Reference"
+      },
+      {
+        "title": "Deep Learning",
+        "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville",
+        "publisher": "MIT Press",
+        "edition_year": "2016",
+        "type": "Reference"
+      }
+    ]
+  }
+]

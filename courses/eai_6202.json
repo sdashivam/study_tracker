@@ -1,0 +1,44 @@
+{
+  "subject_code": "EAI 6202",
+  "subject_name": "Physics of Neural Network",
+  "semester": 2,
+  "course_type": "Elective II",
+  "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+  "description": "Explores the deep mathematical parallels between statistical physics, non-equilibrium thermodynamics, spin-glass models, and the computational dynamics of artificial neural networks.",
+  "learning_objectives": [
+    "Understand statistical mechanics formulations of neural associative memories and spin glass models.",
+    "Analyze energy landscapes, attractor dynamics in Hopfield networks, and Boltzmann machines.",
+    "Connect non-equilibrium thermodynamics, Langevin dynamics, and score-based diffusion models.",
+    "Apply information geometry, renormalization group methods, and Physics-Informed Neural Networks (PINNs)."
+  ],
+  "outline": [
+    "Statistical Mechanics of Neural Networks: Spin glass models, Ising model, energy landscapes, mean field theory, replicas.",
+    "Energy-Based Models: Hopfield networks, associative memory capacity, attractor dynamics, Boltzmann machines, Restricted Boltzmann Machines (RBMs).",
+    "Thermodynamics & Non-Equilibrium Systems: Free energy minimization, Langevin dynamics, Fokker-Planck equations, score-based diffusion models.",
+    "Dynamical Systems & Chaos: Neural dynamics, stability analysis, chaos in recurrent neural networks, reservoir computing.",
+    "Information Geometry & Physics of Learning: Information bottleneck theory, renormalization group in deep networks, Physics-Informed Neural Networks (PINNs)."
+  ],
+  "books": [
+    {
+      "title": "Modeling Brain Function: The World of Attractor Neural Networks",
+      "author": "David J. Amit",
+      "publisher": "Cambridge University Press",
+      "edition_year": "1989",
+      "type": "Textbook"
+    },
+    {
+      "title": "Spin Glass Theory and Beyond: An Introduction to the Replica Method and Its Applications",
+      "author": "Marc Mézard, Giorgio Parisi, Miguel A. Virasoro",
+      "publisher": "World Scientific",
+      "edition_year": "1987",
+      "type": "Textbook"
+    },
+    {
+      "title": "Statistical Physics of Spin Glasses and Information Processing: An Introduction",
+      "author": "Hidetoshi Nishimori",
+      "publisher": "Oxford University Press",
+      "edition_year": "2001",
+      "type": "Reference"
+    }
+  ]
+}

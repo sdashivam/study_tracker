@@ -1,0 +1,28 @@
+{
+  "last_synced": "2026-08-15T21:19:53.569968",
+  "academic_years_covered": [
+    2026,
+    2025,
+    2027
+  ],
+  "total_holidays": 17,
+  "holidays": {
+    "2026-01-26": "Republic Day",
+    "2026-03-04": "Holi",
+    "2026-03-21": "Idu'l Fitr",
+    "2026-03-31": "Mahavir Jayanti",
+    "2026-04-03": "Good Friday",
+    "2026-05-01": "Buddha Purnima",
+    "2026-05-27": "Idu'l Zuha (Bakrid)",
+    "2026-06-26": "Muharram",
+    "2026-08-15": "Independence Day",
+    "2026-08-26": "Prophet Mohammad's Birthday (Id-E-Milad)",
+    "2026-10-02": "Mahatma Gandhi's Birthday",
+    "2026-10-19": "Dussehra (Mahasthami)",
+    "2026-10-20": "Dussehra (Mahanavmi) / Vijay Dashmi",
+    "2026-11-08": "Diwali (Deepavali)",
+    "2026-11-16": "Pratihar Saptami / Surya Saptami (Chhath Puja)",
+    "2026-11-24": "Guru Nanak's Birthday",
+    "2026-12-25": "Christmas Day"
+  }
+}

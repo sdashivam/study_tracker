@@ -1,0 +1,46 @@
+{
+  "subject_code": "EMC 5103",
+  "subject_name": "Probability and Statistics",
+  "semester": 1,
+  "course_type": "Core",
+  "credits": "4 Credits (L-T-P-C: 3-0-2-4)",
+  "description": "Develops foundational probability theory and classical statistical inference methodologies required for rigorous data analysis, machine learning models, and stochastic modeling.",
+  "learning_objectives": [
+    "Understand probability axioms, conditional probability, Bayes theorem, and random variable distributions.",
+    "Compute moments, expectations, variances, joint distributions, and conditional expectations.",
+    "Apply asymptotic limit theorems including Chebyshev inequality, WLLN, and the Central Limit Theorem.",
+    "Perform point and interval estimation, maximum likelihood estimation, and hypothesis testing."
+  ],
+  "outline": [
+    "Probability Foundations: Sample spaces, events, conditional probability, Bayes rule, law of total probability, independence.",
+    "Random Variables: Discrete and continuous random variables, PMF, PDF, CDF, expectation, variance, moments, moment generating functions.",
+    "Joint & Conditional Distributions: Multiple random variables, joint and marginal distributions, covariance, correlation, conditional expectation.",
+    "Inequalities & Limit Theorems: Markov and Chebyshev inequalities, convergence in probability and distribution, Weak Law of Large Numbers, Central Limit Theorem.",
+    "Statistical Estimation: Unbiasedness, consistency, sufficiency, efficiency, Method of Moments, Maximum Likelihood Estimation (MLE).",
+    "Hypothesis Testing: Null/alternative hypotheses, Type I/II errors, p-values, Neyman-Pearson lemma, likelihood ratio tests, confidence intervals.",
+    "Lab Component: Statistical computing, probability simulations, and data modeling in Python/R."
+  ],
+  "books": [
+    {
+      "title": "An Introduction to Probability and Statistics",
+      "author": "Vijay K. Rohatgi, A. K. Md. Ehsanes Saleh",
+      "publisher": "John Wiley & Sons",
+      "edition_year": "2nd Edition, 2009",
+      "type": "Textbook"
+    },
+    {
+      "title": "Introduction to Probability and Statistics for Engineers and Scientists",
+      "author": "Sheldon M. Ross",
+      "publisher": "Academic Press",
+      "edition_year": "5th Edition",
+      "type": "Reference"
+    },
+    {
+      "title": "Mathematical Statistics and Data Analysis",
+      "author": "John A. Rice",
+      "publisher": "Cengage Learning",
+      "edition_year": "3rd Edition",
+      "type": "Reference"
+    }
+  ]
+}

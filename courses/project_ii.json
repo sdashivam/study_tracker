@@ -1,0 +1,37 @@
+{
+  "subject_code": "Project II",
+  "subject_name": "Major Project II",
+  "semester": 4,
+  "course_type": "Core Project",
+  "credits": "20 Credits (L-T-P-C: 0-0-40-20)",
+  "description": "Represents the culminating master thesis phase encompassing advanced algorithm implementation, ablation studies, benchmark evaluation, research publication, and master thesis defense.",
+  "learning_objectives": [
+    "Implement, optimize, and deploy proposed AI/ML models at scale.",
+    "Conduct rigorous ablation studies, hyperparameter optimization, and comparative benchmarking.",
+    "Prepare scientific research papers, patents, or production-ready open-source software artifacts.",
+    "Defend the final master's thesis dissertation before the Senate examination board."
+  ],
+  "outline": [
+    "Advanced Implementation: Full-scale development of proposed algorithms, deep neural architectures, or distributed pipelines.",
+    "Experimental Evaluation: Extensive benchmarking against state-of-the-art baselines, ablation studies, statistical significance testing.",
+    "System Optimization & Deployment: Model compression, inference latency optimization, cloud/edge deployment validation.",
+    "Research Publication: Scientific paper writing, peer-reviewed journal/conference manuscript submission.",
+    "Final Thesis Defense: Comprehensive master dissertation report writing, final presentation, and oral defense before the Senate evaluation committee."
+  ],
+  "books": [
+    {
+      "title": "Research Methodology: Methods and Techniques",
+      "author": "C. R. Kothari, Gaurav Garg",
+      "publisher": "New Age International Publishers",
+      "edition_year": "4th Edition, 2019",
+      "type": "Reference"
+    },
+    {
+      "title": "Deep Learning",
+      "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville",
+      "publisher": "MIT Press",
+      "edition_year": "2016",
+      "type": "Reference"
+    }
+  ]
+}

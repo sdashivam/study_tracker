@@ -1,0 +1,52 @@
+{
+  "subject_code": "EAI 6404",
+  "subject_name": "Text Mining and Analytics",
+  "semester": 4,
+  "course_type": "Elective Pool (DE-6/7)",
+  "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+  "description": "Covers unstructured text data ingestion, knowledge graph construction, frequent pattern mining, topic modeling with LDA, sentiment analysis, and text summarization.",
+  "learning_objectives": [
+    "Collect, clean, normalize, and preprocess massive unstructured text corpora.",
+    "Construct knowledge graphs using entity linking and relationship extraction.",
+    "Mine frequent, closed, and sequential patterns from text data using Apriori and FP-Growth.",
+    "Perform text classification, topic modeling (LDA/BERTopic), sentiment analysis, and summarization."
+  ],
+  "outline": [
+    "Text Mining Introduction: Overview, motivation, unstructured data challenges, data collection techniques.",
+    "Data Preprocessing: Tokenization, stemming, lemmatization, stopword filtering, regex cleaning, text normalization.",
+    "Knowledge Graphs & Information Extraction: Graph representations, entity linking, relationship extraction, knowledge graph embedding.",
+    "Pattern Mining: Frequent itemsets, closed patterns, max-patterns, association rules, Apriori algorithm, FP-Growth, sequential pattern mining.",
+    "Feature Extraction & Topic Modeling: Bag-of-Words, TF-IDF, word embeddings, Expectation-Maximization (EM), Latent Dirichlet Allocation (LDA), BERTopic.",
+    "Applications & Case Studies: Sentiment analysis, aspect-based opinion mining, text summarization, end-to-end text analytics project."
+  ],
+  "books": [
+    {
+      "title": "Text Mining: Classification, Clustering, and Applications",
+      "author": "Ashok N. Srivastava, Mehran Sahami (Eds.)",
+      "publisher": "CRC Press",
+      "edition_year": "2009",
+      "type": "Textbook"
+    },
+    {
+      "title": "Text Mining and Analysis: Practical Methods, Examples, and Case Studies Using SAS",
+      "author": "Goutam Chakraborty, Murali Pagolu, Satish Garla",
+      "publisher": "SAS Institute",
+      "edition_year": "2014",
+      "type": "Textbook"
+    },
+    {
+      "title": "Text Analytics with Python: A Practitioner's Guide to Natural Language Processing",
+      "author": "Dipanjan Sarkar",
+      "publisher": "Apress",
+      "edition_year": "2nd Edition, 2019",
+      "type": "Reference"
+    },
+    {
+      "title": "Data Mining: Practical Machine Learning Tools and Techniques",
+      "author": "Ian H. Witten, Eibe Frank, Mark A. Hall, Christopher J. Pal",
+      "publisher": "Elsevier / Morgan Kaufmann",
+      "edition_year": "4th Edition, 2016",
+      "type": "Reference"
+    }
+  ]
+}

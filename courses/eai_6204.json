@@ -1,0 +1,45 @@
+{
+  "subject_code": "EAI 6204",
+  "subject_name": "Federated Learning",
+  "semester": 2,
+  "course_type": "Elective III",
+  "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+  "description": "Investigates privacy-preserving distributed machine learning algorithms, non-IID optimization, differential privacy, Byzantine robustness, and federated edge architectures.",
+  "learning_objectives": [
+    "Understand cross-silo and cross-device federated learning architectures and non-IID data challenges.",
+    "Master federated optimization algorithms including FedAvg, FedProx, and SCAFFOLD.",
+    "Apply differential privacy, secure multi-party computation, and homomorphic encryption in FL.",
+    "Defend against model poisoning, backdoor attacks, and optimize communication efficiency."
+  ],
+  "outline": [
+    "Federated Learning Foundations: Core concepts, motivations, cross-silo vs. cross-device architectures, non-IID client distributions.",
+    "Federated Optimization: FedAvg, FedProx, FedNova, SCAFFOLD, convergence analysis under heterogeneous settings.",
+    "Privacy & Cryptographic Security: Differential privacy (Local/Central DP), Secure Multi-Party Computation (SMPC), Homomorphic Encryption.",
+    "Poisoning & Robustness: Byzantine attacks, model poisoning, backdoor attacks, robust aggregation rules (Krum, Coordinate-wise Median, Trimmed Mean).",
+    "Communication Efficiency: Model compression, quantization, sparsification, split learning, asynchronous federated learning.",
+    "Frameworks & Edge Deployment: PySyft, Flower, TensorFlow Federated (TFF), real-world case studies in healthcare and finance."
+  ],
+  "books": [
+    {
+      "title": "Federated Learning",
+      "author": "Qiang Yang, Yang Liu, Yong Cheng, Yan Kang, Tianjian Chen, Han Yu",
+      "publisher": "Morgan & Claypool Publishers",
+      "edition_year": "2019",
+      "type": "Textbook"
+    },
+    {
+      "title": "Advances and Open Problems in Federated Learning",
+      "author": "Peter Kairouz et al.",
+      "publisher": "Foundations and Trends in Machine Learning",
+      "edition_year": "2021",
+      "type": "Reference"
+    },
+    {
+      "title": "Privacy and Security in Federated Learning",
+      "author": "Lingjuan Lyu, et al.",
+      "publisher": "Springer",
+      "edition_year": "2023",
+      "type": "Reference"
+    }
+  ]
+}

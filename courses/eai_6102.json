@@ -1,0 +1,45 @@
+{
+  "subject_code": "EAI 6102",
+  "subject_name": "Pattern Recognition",
+  "semester": 1,
+  "course_type": "Elective Pool (DE-1)",
+  "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+  "description": "Provides classical and statistical pattern recognition principles, Bayesian decision theory, parametric and non-parametric classifiers, and feature extraction techniques.",
+  "learning_objectives": [
+    "Formulate Bayesian decision theory, discriminant functions, and Bayes risk minimization.",
+    "Perform maximum likelihood parameter estimation and Expectation-Maximization for mixture models.",
+    "Implement non-parametric estimation, linear discriminants, and Support Vector Machines.",
+    "Apply unsupervised clustering and dimensionality reduction methods."
+  ],
+  "outline": [
+    "Bayesian Decision Theory: Classifiers, discriminant functions, decision surfaces, normal density, Bayes risk minimization.",
+    "Parameter Estimation: Maximum Likelihood Estimation (MLE), Bayesian parameter estimation, Expectation-Maximization (EM), Gaussian Mixture Models (GMM).",
+    "Non-Parametric Techniques: Parzen windows, k-Nearest Neighbor (k-NN) classification.",
+    "Linear Discriminants: Perceptron, Linear Discriminant Analysis (LDA), Fisher's linear discriminant, Support Vector Machines (SVM).",
+    "Feature Engineering: Feature selection (wrapper/filter), PCA, Kernel PCA, ICA.",
+    "Clustering: K-means, Hierarchical clustering, DBSCAN, Spectral clustering."
+  ],
+  "books": [
+    {
+      "title": "Pattern Recognition and Machine Learning",
+      "author": "Christopher M. Bishop",
+      "publisher": "Springer",
+      "edition_year": "2006",
+      "type": "Textbook"
+    },
+    {
+      "title": "Pattern Classification",
+      "author": "Richard O. Duda, Peter E. Hart, David G. Stork",
+      "publisher": "John Wiley & Sons",
+      "edition_year": "2nd Edition, 2001",
+      "type": "Textbook"
+    },
+    {
+      "title": "Pattern Recognition",
+      "author": "Sergios Theodoridis, Konstantinos Koutroumbas",
+      "publisher": "Academic Press",
+      "edition_year": "4th Edition, 2008",
+      "type": "Reference"
+    }
+  ]
+}

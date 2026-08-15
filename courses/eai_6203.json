@@ -1,0 +1,44 @@
+{
+  "subject_code": "EAI 6203",
+  "subject_name": "Predictive Analytics",
+  "semester": 2,
+  "course_type": "Elective Pool (DE-2/3)",
+  "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+  "description": "Focuses on statistical modeling, time series forecasting, survival analysis, and predictive feature engineering across commercial and industrial domains.",
+  "learning_objectives": [
+    "Formulate predictive modeling workflows, feature engineering, and cross-validation strategies.",
+    "Master multiple linear regression, regularized regression (Lasso/Ridge/ElasticNet), and GLMs.",
+    "Model time series data using ARIMA, SARIMA, exponential smoothing, and deep neural forecasters.",
+    "Apply survival analysis, customer churn modeling, and predictive maintenance techniques."
+  ],
+  "outline": [
+    "Predictive Modeling Lifecycle: Data exploration, feature engineering, imputation, outlier handling, cross-validation.",
+    "Regression Models: Multiple linear regression, Ridge, Lasso, ElasticNet, Generalized Linear Models (GLM), logistic regression.",
+    "Time Series Analytics: Stationarity, ACF/PACF, ARIMA, SARIMA, VAR models, exponential smoothing, Prophet, deep time series models.",
+    "Survival Analysis: Kaplan-Meier estimator, Cox proportional hazards model, accelerated failure time models.",
+    "Applications: Churn prediction, credit scoring, demand forecasting, predictive maintenance, uplift modeling."
+  ],
+  "books": [
+    {
+      "title": "Applied Predictive Modeling",
+      "author": "Max Kuhn, Kjell Johnson",
+      "publisher": "Springer",
+      "edition_year": "2013",
+      "type": "Textbook"
+    },
+    {
+      "title": "Time Series Analysis: Forecasting and Control",
+      "author": "George E. P. Box, Gwilym M. Jenkins, Gregory C. Reinsel, Greta M. Ljung",
+      "publisher": "John Wiley & Sons",
+      "edition_year": "5th Edition, 2015",
+      "type": "Reference"
+    },
+    {
+      "title": "Applied Logistic Regression",
+      "author": "David W. Hosmer Jr., Stanley Lemeshow, Rodney X. Sturdivant",
+      "publisher": "John Wiley & Sons",
+      "edition_year": "3rd Edition, 2013",
+      "type": "Reference"
+    }
+  ]
+}

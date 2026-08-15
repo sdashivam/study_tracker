@@ -1,0 +1,44 @@
+{
+  "subject_code": "EAI 6302",
+  "subject_name": "Natural Language Processing",
+  "semester": 3,
+  "course_type": "Elective V",
+  "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+  "description": "Provides comprehensive coverage of computational linguistics, neural language models, sequence-to-sequence transformers, and Large Language Model fine-tuning.",
+  "learning_objectives": [
+    "Understand linguistic preprocessing, n-gram statistical language models, and distributed word vectors.",
+    "Implement sequence models for Named Entity Recognition, POS tagging, and sentiment classification.",
+    "Master Transformer architectures, self-attention mechanisms, BERT, and GPT models.",
+    "Fine-tune and evaluate Large Language Models using prompt engineering, LoRA, and PEFT."
+  ],
+  "outline": [
+    "NLP Fundamentals: Tokenization, morphology, POS tagging, lemmatization, N-gram language models, perplexity.",
+    "Word Embeddings: Word2Vec (Skip-gram, CBOW), GloVe, FastText, subword tokenization (BPE, WordPiece).",
+    "Sequence Modeling: Hidden Markov Models (HMM), Conditional Random Fields (CRF), RNNs, LSTMs for text classification.",
+    "Attention & Transformers: Encoder-Decoder models, self-attention, Multi-Head Attention, Transformer architecture (BERT, T5, GPT).",
+    "Modern LLM Engineering: Pre-training, fine-tuning (LoRA, PEFT), prompt engineering, text generation evaluation (BLEU, ROUGE, METEOR)."
+  ],
+  "books": [
+    {
+      "title": "Speech and Language Processing",
+      "author": "Daniel Jurafsky, James H. Martin",
+      "publisher": "Pearson",
+      "edition_year": "3rd Edition Draft, 2023",
+      "type": "Textbook"
+    },
+    {
+      "title": "Foundations of Statistical Natural Language Processing",
+      "author": "Christopher D. Manning, Hinrich Schütze",
+      "publisher": "MIT Press",
+      "edition_year": "1999",
+      "type": "Reference"
+    },
+    {
+      "title": "Introduction to Natural Language Processing",
+      "author": "Jacob Eisenstein",
+      "publisher": "MIT Press",
+      "edition_year": "2019",
+      "type": "Reference"
+    }
+  ]
+}

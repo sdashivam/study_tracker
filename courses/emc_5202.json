@@ -1,0 +1,53 @@
+{
+  "subject_code": "EMC 5202",
+  "subject_name": "Numerical Linear Algebra and Optimization Techniques",
+  "semester": 2,
+  "course_type": "Core",
+  "credits": "4 Credits (L-T-P-C: 3-0-2-4)",
+  "description": "Covers advanced numerical matrix decompositions, direct and iterative solvers, convex optimization theory, and constrained mathematical programming for data science.",
+  "learning_objectives": [
+    "Perform numerical matrix factorizations including LU, Cholesky, QR, SVD, and Spectral Decompositions.",
+    "Solve large linear systems using direct and iterative Krylov subspace methods.",
+    "Formulate convex optimization problems and understand duality and KKT optimality conditions.",
+    "Implement gradient-based, second-order, and constrained optimization algorithms."
+  ],
+  "outline": [
+    "Matrix Decompositions: Vector/matrix norms, conditioning, orthogonality, QR decomposition, SVD, PCA, Spectral theorem, Jordan canonical form.",
+    "Numerical Solvers: Gaussian elimination, LU, Cholesky factorization, Jacobi, Gauss-Seidel, Conjugate Gradient, GMRES.",
+    "Eigenvalue Computation: Power method, inverse iteration, QR algorithm for eigenvalue computation.",
+    "Convex Analysis: Convex sets, convex functions, epigraphs, subgradients, Jensen's inequality.",
+    "Unconstrained Optimization: Gradient descent, line search, Newton's method, Quasi-Newton methods (BFGS, L-BFGS).",
+    "Constrained Optimization: Lagrange multipliers, KKT conditions, Duality theory (Primal-Dual formulations), ADMM, Interior point methods.",
+    "Lab Component: Implementation of matrix algorithms and convex optimization solvers in Python/CVXPY."
+  ],
+  "books": [
+    {
+      "title": "Convex Optimization",
+      "author": "Stephen Boyd, Lieven Vandenberghe",
+      "publisher": "Cambridge University Press",
+      "edition_year": "2004",
+      "type": "Textbook"
+    },
+    {
+      "title": "Numerical Linear Algebra",
+      "author": "Lloyd N. Trefethen, David Bau III",
+      "publisher": "SIAM",
+      "edition_year": "1997",
+      "type": "Textbook"
+    },
+    {
+      "title": "Matrix Computations",
+      "author": "Gene H. Golub, Charles F. Van Loan",
+      "publisher": "Johns Hopkins University Press",
+      "edition_year": "4th Edition, 2013",
+      "type": "Reference"
+    },
+    {
+      "title": "Numerical Optimization",
+      "author": "Jorge Nocedal, Stephen J. Wright",
+      "publisher": "Springer",
+      "edition_year": "2nd Edition, 2006",
+      "type": "Reference"
+    }
+  ]
+}

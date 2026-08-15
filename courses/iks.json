@@ -1,0 +1,44 @@
+{
+  "subject_code": "IKS",
+  "subject_name": "Indian Knowledge System",
+  "semester": 2,
+  "course_type": "Core",
+  "credits": "2 Credits (L-T-P-C: 2-0-0-2)",
+  "description": "Introduces the rich indigenous scientific heritage of India, covering ancient mathematics, Paninian computational linguistics, logical epistemology, and sustainable philosophy.",
+  "learning_objectives": [
+    "Appreciate the historical evolution of scientific and philosophical thought in India.",
+    "Understand mathematical and astronomical contributions of Aryabhata, Brahmagupta, and the Kerala School.",
+    "Explore Ashtadhyayi as a formal computational generative grammar and knowledge representation system.",
+    "Analyze Nyaya logical inquiry, debate systems, and ethical governance frameworks."
+  ],
+  "outline": [
+    "Indian Knowledge Traditions: Epistemology, historical timeline, classification of Vedic and classical scientific corpus.",
+    "Mathematics & Astronomy: Sulba Sutras, binary systems in Pingala, Aryabhatiya, Brahmagupta's zero and algebra, Madhava's infinite series.",
+    "Computational Linguistics & Paninian Grammar: Panini's Ashtadhyayi formal grammar, morphological rules, Sanskrit as a computing language structure.",
+    "Logic & Scientific Inquiry: Nyaya-Vaisheshika epistemology, 16 categories of logic, Anumana (inference), debate frameworks (Vada/Jalpa/Vitanda).",
+    "Ethics, Governance & Sustainable Science: Arthashastra statecraft, ecological philosophy in traditional water management, Ayurveda holistic health principles."
+  ],
+  "books": [
+    {
+      "title": "Introduction to Indian Knowledge System: Concepts and Applications",
+      "author": "B. Mahadevan, V. R. Bhat, Nagendra Pavana R. N.",
+      "publisher": "PHI Learning",
+      "edition_year": "2022",
+      "type": "Textbook"
+    },
+    {
+      "title": "Knowledge Traditions and Practices of India",
+      "author": "Kapil Kapoor, Michel Danino",
+      "publisher": "CBSE & DK Printworld",
+      "edition_year": "2012",
+      "type": "Reference"
+    },
+    {
+      "title": "The Astronomical Code of the Rgveda",
+      "author": "Subhash Kak",
+      "publisher": "Munshiram Manoharlal Publishers",
+      "edition_year": "2000",
+      "type": "Reference"
+    }
+  ]
+}

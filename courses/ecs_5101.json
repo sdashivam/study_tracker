@@ -1,0 +1,53 @@
+{
+  "subject_code": "ECS 5101",
+  "subject_name": "Design and Analysis of Algorithms",
+  "semester": 1,
+  "course_type": "Core",
+  "credits": "4 Credits (L-T-P-C: 3-0-2-4)",
+  "description": "Provides a rigorous foundation in the design, asymptotic analysis, and implementation of efficient computational algorithms and advanced data structures to solve complex algorithmic problems.",
+  "learning_objectives": [
+    "Master asymptotic complexity analysis and recurrence relations.",
+    "Design and implement advanced data structures including balanced search trees, heaps, and disjoint sets.",
+    "Apply core algorithmic paradigms including divide-and-conquer, greedy techniques, dynamic programming, and branch-and-bound.",
+    "Implement graph algorithms, network flow, string matching, and understand NP-completeness and approximation algorithms."
+  ],
+  "outline": [
+    "Asymptotic Analysis and Recurrence Relations: Big-O, Omega, Theta notations, Master Theorem, recursion tree method.",
+    "Advanced Data Structures: AVL trees, Red-Black trees, B-Trees, Fibonacci heaps, Disjoint Set Union (DSU).",
+    "Algorithmic Paradigms: Divide and Conquer, Greedy Algorithms, Dynamic Programming (memoization & tabulation), Backtracking, Branch and Bound.",
+    "Graph Algorithms: Single-source and all-pairs shortest paths (Dijkstra, Bellman-Ford, Floyd-Warshall), Minimum Spanning Trees (Prim, Kruskal), Maximum Flow (Ford-Fulkerson).",
+    "String Matching Algorithms: Naive, Rabin-Karp, Knuth-Morris-Pratt (KMP), Boyer-Moore, Suffix Trees.",
+    "Computational Complexity: Class P, NP, NP-Complete, NP-Hard, Polynomial-time reductions, Approximation algorithms.",
+    "Lab Component: Practical implementation and performance benchmarking in C++/Python."
+  ],
+  "books": [
+    {
+      "title": "Data Structures and Algorithms in C++",
+      "author": "Mark Allen Weiss",
+      "publisher": "Addison Wesley",
+      "edition_year": "2003",
+      "type": "Textbook"
+    },
+    {
+      "title": "Data Structures and Algorithms in C++",
+      "author": "Adam Drozdek",
+      "publisher": "Brooks/Cole",
+      "edition_year": "2001",
+      "type": "Textbook"
+    },
+    {
+      "title": "Data Structures and Algorithms",
+      "author": "Alfred V. Aho, John E. Hopcroft, Jeffrey D. Ullman",
+      "publisher": "Addison-Wesley",
+      "edition_year": "1984",
+      "type": "Reference"
+    },
+    {
+      "title": "Introduction to Algorithms",
+      "author": "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein",
+      "publisher": "MIT Press",
+      "edition_year": "3rd / 4th Edition",
+      "type": "Reference"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "subject_code": "EAI 6401",
+  "subject_name": "Reinforcement Learning",
+  "semester": 4,
+  "course_type": "Elective VI",
+  "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+  "description": "Presents the theoretical and algorithmic foundations of decision-making under uncertainty, dynamic programming, deep Q-networks, policy gradients, and actor-critic methods.",
+  "learning_objectives": [
+    "Formulate sequential decision-making problems as Markov Decision Processes (MDPs).",
+    "Solve MDPs using dynamic programming (Policy/Value Iteration) and model-free TD methods.",
+    "Implement Deep Q-Networks (DQN) with experience replay and target networks.",
+    "Master Policy Gradient methods including Actor-Critic, PPO, TRPO, DDPG, and SAC."
+  ],
+  "outline": [
+    "Markov Decision Processes: States, actions, transition probabilities, rewards, return, discount factor, Bellman equations.",
+    "Dynamic Programming: Policy evaluation, policy iteration, value iteration, dynamic programming optimality.",
+    "Model-Free Learning: Monte Carlo methods, Temporal-Difference learning (TD(0), TD(lambda)), SARSA, Q-Learning.",
+    "Deep Q-Learning: Function approximation, Deep Q-Networks (DQN), Double DQN, Dueling DQN, Prioritized Experience Replay.",
+    "Policy Gradient Methods: REINFORCE theorem, Actor-Critic methods, Advantage Actor-Critic (A2C/A3C), PPO, TRPO, DDPG, SAC.",
+    "Exploration & Advanced RL: Multi-armed bandits (UCB, Thompson sampling), Inverse RL, Hierarchical RL, Multi-Agent RL."
+  ],
+  "books": [
+    {
+      "title": "Reinforcement Learning: An Introduction",
+      "author": "Richard S. Sutton, Andrew G. Barto",
+      "publisher": "MIT Press",
+      "edition_year": "2nd Edition, 2018",
+      "type": "Textbook"
+    },
+    {
+      "title": "Algorithms for Reinforcement Learning",
+      "author": "Csaba Szepesvári",
+      "publisher": "Morgan & Claypool Publishers",
+      "edition_year": "2010",
+      "type": "Reference"
+    },
+    {
+      "title": "Deep Reinforcement Learning Hands-On",
+      "author": "Maxim Lapan",
+      "publisher": "Packt Publishing",
+      "edition_year": "2nd Edition, 2020",
+      "type": "Reference"
+    }
+  ]
+}

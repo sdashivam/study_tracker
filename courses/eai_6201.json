@@ -1,0 +1,45 @@
+{
+  "subject_code": "EAI 6201",
+  "subject_name": "Deep Learning",
+  "semester": 2,
+  "course_type": "Elective Pool (DE-2/3)",
+  "credits": "3 Credits (L-T-P-C: 3-0-0-3)",
+  "description": "Covers deep neural network architectures, backpropagation dynamics, convolutional networks, recurrent architectures, transformers, and deep generative models.",
+  "learning_objectives": [
+    "Understand deep neural network fundamentals, loss functions, and backpropagation.",
+    "Master optimization and regularization techniques including Adam, BatchNorm, and ResNet skip connections.",
+    "Build Convolutional Neural Networks (CNNs) for vision and Recurrent Neural Networks (RNNs/LSTMs) for sequences.",
+    "Explore Transformer self-attention mechanisms, Autoencoders, and Generative Adversarial Networks (GANs)."
+  ],
+  "outline": [
+    "Neural Network Fundamentals: MLPs, activation functions, loss functions, computational graphs, backpropagation.",
+    "Optimization & Regularization: SGD, Momentum, Adam, RMSprop, weight decay, dropout, Batch Normalization, Layer Normalization.",
+    "Convolutional Networks (CNNs): Convolutions, pooling, architectures (AlexNet, VGG, ResNet, EfficientNet), object detection, segmentation.",
+    "Sequence Models (RNNs): Vanilla RNN, LSTM, GRU, sequence-to-sequence models, bidirectional architectures.",
+    "Transformers & Self-Attention: Multi-head attention, positional encoding, encoder-decoder architectures (BERT, GPT).",
+    "Generative Models: Autoencoders, Variational Autoencoders (VAEs), Generative Adversarial Networks (GANs), Diffusion models overview."
+  ],
+  "books": [
+    {
+      "title": "Deep Learning",
+      "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville",
+      "publisher": "MIT Press",
+      "edition_year": "2016",
+      "type": "Textbook"
+    },
+    {
+      "title": "Dive into Deep Learning",
+      "author": "Aston Zhang, Zachary C. Lipton, Mu Li, Alexander J. Smola",
+      "publisher": "Cambridge University Press",
+      "edition_year": "2023",
+      "type": "Textbook"
+    },
+    {
+      "title": "Deep Learning with Python",
+      "author": "Francois Chollet",
+      "publisher": "Manning Publications",
+      "edition_year": "2nd Edition, 2021",
+      "type": "Reference"
+    }
+  ]
+}
