@@ -618,6 +618,15 @@ def page_curriculum_selector():
     )
 
 
+@st.cache_data(show_spinner=False)
+def get_cached_dashboard_html(file_path: str, mtime: float) -> str:
+    """Reads and caches the generated dashboard HTML in memory based on file modification timestamp."""
+    if os.path.exists(file_path):
+        with open(file_path, "r", encoding="utf-8") as f:
+            return f.read()
+    return ""
+
+
 # =============================================================================
 # PAGE 2: ACADEMIC DASHBOARD
 # =============================================================================
@@ -650,12 +659,14 @@ def page_academic_dashboard():
             active_semester=st.session_state.get("active_semester", 1)
         )
 
-    # Load and Render Dashboard HTML directly using modern st.iframe API
+    # Load and Render Dashboard HTML directly using memory cache and modern st.iframe API
     if os.path.exists(OUTPUT_HTML_PATH):
-        with open(OUTPUT_HTML_PATH, "r", encoding="utf-8") as f:
-            dashboard_html = f.read()
-
-        st.iframe(dashboard_html, height=1350, width="stretch")
+        mtime = os.path.getmtime(OUTPUT_HTML_PATH)
+        dashboard_html = get_cached_dashboard_html(OUTPUT_HTML_PATH, mtime)
+        if dashboard_html:
+            st.iframe(dashboard_html, height=1350, width="stretch")
+        else:
+            st.warning("⚠️ Error reading dashboard. Please regenerate curriculum.")
     else:
         st.warning("⚠️ No dashboard generated yet. Please select your curriculum first.")
         if st.button("Go to Curriculum Selector"):
