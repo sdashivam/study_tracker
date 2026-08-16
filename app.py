@@ -241,8 +241,8 @@ CUSTOM_CSS = """
     font-family: 'JetBrains Mono', monospace;
   }
 
-  /* Action Buttons - Green with White Font */
-  .stButton > button, div[data-testid="stButton"] > button {
+  /* Action Buttons - Primary (Green) & Secondary (Indigo Outline) */
+  .stButton > button[kind="primary"], button[data-testid="stBaseButton-primary"] {
     background: #059669 !important;
     background-color: #059669 !important;
     color: #ffffff !important;
@@ -255,7 +255,7 @@ CUSTOM_CSS = """
     transition: all 0.2s ease !important;
   }
   
-  .stButton > button:hover, div[data-testid="stButton"] > button:hover {
+  .stButton > button[kind="primary"]:hover, button[data-testid="stBaseButton-primary"]:hover {
     background: #047857 !important;
     background-color: #047857 !important;
     color: #ffffff !important;
@@ -263,8 +263,34 @@ CUSTOM_CSS = """
     box-shadow: 0 6px 18px rgba(5, 150, 105, 0.35) !important;
   }
 
-  .stButton > button * {
+  .stButton > button[kind="primary"] * {
     color: #ffffff !important;
+  }
+
+  .stButton > button[kind="secondary"], button[data-testid="stBaseButton-secondary"], .stButton > button:not([kind="primary"]) {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #1e1b4b !important;
+    border: 1.5px solid #4338ca !important;
+    font-weight: 700 !important;
+    font-size: 0.88rem !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 10px !important;
+    box-shadow: 0 2px 6px rgba(67, 56, 202, 0.06) !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .stButton > button[kind="secondary"]:hover, button[data-testid="stBaseButton-secondary"]:hover, .stButton > button:not([kind="primary"]):hover {
+    background: #f4eee3 !important;
+    background-color: #f4eee3 !important;
+    color: #312e81 !important;
+    border-color: #312e81 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(67, 56, 202, 0.12) !important;
+  }
+
+  .stButton > button[kind="secondary"] *, .stButton > button:not([kind="primary"]) * {
+    color: #1e1b4b !important;
   }
 
   /* Mobile & Tablet Screen Responsiveness */
@@ -633,6 +659,25 @@ def get_cached_dashboard_html(file_path: str, mtime: float) -> str:
 def page_academic_dashboard():
     st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
+    # Top Return / Navigation Bar
+    active_s = st.session_state.get('active_semester', 1)
+    top_col1, top_col2 = st.columns([1.8, 1], vertical_alignment="center")
+    with top_col1:
+        st.markdown(
+            f"""
+            <div style="display:flex; align-items:center; gap:0.6rem; padding: 0.2rem 0;">
+                <span style="font-size:1.15rem; font-weight:800; color:#000000;">📊 Academic Dashboard</span>
+                <span style="background:rgba(67, 56, 202, 0.1); color:#4338ca; font-size:0.78rem; font-weight:700; padding:0.2rem 0.6rem; border-radius:6px; border:1px solid rgba(67, 56, 202, 0.25);">
+                    Semester {active_s} Active
+                </span>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+    with top_col2:
+        if st.button("🏠 Home / Change Electives", type="secondary", key="top_home_btn", use_container_width=True):
+            st.switch_page(selector_page)
+
     # Auto-generate dashboard if missing (e.g., fresh cloud clone)
     if not os.path.exists(OUTPUT_HTML_PATH):
         user_config = {
@@ -656,7 +701,7 @@ def page_academic_dashboard():
         main.run_curriculum_sync(
             config=user_config,
             target_files=[OUTPUT_HTML_PATH],
-            active_semester=st.session_state.get("active_semester", 1)
+            active_semester=active_s
         )
 
     # Load and Render Dashboard HTML directly using memory cache and modern st.iframe API
@@ -669,7 +714,21 @@ def page_academic_dashboard():
             st.warning("⚠️ Error reading dashboard. Please regenerate curriculum.")
     else:
         st.warning("⚠️ No dashboard generated yet. Please select your curriculum first.")
-        if st.button("Go to Curriculum Selector"):
+        if st.button("Go to Curriculum Selector", type="primary"):
+            st.switch_page(selector_page)
+
+    # Bottom Home / Return Navigation
+    st.markdown(
+        """
+        <div style="text-align: center; color: var(--text-secondary); font-size: 0.88rem; padding: 2rem 0 0.5rem 0; font-weight: 500;">
+            Crafted with ❤️ by <strong style="color: #000000;">Shivam Bhatt</strong> | IIT Patna (2026–2028)
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    b_col1, b_col2, b_col3 = st.columns([1, 1.5, 1])
+    with b_col2:
+        if st.button("🏠 Return to Curriculum & Electives Selector", type="secondary", key="bottom_home_btn", use_container_width=True):
             st.switch_page(selector_page)
 
 
