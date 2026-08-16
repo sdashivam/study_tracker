@@ -62,17 +62,20 @@ CUSTOM_CSS = """
     color: #000000 !important;
   }
 
-  .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"], section.main {
-    background-color: #faf7f2 !important;
+  /* Completely hide Streamlit default top header and sidebar */
+  header[data-testid="stHeader"], [data-testid="stHeader"], [data-testid="stSidebar"], [data-testid="collapsedControl"], section[data-testid="stSidebar"] {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
   }
 
-  /* Full Width Optimization for Laptop and Desktop Screens */
+  /* Full Width & Spacing Optimization for Laptop and Desktop Screens */
   .block-container, [data-testid="stMainBlockContainer"], [data-testid="block-container"], .main .block-container {
     max-width: 96% !important;
     width: 96% !important;
     padding-left: 1.5rem !important;
     padding-right: 1.5rem !important;
-    padding-top: 1rem !important;
+    padding-top: 1.5rem !important;
     padding-bottom: 2rem !important;
   }
 
@@ -659,24 +662,26 @@ def get_cached_dashboard_html(file_path: str, mtime: float) -> str:
 def page_academic_dashboard():
     st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
-    # Top Return / Navigation Bar
+    # Top Action Bar with clear Return / Home Button
     active_s = st.session_state.get('active_semester', 1)
-    top_col1, top_col2 = st.columns([1.8, 1], vertical_alignment="center")
+    top_col1, top_col2 = st.columns([1.5, 1], vertical_alignment="center")
     with top_col1:
         st.markdown(
             f"""
-            <div style="display:flex; align-items:center; gap:0.6rem; padding: 0.2rem 0;">
-                <span style="font-size:1.15rem; font-weight:800; color:#000000;">📊 Academic Dashboard</span>
-                <span style="background:rgba(67, 56, 202, 0.1); color:#4338ca; font-size:0.78rem; font-weight:700; padding:0.2rem 0.6rem; border-radius:6px; border:1px solid rgba(67, 56, 202, 0.25);">
-                    Semester {active_s} Active
-                </span>
+            <div style="background:#ffffff; border:1px solid rgba(68,64,60,0.18); border-left:5px solid #4338ca; padding:0.65rem 1rem; border-radius:10px; box-shadow:0 2px 6px rgba(68,64,60,0.04);">
+                <div style="font-size:1.1rem; font-weight:800; color:#1e1b4b;">📊 Academic Dashboard &amp; Timetable</div>
+                <div style="font-size:0.8rem; color:#44403c; font-weight:600; margin-top:2px;">
+                    Active View: <strong>Semester {active_s}</strong> • Fully Synced
+                </div>
             </div>
             """,
             unsafe_allow_html=True
         )
     with top_col2:
-        if st.button("🏠 Home / Change Electives", type="secondary", key="top_home_btn", use_container_width=True):
+        if st.button("🏠 Home / Change Electives", type="primary", key="top_home_btn", use_container_width=True):
             st.switch_page(selector_page)
+
+    st.write("")
 
     # Auto-generate dashboard if missing (e.g., fresh cloud clone)
     if not os.path.exists(OUTPUT_HTML_PATH):
