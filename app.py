@@ -24,7 +24,7 @@ HOLIDAYS_FILE = os.path.join(ROOT_DIR, 'courses', 'holidays.json')
 LOGO_IMAGE_PATH = os.path.join(ROOT_DIR, 'image', 'logo.png')
 
 st.set_page_config(
-    page_title="IIT Patna M.Tech (AI & Data Science)",
+    page_title="StudyTrac • Academic & Attendance Companion",
     page_icon=LOGO_IMAGE_PATH if os.path.exists(LOGO_IMAGE_PATH) else "🎓",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -437,12 +437,12 @@ def page_curriculum_selector():
     st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
     # 1. Header Banner
-    logo_html = '<div style="background:linear-gradient(135deg, #312e81, #4338ca); color:#ffffff; width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.2rem; flex-shrink:0;">IITP</div>'
+    logo_html = '<div style="background:linear-gradient(135deg, #312e81, #4338ca); color:#ffffff; width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.2rem; flex-shrink:0;">ST</div>'
     if os.path.exists(LOGO_IMAGE_PATH):
         try:
             with open(LOGO_IMAGE_PATH, 'rb') as img_f:
                 logo_b64 = base64.b64encode(img_f.read()).decode('utf-8')
-            logo_html = f'<img src="data:image/png;base64,{logo_b64}" alt="IIT Patna Logo" style="height:52px; width:auto; max-width:70px; object-fit:contain; border-radius:8px; flex-shrink:0;">'
+            logo_html = f'<img src="data:image/png;base64,{logo_b64}" alt="StudyTrac Logo" style="height:52px; width:auto; max-width:70px; object-fit:contain; border-radius:8px; flex-shrink:0;">'
         except Exception:
             pass
 
@@ -451,8 +451,8 @@ def page_curriculum_selector():
       <div style="display:flex; align-items:center; gap:1rem;">
         {logo_html}
         <div>
-          <h1 style="font-size:1.5rem; font-weight:800; color:#000000 !important; margin:0; letter-spacing:-0.02em;">IIT Patna • M.Tech in AI &amp; Data Science</h1>
-          <p style="color:#292524 !important; font-weight:600; margin:0.25rem 0 0 0; font-size:0.9rem;">Semester-wise Curriculum Selector &amp; Elective Management Portal</p>
+          <h1 style="font-size:1.55rem; font-weight:800; color:#000000 !important; margin:0; letter-spacing:-0.02em;">StudyTrac</h1>
+          <p style="color:#292524 !important; font-weight:600; margin:0.25rem 0 0 0; font-size:0.9rem;">Academic &amp; Attendance Companion • Curated for IIT Patna M.Tech (AI &amp; Data Science)</p>
         </div>
       </div>
     </div>
@@ -669,9 +669,9 @@ def page_academic_dashboard():
         st.markdown(
             f"""
             <div style="background:#ffffff; border:1px solid rgba(68,64,60,0.18); border-left:5px solid #4338ca; padding:0.65rem 1rem; border-radius:10px; box-shadow:0 2px 6px rgba(68,64,60,0.04);">
-                <div style="font-size:1.1rem; font-weight:800; color:#1e1b4b;">📊 Academic Dashboard &amp; Timetable</div>
+                <div style="font-size:1.1rem; font-weight:800; color:#1e1b4b;">📊 StudyTrac Dashboard &amp; Timetable</div>
                 <div style="font-size:0.8rem; color:#44403c; font-weight:600; margin-top:2px;">
-                    Active View: <strong>Semester {active_s}</strong> • Fully Synced
+                    Active View: <strong>Semester {active_s}</strong> • Curated for IIT Patna M.Tech (AI &amp; Data Science)
                 </div>
             </div>
             """,

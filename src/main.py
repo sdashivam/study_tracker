@@ -522,12 +522,12 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
     sem1_courses_json = json.dumps(user_sem1_courses, indent=6, ensure_ascii=False)
     all_courses_json = json.dumps(catalog, indent=2, ensure_ascii=False)
 
-    logo_html = '<div class="institute-logo">IITP</div>'
+    logo_html = '<div class="institute-logo">ST</div>'
     if os.path.exists(LOGO_IMAGE_PATH):
         try:
             with open(LOGO_IMAGE_PATH, 'rb') as img_f:
                 logo_b64 = base64.b64encode(img_f.read()).decode('utf-8')
-            logo_html = f'<img src="data:image/png;base64,{logo_b64}" alt="IIT Patna Logo" style="height:48px; width:auto; max-width:64px; object-fit:contain; border-radius:6px; flex-shrink:0;">'
+            logo_html = f'<img src="data:image/png;base64,{logo_b64}" alt="StudyTrac Logo" style="height:48px; width:auto; max-width:64px; object-fit:contain; border-radius:6px; flex-shrink:0;">'
         except Exception:
             pass
 
@@ -536,7 +536,7 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IIT Patna • M.Tech Curriculum &amp; Class Tracker</title>
+  <title>StudyTrac • Academic &amp; Attendance Companion</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1980,8 +1980,8 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
       <div class="brand-section">
         {logo_html}
         <div class="brand-details">
-          <h1>IIT Patna • M.Tech in AI &amp; Data Science</h1>
-          <p>M.Tech (AI &amp; Data Science) • Curriculum &amp; Class Tracker</p>
+          <h1>StudyTrac</h1>
+          <p>Academic &amp; Attendance Companion • Curated for IIT Patna M.Tech (AI &amp; Data Science)</p>
         </div>
       </div>
       <div class="nav-actions">

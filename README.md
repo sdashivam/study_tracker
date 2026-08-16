@@ -1,12 +1,12 @@
-# 🎓 IIT Patna — M.Tech in Artificial Intelligence & Data Science
-### *Academic Curriculum Planner, Live Class Schedule & Attendance Compliance Tracker*
+# 🎓 StudyTrac — Academic Planner & Attendance Tracker
+### *Curated for IIT Patna • M.Tech in Artificial Intelligence & Data Science*
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.40%2B-FF4B4B.svg?logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![IIT Patna](https://img.shields.io/badge/IIT%20Patna-M.Tech%20AI%20%26%20DS-065f46.svg)](https://www.iitp.ac.in/)
 [![License](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
 
-A high-performance, responsive academic management dashboard and curriculum planner developed specifically for learners of the **M.Tech in Artificial Intelligence and Data Science** at the **Indian Institute of Technology Patna (IIT Patna)**.
+**StudyTrac** is a high-performance, responsive academic management companion and curriculum planner developed specifically for students of the **M.Tech in Artificial Intelligence & Data Science** at the **Indian Institute of Technology Patna (IIT Patna)**.
 
 ---
 
