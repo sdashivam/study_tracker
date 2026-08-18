@@ -47,5 +47,6 @@ Thumbs.db
 *.tmp
 *.bak
 
-# Intermidate folders
+# Intermediate folders & local user state
 output/
+courses/user_preferences.json

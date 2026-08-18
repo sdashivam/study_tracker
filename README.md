@@ -16,18 +16,21 @@
 * **Multipage Streamlit Experience:** Switch seamlessly between the *Curriculum Selector* and *Academic Dashboard*.
 * **Semesters 1 to 4 Full Catalog:** Complete syllabus, learning objectives, and textbook data for all 24 core and elective courses (84 Total Credits).
 * **Elective Track Configuration:** Select approved electives (sorted by course code) while mandatory core subjects remain locked and validated.
+* **Persistent Elective Saving & Defaults Reset:** Single-click `💾 Save Electives Configuration` button persists chosen electives across all app restarts (`courses/user_preferences.json`), and `🔄 Reset to Defaults` allows instant restoration to official curriculum recommendations.
 * **Centered Apply Action:** Single-click curriculum generation pipeline with instant feedback.
 
 ### 2. 📅 Day-Wise Schedule & Dynamic Attendance Tracker
 * **16-Week Instruction Timeline:** Date-by-date schedule spanning August 16 to November 30, 2026.
-* **Dynamic Attendance Health Gauge:** Real-time computation of compliance ($\ge 75\%$ mandatory policy) with live vs. recorded lecture breakdowns and safe bunk counters.
+* **Direct Moodle Join Action:** Instant "Join Class" buttons in front of all class schedules redirecting directly to the official IIT Patna Moodle login portal (`https://cetpgex.iitp.ac.in/moodle/login/index.php`).
+* **Dynamic Attendance Health Gauge:** Real-time computation of compliance ($\ge 75\%$ mandatory policy) with live vs. recorded lecture breakdowns, faculty cancellation tracking, and safe bunk margin counters.
+* **Faculty Cancellation Support:** Ability to mark unexpected faculty cancellations as `🚫 Cancel` without penalizing attendance percentages.
 * **One-Click Week Collapsing:** All 16 weeks default to collapsed view with a global `📁 Expand All / 📂 Collapse All` toggle.
 * **Personal Notes per Session:** Persistent in-browser note-taking for every class slot.
 
 ### 3. 🏖️ Live Institute Holiday Calendar & Grey Off-Day Styling
 * **Automated Holiday Sync:** Connects to the official IIT Patna holiday calendar portal with end-of-year rollover.
 * **Explicit Reason Badges:** Classes falling on official holidays (*e.g., Gandhi Jayanti, Dussehra, Diwali, Chhath Puja*) are rendered in muted slate grey with `🏖️ No Class: <Reason>` badges.
-* **No False Absence Penalties:** Holiday dates are excluded from missed attendance calculations.
+* **No False Absence Penalties:** Holiday dates and faculty cancellations are excluded from attendance absence penalties.
 
 ### 4. 🎓 Post-Instruction Exam, Evaluation & Result Roadmap
 * **Official Academic Calendar Integration:** Extracted directly from the official timetable schedule (`Classes/1sem_timetable.pdf`).

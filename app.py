@@ -21,6 +21,7 @@ COURSES_JSON_PATH = os.path.join(ROOT_DIR, 'courses', 'all_courses.json')
 OUTPUT_HTML_PATH = os.path.join(ROOT_DIR, 'output', 'index.html')
 TIMETABLE_FILE = os.path.join(ROOT_DIR, 'Classes', 'timetable_web.html')
 HOLIDAYS_FILE = os.path.join(ROOT_DIR, 'courses', 'holidays.json')
+USER_PREFERENCES_PATH = os.path.join(ROOT_DIR, 'courses', 'user_preferences.json')
 LOGO_IMAGE_PATH = os.path.join(ROOT_DIR, 'image', 'logo.png')
 
 st.set_page_config(
@@ -367,6 +368,38 @@ def load_courses_from_json_file():
         return json.load(f)
 
 
+def load_user_preferences() -> dict:
+    """Loads saved elective preferences from disk if available."""
+    if os.path.exists(USER_PREFERENCES_PATH):
+        try:
+            with open(USER_PREFERENCES_PATH, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception as e:
+            print(f"Error loading user preferences: {e}")
+    return {}
+
+
+def save_user_preferences(prefs: dict) -> bool:
+    """Saves elective preferences to disk."""
+    try:
+        os.makedirs(os.path.dirname(USER_PREFERENCES_PATH), exist_ok=True)
+        with open(USER_PREFERENCES_PATH, 'w', encoding='utf-8') as f:
+            json.dump(prefs, f, indent=2)
+        return True
+    except Exception as e:
+        print(f"Error saving user preferences: {e}")
+        return False
+
+
+def reset_user_preferences_file():
+    """Removes saved user preferences file from disk."""
+    if os.path.exists(USER_PREFERENCES_PATH):
+        try:
+            os.remove(USER_PREFERENCES_PATH)
+        except Exception as e:
+            print(f"Error removing user preferences: {e}")
+
+
 def render_course_card(course, card_type="core", locked=False):
     code = course.get('subject_code', 'N/A')
     name = course.get('subject_name', 'Untitled')
@@ -480,14 +513,30 @@ def page_curriculum_selector():
 
     ELECTIVE_LIMITS = {1: 1, 2: 2, 3: 2, 4: 2}
 
-    # Session State Initialization
+    saved_prefs = load_user_preferences()
+
+    # Session State Initialization from Saved Preferences or Defaults
     for s in [1, 2, 3, 4]:
         state_key = f"selected_electives_sem_{s}"
         if state_key not in st.session_state:
-            avail = courses_by_sem[s]['elective']
+            avail_codes = [c['subject_code'] for c in courses_by_sem[s]['elective']]
             limit = ELECTIVE_LIMITS[s]
-            default_selected = [c['subject_code'] for c in avail[:limit]]
-            st.session_state[state_key] = default_selected
+            if f"semester_{s}" in saved_prefs and saved_prefs[f"semester_{s}"]:
+                saved_vals = [c for c in saved_prefs[f"semester_{s}"] if c in avail_codes]
+                if len(saved_vals) == limit:
+                    st.session_state[state_key] = saved_vals
+                else:
+                    st.session_state[state_key] = avail_codes[:limit]
+            else:
+                st.session_state[state_key] = avail_codes[:limit]
+
+    # Display feedback message if action triggered
+    if "preferences_saved_msg" in st.session_state:
+        msg_text = st.session_state.pop("preferences_saved_msg")
+        if "reset" in msg_text.lower():
+            st.info(msg_text)
+        else:
+            st.success(msg_text)
 
     # Semester Selection Banner
     st.markdown("### 📌 Select Academic Semester")
@@ -530,7 +579,21 @@ def page_curriculum_selector():
                 render_course_card(course, card_type="project", locked=True)
 
     with col_elec:
-        st.markdown(f"### ⚡ Elective Selections (Select exactly {required_elective_count})")
+        col_el_h1, col_el_h2 = st.columns([1.3, 1], vertical_alignment="center")
+        with col_el_h1:
+            st.markdown(f"### ⚡ Elective Selections (Select {required_elective_count})")
+        with col_el_h2:
+            if os.path.exists(USER_PREFERENCES_PATH):
+                st.markdown(
+                    '<div style="text-align:right;"><span style="font-size:0.75rem; color:#059669; font-weight:700; background:rgba(5,150,105,0.12); padding:0.25rem 0.6rem; border-radius:6px; border:1px solid rgba(5,150,105,0.25); display:inline-flex; align-items:center; gap:0.25rem;">💾 Saved Preferences Active</span></div>',
+                    unsafe_allow_html=True
+                )
+            else:
+                st.markdown(
+                    '<div style="text-align:right;"><span style="font-size:0.75rem; color:#44403c; font-weight:600; background:#f4eee3; padding:0.25rem 0.6rem; border-radius:6px; border:1px solid rgba(68,64,60,0.15); display:inline-flex; align-items:center; gap:0.25rem;">⚙️ Default Electives</span></div>',
+                    unsafe_allow_html=True
+                )
+
         st.caption(f"Choose from the approved elective pool for Semester {selected_sem}:")
 
         available_electives = sorted(sem_data['elective'], key=lambda c: c.get('subject_code', ''))
@@ -568,6 +631,35 @@ def page_curriculum_selector():
                 st.session_state[current_state_key] = selected_codes
             else:
                 st.warning(f"⚠️ Please select exactly {required_elective_count} electives (Currently selected: {len(selected_codes)}).")
+
+        # Action Row: Save Electives & Reset to Defaults
+        st.write("")
+        col_btn_save, col_btn_reset = st.columns([1.3, 1])
+        with col_btn_save:
+            if st.button("💾 Save Electives Configuration", key="save_electives_btn", use_container_width=True, help="Saves your elective selections across all semesters so you never have to select them again."):
+                prefs = {
+                    "semester_1": st.session_state.get("selected_electives_sem_1", ["EAI 6103"]),
+                    "semester_2": st.session_state.get("selected_electives_sem_2", ["EAI 6202", "EAI 6204"]),
+                    "semester_3": st.session_state.get("selected_electives_sem_3", ["EAI 6301", "EAI 6302"]),
+                    "semester_4": st.session_state.get("selected_electives_sem_4", ["EAI 6401", "EAI 6402"]),
+                }
+                save_user_preferences(prefs)
+                st.session_state["preferences_saved_msg"] = "✅ Elective preferences saved successfully! Your configuration will persist across all sessions."
+                st.rerun()
+
+        with col_btn_reset:
+            if st.button("🔄 Reset to Defaults", key="reset_electives_btn", use_container_width=True, help="Reverts all elective choices back to default curriculum recommendations."):
+                reset_user_preferences_file()
+                for s in [1, 2, 3, 4]:
+                    avail_codes = [c['subject_code'] for c in courses_by_sem[s]['elective']]
+                    limit = ELECTIVE_LIMITS[s]
+                    default_selected = avail_codes[:limit]
+                    st.session_state[f"selected_electives_sem_{s}"] = default_selected
+                    w_key = f"widget_sem_{s}"
+                    if w_key in st.session_state:
+                        st.session_state[w_key] = default_selected[0] if limit == 1 else default_selected
+                st.session_state["preferences_saved_msg"] = "🔄 Elective selections have been reset to curriculum defaults."
+                st.rerun()
 
         st.markdown("#### 📚 Available Electives Pool:")
         for course in available_electives:
@@ -608,6 +700,15 @@ def page_curriculum_selector():
     _, col_center_btn, _ = st.columns([1, 1.8, 1])
     with col_center_btn:
         if st.button("🚀 Apply Selection & View Academic Dashboard →", type="primary", use_container_width=True):
+            # Auto-save current selections on Apply
+            prefs_to_save = {
+                "semester_1": st.session_state.get("selected_electives_sem_1", ["EAI 6103"]),
+                "semester_2": st.session_state.get("selected_electives_sem_2", ["EAI 6202", "EAI 6204"]),
+                "semester_3": st.session_state.get("selected_electives_sem_3", ["EAI 6301", "EAI 6302"]),
+                "semester_4": st.session_state.get("selected_electives_sem_4", ["EAI 6401", "EAI 6402"]),
+            }
+            save_user_preferences(prefs_to_save)
+
             user_config = {
                 "semester_1": {
                     "core_courses": ["ECS 5101", "ECS 5102", "EMC 5103", "EHS 5104"],
@@ -685,22 +786,23 @@ def page_academic_dashboard():
 
     # Auto-generate dashboard if missing (e.g., fresh cloud clone)
     if not os.path.exists(OUTPUT_HTML_PATH):
+        saved_prefs = load_user_preferences()
         user_config = {
             "semester_1": {
                 "core_courses": ["ECS 5101", "ECS 5102", "EMC 5103", "EHS 5104"],
-                "elective_1": st.session_state.get("selected_electives_sem_1", ["EAI 6103"])[0]
+                "elective_1": (st.session_state.get("selected_electives_sem_1") or saved_prefs.get("semester_1", ["EAI 6103"]))[0]
             },
             "semester_2": {
                 "core_courses": ["ECS 5201", "EMC 5202", "IKS"],
-                "electives": st.session_state.get("selected_electives_sem_2", ["EAI 6202", "EAI 6204"])
+                "electives": st.session_state.get("selected_electives_sem_2") or saved_prefs.get("semester_2", ["EAI 6202", "EAI 6204"])
             },
             "semester_3": {
                 "major_project": "Project I",
-                "electives": st.session_state.get("selected_electives_sem_3", ["EAI 6301", "EAI 6302"])
+                "electives": st.session_state.get("selected_electives_sem_3") or saved_prefs.get("semester_3", ["EAI 6301", "EAI 6302"])
             },
             "semester_4": {
                 "major_project": "Project II",
-                "electives": st.session_state.get("selected_electives_sem_4", ["EAI 6401", "EAI 6402"])
+                "electives": st.session_state.get("selected_electives_sem_4") or saved_prefs.get("semester_4", ["EAI 6401", "EAI 6402"])
             }
         }
         main.run_curriculum_sync(

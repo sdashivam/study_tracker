@@ -264,14 +264,14 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
           <div class="stat-meta" id="statAttendedBreakdown">Live: 0 | Recorded: 0</div>
         </div>
 
-        <!-- Card 3: Classes Missed -->
+        <!-- Card 3: Classes Cancelled -->
         <div class="stat-card">
           <div class="stat-header">
-            <span class="stat-title">Classes Missed</span>
-            <div class="stat-icon-wrap" style="color: var(--accent-rose); background: rgba(225, 29, 72, 0.12);">✕</div>
+            <span class="stat-title">Classes Cancelled</span>
+            <div class="stat-icon-wrap" style="color: #ea580c; background: rgba(234, 88, 12, 0.12);">🚫</div>
           </div>
-          <div class="stat-value" id="statMissedCount" style="color: var(--accent-rose);">0</div>
-          <div class="stat-meta" id="statMissedMeta">Unexcused Absences</div>
+          <div class="stat-value" id="statCancelledCount" style="color: #ea580c;">0</div>
+          <div class="stat-meta" id="statCancelledMeta">Faculty Cancellations</div>
         </div>
 
         <!-- Card 4: Total Conducted -->
@@ -350,7 +350,7 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
               <option value="all">⚡ All Statuses</option>
               <option value="live">✅ Attended Live</option>
               <option value="rec">🎥 Attended Recorded</option>
-              <option value="absent">❌ Missed (Absent)</option>
+              <option value="cancelled">🚫 Cancelled (Faculty)</option>
               <option value="unmarked">⚪ Unmarked Sessions</option>
             </select>
           </div>
@@ -1142,10 +1142,59 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
       border-color: #0284c7;
     }}
 
-    .btn-status.active-absent {{
-      background: #e11d48;
+    .btn-status.active-cancelled, .btn-status.active-absent {{
+      background: #ea580c;
       color: #ffffff;
-      border-color: #e11d48;
+      border-color: #ea580c;
+    }}
+
+    /* Join Button Styling */
+    .btn-join {{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #ffffff !important;
+      background: linear-gradient(135deg, #4338ca, #6366f1);
+      border: 1px solid #4338ca;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      box-shadow: 0 2px 5px rgba(67, 56, 202, 0.2);
+      transition: var(--transition);
+      white-space: nowrap;
+    }}
+
+    .btn-join:hover {{
+      background: linear-gradient(135deg, #3730a3, #4f46e5);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(67, 56, 202, 0.3);
+      color: #ffffff !important;
+    }}
+
+    .btn-table-join {{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.22rem 0.55rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #4338ca !important;
+      background: rgba(67, 56, 202, 0.08);
+      border: 1px solid rgba(67, 56, 202, 0.25);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: var(--transition);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }}
+
+    .btn-table-join:hover {{
+      background: #4338ca;
+      color: #ffffff !important;
+      border-color: #4338ca;
+      box-shadow: 0 2px 6px rgba(67, 56, 202, 0.25);
     }}
 
     /* Sub-pane animations */
@@ -1274,7 +1323,7 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
 
     .custom-table tr.row-attended-live td {{ background: rgba(5, 150, 105, 0.04); }}
     .custom-table tr.row-attended-rec td {{ background: rgba(2, 132, 199, 0.04); }}
-    .custom-table tr.row-absent td {{ background: rgba(225, 29, 72, 0.04); }}
+    .custom-table tr.row-cancelled td, .custom-table tr.row-absent td {{ background: rgba(234, 88, 12, 0.05); }}
 
     .date-cell {{
       font-family: var(--font-mono);
@@ -2354,45 +2403,46 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
     function renderAttendanceStats() {{
       const nonHolidaySessions = generatedSessions.filter(s => !s.isHoliday && s.courseCode !== 'HOLIDAY');
       const totalSemesterSessions = nonHolidaySessions.length;
-      let attendedLive = 0, attendedRec = 0, absentCount = 0, totalMarked = 0;
+      let attendedLive = 0, attendedRec = 0, cancelledCount = 0, totalMarked = 0;
 
       nonHolidaySessions.forEach(s => {{
         const status = attendanceRecords[s.id];
         if (status === 'live') {{ attendedLive++; totalMarked++; }}
         else if (status === 'rec') {{ attendedRec++; totalMarked++; }}
-        else if (status === 'absent') {{ absentCount++; totalMarked++; }}
+        else if (status === 'cancelled' || status === 'absent') {{ cancelledCount++; }}
       }});
 
       const totalAttended = attendedLive + attendedRec;
-      const currentPct = totalMarked > 0 ? ((totalAttended / totalMarked) * 100) : 0;
-      const maxAllowedAbsences = Math.floor(totalSemesterSessions * 0.25);
-      const remainingBunks = Math.max(0, maxAllowedAbsences - absentCount);
+      const effectiveSemesterSessions = Math.max(1, totalSemesterSessions - cancelledCount);
+      // Cancellation by faculty is not an unexcused absence; attendance compliance is based on conducted sessions
+      const currentPct = totalMarked > 0 ? ((totalAttended / totalMarked) * 100) : 100;
+      const maxAllowedBunks = Math.floor(effectiveSemesterSessions * 0.25);
 
       const elAtt = document.getElementById("statAttendedCount");
       if (elAtt) elAtt.textContent = totalAttended;
       const elBk = document.getElementById("statAttendedBreakdown");
       if (elBk) elBk.textContent = `Live: ${{attendedLive}} | Rec: ${{attendedRec}}`;
-      const elMis = document.getElementById("statMissedCount");
-      if (elMis) elMis.textContent = absentCount;
+      const elCan = document.getElementById("statCancelledCount") || document.getElementById("statMissedCount");
+      if (elCan) elCan.textContent = cancelledCount;
       const elPast = document.getElementById("statTotalPastClasses");
-      if (elPast) elPast.textContent = totalMarked;
+      if (elPast) elPast.textContent = totalAttended;
       const elSem = document.getElementById("statTotalSemesterClasses");
-      if (elSem) elSem.textContent = `of ${{totalSemesterSessions}} sessions`;
+      if (elSem) elSem.textContent = `of ${{effectiveSemesterSessions}} active sessions`;
       const elBunk = document.getElementById("statBunksAllowed");
-      if (elBunk) elBunk.textContent = remainingBunks;
+      if (elBunk) elBunk.textContent = maxAllowedBunks;
 
-      const displayPct = totalMarked > 0 ? (Math.round(currentPct * 10) / 10) : 0;
+      const displayPct = totalMarked > 0 ? (Math.round(currentPct * 10) / 10) : 100;
       const elGaugePct = document.getElementById("heroGaugePct");
       if (elGaugePct) {{
         elGaugePct.textContent = `${{displayPct}}%`;
-        elGaugePct.style.color = (totalMarked === 0) ? "var(--text-secondary)" : (currentPct >= 75 ? "var(--accent-emerald)" : "var(--accent-rose)");
+        elGaugePct.style.color = (totalMarked === 0) ? "var(--accent-emerald)" : (currentPct >= 75 ? "var(--accent-emerald)" : "var(--accent-rose)");
       }}
 
       const heroStatus = document.getElementById("heroAttendanceStatus");
       if (heroStatus) {{
         if (totalMarked === 0) {{
-          heroStatus.innerHTML = '<span class="status-indicator" style="background:#94a3b8;"></span> No Classes Marked Yet';
-          heroStatus.style.color = "var(--text-secondary)";
+          heroStatus.innerHTML = '<span class="status-indicator status-good"></span> Ready (100% Policy Compliant)';
+          heroStatus.style.color = "var(--accent-emerald)";
         }} else if (currentPct >= 75) {{
           heroStatus.innerHTML = '<span class="status-indicator status-good"></span> ≥ 75% Compliant';
           heroStatus.style.color = "var(--accent-emerald)";
@@ -2471,11 +2521,16 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
             <h4 class="today-item-title">${{session.courseName}}</h4>
             <div class="today-item-faculty">👤 ${{session.faculty}} • <span style="color:var(--text-muted);">${{session.credits}}</span></div>
           </div>
-          <div class="attendance-actions">
-            <button class="btn-status ${{status === 'live' ? 'active-live' : ''}}" onclick="setAttendanceStatus('${{session.id}}', 'live')">✅ Live</button>
-            <button class="btn-status ${{status === 'rec' ? 'active-rec' : ''}}" onclick="setAttendanceStatus('${{session.id}}', 'rec')">🎥 Recorded</button>
-            <button class="btn-status ${{status === 'absent' ? 'active-absent' : ''}}" onclick="setAttendanceStatus('${{session.id}}', 'absent')">❌ Missed</button>
-            <button class="btn-status" onclick="setAttendanceStatus('${{session.id}}', 'unmarked')" title="Clear">⚪</button>
+          <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+            <a href="https://cetpgex.iitp.ac.in/moodle/login/index.php" target="_blank" rel="noopener noreferrer" class="btn-join" title="Join live class on IIT Patna Moodle">
+              <span>🚀 Join Class</span>
+            </a>
+            <div class="attendance-actions">
+              <button class="btn-status ${{status === 'live' ? 'active-live' : ''}}" onclick="setAttendanceStatus('${{session.id}}', 'live')" title="Attended Live">✅ Live</button>
+              <button class="btn-status ${{status === 'rec' ? 'active-rec' : ''}}" onclick="setAttendanceStatus('${{session.id}}', 'rec')" title="Attended Recorded">🎥 Recorded</button>
+              <button class="btn-status ${{status === 'cancelled' || status === 'absent' ? 'active-cancelled' : ''}}" onclick="setAttendanceStatus('${{session.id}}', 'cancelled')" title="Class Cancelled by Faculty">🚫 Cancel</button>
+              <button class="btn-status" onclick="setAttendanceStatus('${{session.id}}', 'unmarked')" title="Clear">⚪</button>
+            </div>
           </div>
         `;
         listContainer.appendChild(item);
@@ -2533,7 +2588,11 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
         if (courseFilter !== "all" && s.courseCode !== courseFilter) return false;
         if (statusFilter !== "all") {{
           const st = attendanceRecords[s.id] || "unmarked";
-          if (st !== statusFilter) return false;
+          if (statusFilter === 'cancelled') {{
+            if (st !== 'cancelled' && st !== 'absent') return false;
+          }} else if (st !== statusFilter) {{
+            return false;
+          }}
         }}
         return true;
       }});
@@ -2630,7 +2689,7 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
         const row = document.createElement("tr");
         if (status === 'live') row.className = "row-attended-live";
         else if (status === 'rec') row.className = "row-attended-rec";
-        else if (status === 'absent') row.className = "row-absent";
+        else if (status === 'cancelled' || status === 'absent') row.className = "row-cancelled";
 
         row.innerHTML = `
           <td class="date-cell">
@@ -2639,7 +2698,12 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
           </td>
           <td><span class="time-slot-pill">${{session.timeLabel}}</span></td>
           <td>
-            <div class="course-cell-title">${{session.courseName}}</div>
+            <div style="display:flex; align-items:center; gap:0.4rem; margin-bottom:0.25rem; flex-wrap:wrap;">
+              <a href="https://cetpgex.iitp.ac.in/moodle/login/index.php" target="_blank" rel="noopener noreferrer" class="btn-table-join" title="Join session on IIT Patna Moodle">
+                <span>🔗 Join</span>
+              </a>
+              <span class="course-cell-title">${{session.courseName}}</span>
+            </div>
             <div class="course-cell-sub">
               <span class="course-tag ${{session.courseType === 'CORE' ? 'course-tag-core' : 'course-tag-elec'}}">${{session.courseCode}}</span>
               <span>👤 ${{session.faculty}}</span>
@@ -2647,9 +2711,9 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
           </td>
           <td>
             <div class="attendance-actions">
-              <button class="btn-status ${{status === 'live' ? 'active-live' : ''}}" onclick="setAttendanceStatus('${{session.id}}', 'live')">Live</button>
-              <button class="btn-status ${{status === 'rec' ? 'active-rec' : ''}}" onclick="setAttendanceStatus('${{session.id}}', 'rec')">Rec</button>
-              <button class="btn-status ${{status === 'absent' ? 'active-absent' : ''}}" onclick="setAttendanceStatus('${{session.id}}', 'absent')">Missed</button>
+              <button class="btn-status ${{status === 'live' ? 'active-live' : ''}}" onclick="setAttendanceStatus('${{session.id}}', 'live')" title="Attended Live">Live</button>
+              <button class="btn-status ${{status === 'rec' ? 'active-rec' : ''}}" onclick="setAttendanceStatus('${{session.id}}', 'rec')" title="Attended Recorded">Rec</button>
+              <button class="btn-status ${{status === 'cancelled' || status === 'absent' ? 'active-cancelled' : ''}}" onclick="setAttendanceStatus('${{session.id}}', 'cancelled')" title="Faculty Cancellation">Cancel</button>
               <button class="btn-status" onclick="setAttendanceStatus('${{session.id}}', 'unmarked')" title="Clear">⚪</button>
             </div>
           </td>
@@ -2743,12 +2807,15 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
         const courseSessions = generatedSessions.filter(s => s.courseCode === course.code && !s.isHoliday);
         const total = courseSessions.length;
         let attended = 0;
+        let cancelled = 0;
         courseSessions.forEach(s => {{
           const st = attendanceRecords[s.id];
           if (st === 'live' || st === 'rec') attended++;
+          else if (st === 'cancelled' || st === 'absent') cancelled++;
         }});
 
-        const pct = total > 0 ? Math.round((attended / total) * 100) : 100;
+        const effectiveTotal = Math.max(1, total - cancelled);
+        const pct = effectiveTotal > 0 ? Math.round((attended / effectiveTotal) * 100) : 100;
         const card = document.createElement("div");
         card.className = "course-card";
         card.innerHTML = `
@@ -2766,10 +2833,13 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
             </div>
             <div class="course-card-stats">
               <span>Attendance: ${{pct}}%</span>
-              <span>${{attended}} / ${{total}} Sessions</span>
+              <span>${{attended}} / ${{effectiveTotal}} Sessions ${{cancelled > 0 ? `(${{cancelled}} Cancelled)` : ''}}</span>
             </div>
-            <div style="margin-top:0.85rem;">
-              <button class="btn btn-sm" onclick="openCourseModal('${{course.code}}')" style="width:100%;">📖 View Objectives &amp; Books →</button>
+            <div style="margin-top:0.85rem; display:flex; gap:0.5rem;">
+              <a href="https://cetpgex.iitp.ac.in/moodle/login/index.php" target="_blank" rel="noopener noreferrer" class="btn btn-sm" style="flex:1; justify-content:center; background:linear-gradient(135deg, #4338ca, #6366f1); color:#ffffff; font-weight:700; border:none; text-decoration:none;">
+                🚀 Join Class
+              </a>
+              <button class="btn btn-sm" onclick="openCourseModal('${{course.code}}')" style="flex:1.4; justify-content:center;">📖 Objectives &amp; Books</button>
             </div>
           </div>
         `;
