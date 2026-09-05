@@ -211,11 +211,8 @@ def generate_semester_chips_html(sem_num, config, catalog, timetable_data):
 def render_full_dashboard_html(active_semester, config, catalog, timetable_data, user_sem1_courses, holidays_map=None):
     """
     Renders the complete index.html dashboard tailored for the chosen active_semester,
-    dynamically embedding synchronized holidays and timetable slots.
+    dynamically embedding timetable slots and real-time attendance analytics.
     """
-    if holidays_map is None:
-        holidays_map = {}
-    holidays_json = json.dumps(holidays_map)
 
     meta = SEMESTER_META.get(active_semester, SEMESTER_META[1])
     sem_name = meta["name"]
@@ -2034,6 +2031,16 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
         </div>
       </div>
       <div class="nav-actions">
+        <button class="btn btn-sm" onclick="exportStudyTracBackup()" style="background:#ffffff; color:#059669; border:1px solid rgba(5,150,105,0.3); font-weight:700; cursor:pointer; padding:0.45rem 0.8rem;" title="Save progress backup JSON to your computer">
+          💾 Backup to C: Drive
+        </button>
+        <button class="btn btn-sm" onclick="triggerRestoreFileInput()" style="background:#ffffff; color:#4338ca; border:1px solid rgba(67,56,202,0.3); font-weight:700; cursor:pointer; padding:0.45rem 0.8rem;" title="Restore past progress from JSON backup file">
+          📂 Restore Backup
+        </button>
+        <button class="btn btn-sm" onclick="exportCalendarICS()" style="background:linear-gradient(135deg, #0284c7, #0369a1); color:#ffffff; border:none; font-weight:700; cursor:pointer; padding:0.45rem 0.85rem;" title="Add 16-week timetable to Google/Apple Calendar with 15-min phone alarms">
+          📅 Sync to Calendar (.ics)
+        </button>
+        <input type="file" id="restoreFileInput" style="display:none;" onchange="importStudyTracBackup(event)" accept=".json">
         <span class="badge-pill">
           <span class="status-indicator status-good"></span>
           Mandatory 75% Attendance
@@ -2135,7 +2142,6 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
     const STORAGE_NOTES_KEY = "iitp_mtech_notes_v2";
 
     const DAYS_OF_WEEK = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const HOLIDAYS_MAP = {holidays_json};
 
     const EXAM_RESULT_TIMELINE = [
       {{
@@ -2345,21 +2351,21 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
       while (currentDate <= endDate) {{
         const iso = formatDateISO(currentDate);
         const dayOfWeek = currentDate.getDay();
-        const holidayReason = HOLIDAYS_MAP[iso] || null;
 
         const diffDays = Math.floor((currentDate - new Date(2026, 7, 16)) / (1000 * 60 * 60 * 24));
         const weekNumber = Math.floor(diffDays / 7) + 1;
 
-        let hasSlots = false;
+        const daySessions = [];
         USER_SEM1_COURSES.forEach(course => {{
           course.slots.forEach((slot, slotIdx) => {{
             if (slot.day === dayOfWeek) {{
-              hasSlots = true;
-              sessions.push({{
+              daySessions.push({{
                 id: `sess_${{iso}}_${{course.code.replace(/[^a-zA-Z0-9]/g, '')}}_${{slotIdx}}`,
                 dateStr: iso,
                 dayName: DAYS_OF_WEEK[dayOfWeek],
                 weekNumber: weekNumber,
+                startTime: slot.start || "00:00",
+                endTime: slot.end || "00:00",
                 timeLabel: slot.label,
                 courseCode: course.code,
                 courseName: course.name,
@@ -2367,32 +2373,19 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
                 credits: course.credits,
                 faculty: course.faculty,
                 color: course.color,
-                isHoliday: !!holidayReason,
-                holidayReason: holidayReason,
-                sequenceIndex: sessionIndex++
+                sequenceIndex: 0
               }});
             }}
           }});
         }});
 
-        if (holidayReason && !hasSlots) {{
-          sessions.push({{
-            id: `holiday_${{iso}}`,
-            dateStr: iso,
-            dayName: DAYS_OF_WEEK[dayOfWeek],
-            weekNumber: weekNumber,
-            timeLabel: "All Day",
-            courseCode: "HOLIDAY",
-            courseName: "Institute Holiday",
-            courseType: "HOLIDAY",
-            credits: "-",
-            faculty: "IIT Patna",
-            color: "#64748b",
-            isHoliday: true,
-            holidayReason: holidayReason,
-            sequenceIndex: sessionIndex++
-          }});
-        }}
+        // Chronological Sorting: Sort all classes on this day by start time
+        daySessions.sort((a, b) => (a.startTime || "").localeCompare(b.startTime || ""));
+
+        daySessions.forEach(s => {{
+          s.sequenceIndex = sessionIndex++;
+          sessions.push(s);
+        }});
 
         currentDate.setDate(currentDate.getDate() + 1);
       }}
@@ -2401,11 +2394,11 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
     }}
 
     function renderAttendanceStats() {{
-      const nonHolidaySessions = generatedSessions.filter(s => !s.isHoliday && s.courseCode !== 'HOLIDAY');
-      const totalSemesterSessions = nonHolidaySessions.length;
+      const allSessions = generatedSessions;
+      const totalSemesterSessions = allSessions.length;
       let attendedLive = 0, attendedRec = 0, cancelledCount = 0, totalMarked = 0;
 
-      nonHolidaySessions.forEach(s => {{
+      allSessions.forEach(s => {{
         const status = attendanceRecords[s.id];
         if (status === 'live') {{ attendedLive++; totalMarked++; }}
         else if (status === 'rec') {{ attendedRec++; totalMarked++; }}
@@ -2488,30 +2481,6 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
         const item = document.createElement("div");
         item.className = "today-item";
 
-        if (session.isHoliday) {{
-          item.style.background = "#f1f5f9";
-          item.style.borderColor = "#cbd5e1";
-          item.innerHTML = `
-            <div>
-              <div class="today-item-top">
-                <span class="course-tag" style="background:#e2e8f0; color:#475569; border-color:#cbd5e1;">${{session.courseCode}}</span>
-                <span class="today-item-time" style="background:#e2e8f0; color:#64748b;">⏰ ${{session.timeLabel}}</span>
-              </div>
-              <h4 class="today-item-title" style="color:#475569; text-decoration:${{session.courseCode === 'HOLIDAY' ? 'none' : 'line-through'}}; text-decoration-color:#94a3b8;">${{session.courseName}}</h4>
-              <div style="font-size:0.82rem; font-weight:700; color:#475569; margin-top:0.25rem;">
-                🏖️ No Class: ${{session.holidayReason}} (Institute Holiday)
-              </div>
-            </div>
-            <div style="display:flex; align-items:center;">
-              <span style="font-size:0.8rem; font-weight:700; color:#475569; background:#e2e8f0; padding:0.35rem 0.8rem; border-radius:6px; border:1px solid #cbd5e1;">
-                🏖️ Off Day
-              </span>
-            </div>
-          `;
-          listContainer.appendChild(item);
-          return;
-        }}
-
         item.innerHTML = `
           <div>
             <div class="today-item-top">
@@ -2541,7 +2510,7 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
       const now = new Date();
       const todayISO = formatDateISO(now);
       generatedSessions.forEach(s => {{
-        if (s.dateStr === todayISO && !s.isHoliday) attendanceRecords[s.id] = type;
+        if (s.dateStr === todayISO) attendanceRecords[s.id] = type;
       }});
       saveAttendanceState();
       renderAllViews();
@@ -2569,6 +2538,133 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
         localStorage.setItem(STORAGE_NOTES_KEY, JSON.stringify(classNotes));
       }} catch (e) {{
         console.warn("Storage save error:", e);
+      }}
+    }}
+
+    function exportStudyTracBackup() {{
+      try {{
+        const payload = {{
+          appName: "StudyTrac",
+          version: "2.0",
+          exportDate: new Date().toISOString(),
+          semester: ACTIVE_SEMESTER_NUM,
+          attendanceRecords: attendanceRecords,
+          classNotes: classNotes
+        }};
+        const blob = new Blob([JSON.stringify(payload, null, 2)], {{ type: "application/json" }});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `studytrac_backup_sem${{ACTIVE_SEMESTER_NUM}}_${{formatDateISO(new Date())}}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }} catch (e) {{
+        console.error("Backup export error:", e);
+        alert("Failed to export backup: " + e.message);
+      }}
+    }}
+
+    function triggerRestoreFileInput() {{
+      const input = document.getElementById("restoreFileInput");
+      if (input) {{
+        input.value = "";
+        input.click();
+      }}
+    }}
+
+    function importStudyTracBackup(event) {{
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {{
+        try {{
+          const data = JSON.parse(e.target.result);
+          let restoredAtt = 0, restoredNotes = 0;
+
+          if (data.attendanceRecords && typeof data.attendanceRecords === 'object') {{
+            Object.assign(attendanceRecords, data.attendanceRecords);
+            restoredAtt = Object.keys(data.attendanceRecords).length;
+          }} else if (data.attendance && typeof data.attendance === 'object') {{
+            Object.assign(attendanceRecords, data.attendance);
+            restoredAtt = Object.keys(data.attendance).length;
+          }}
+
+          if (data.classNotes && typeof data.classNotes === 'object') {{
+            Object.assign(classNotes, data.classNotes);
+            restoredNotes = Object.keys(data.classNotes).length;
+          }} else if (data.notes && typeof data.notes === 'object') {{
+            Object.assign(classNotes, data.notes);
+            restoredNotes = Object.keys(data.notes).length;
+          }}
+
+          saveAttendanceState();
+          try {{
+            localStorage.setItem(STORAGE_NOTES_KEY, JSON.stringify(classNotes));
+          }} catch (err) {{}}
+
+          renderAllViews();
+          alert(`🎉 Restore Successful!\\n\\n• ${{restoredAtt}} Attendance records loaded\\n• ${{restoredNotes}} Class notes restored`);
+        }} catch (err) {{
+          console.error("Backup parse error:", err);
+          alert("⚠️ Invalid backup file. Please select a valid StudyTrac .json backup file.");
+        }}
+      }};
+      reader.readAsText(file);
+    }}
+
+    function exportCalendarICS() {{
+      try {{
+        let ics = [
+          "BEGIN:VCALENDAR",
+          "VERSION:2.0",
+          "PRODID:-//StudyTrac//IIT Patna MTech Lecture Schedule//EN",
+          "CALSCALE:GREGORIAN",
+          "METHOD:PUBLISH",
+          "X-WR-CALNAME:IIT Patna M.Tech Classes",
+          "X-WR-TIMEZONE:Asia/Kolkata"
+        ];
+
+        generatedSessions.forEach(session => {{
+          const dateClean = session.dateStr.replace(/-/g, "");
+          const sTime = (session.startTime || "18:00").replace(":", "");
+          const eTime = (session.endTime || "20:00").replace(":", "");
+          const dtStart = `${{dateClean}}T${{sTime}}00`;
+          const dtEnd = `${{dateClean}}T${{eTime}}00`;
+          const uid = `${{session.id}}@studytrac.iitp`;
+
+          ics.push("BEGIN:VEVENT");
+          ics.push(`UID:${{uid}}`);
+          ics.push(`DTSTAMP:${{dateClean}}T000000Z`);
+          ics.push(`DTSTART;TZID=Asia/Kolkata:${{dtStart}}`);
+          ics.push(`DTEND;TZID=Asia/Kolkata:${{dtEnd}}`);
+          ics.push(`SUMMARY:${{session.courseCode}} - ${{session.courseName}}`);
+          ics.push(`DESCRIPTION:Faculty: ${{session.faculty}} | Credits: ${{session.credits}}\\\\nJoin Moodle: https://cetpgex.iitp.ac.in/moodle/login/index.php`);
+          ics.push("LOCATION:IIT Patna Moodle Virtual Classroom");
+          ics.push("BEGIN:VALARM");
+          ics.push("TRIGGER:-PT15M");
+          ics.push("ACTION:DISPLAY");
+          ics.push(`DESCRIPTION:Reminder: ${{session.courseCode}} starts in 15 minutes!`);
+          ics.push("END:VALARM");
+          ics.push("END:VEVENT");
+        }});
+
+        ics.push("END:VCALENDAR");
+
+        const blob = new Blob([ics.join("\\r\\n")], {{ type: "text/calendar;charset=utf-8" }});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `studytrac_timetable_sem${{ACTIVE_SEMESTER_NUM}}.ics`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }} catch (err) {{
+        console.error("ICS export error:", err);
+        alert("Failed to export calendar: " + err.message);
       }}
     }}
 
@@ -2602,8 +2698,7 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
           s.courseName.toLowerCase().includes(searchQuery) ||
           s.courseCode.toLowerCase().includes(searchQuery) ||
           s.faculty.toLowerCase().includes(searchQuery) ||
-          s.dateStr.includes(searchQuery) ||
-          (s.holidayReason && s.holidayReason.toLowerCase().includes(searchQuery))
+          s.dateStr.includes(searchQuery)
         );
       }}
 
@@ -2643,47 +2738,6 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
         if (collapsedWeeks[session.weekNumber]) return;
 
         const note = classNotes[session.id] || "";
-
-        if (session.isHoliday) {{
-          const row = document.createElement("tr");
-          row.style.background = "#f1f5f9";
-          row.style.color = "#475569";
-          row.style.borderBottom = "1px solid #e2e8f0";
-          row.innerHTML = `
-            <td class="date-cell">
-              <div style="font-weight:700; color:#475569;">${{formatDateDisplay(session.dateStr)}}</div>
-              <div style="font-size:0.75rem; color:#94a3b8;">${{session.dayName}}</div>
-            </td>
-            <td>
-              <span class="time-slot-pill" style="background:#e2e8f0; color:#64748b; border:1px solid #cbd5e1; font-weight:600;">
-                ${{session.timeLabel}}
-              </span>
-            </td>
-            <td>
-              <div class="course-cell-title" style="color:#475569; text-decoration:${{session.courseCode === 'HOLIDAY' ? 'none' : 'line-through'}}; text-decoration-color:#94a3b8;">
-                ${{session.courseName}}
-              </div>
-              <div class="course-cell-sub" style="color:#64748b; margin-top:0.25rem;">
-                <span class="course-tag" style="background:#e2e8f0; color:#475569; border-color:#cbd5e1;">${{session.courseCode}}</span>
-                <span style="font-weight:700; color:#475569; background:#e2e8f0; padding:0.18rem 0.55rem; border-radius:4px; font-size:0.74rem;">
-                  🏖️ No Class: ${{session.holidayReason}}
-                </span>
-              </div>
-            </td>
-            <td>
-              <span style="font-size:0.76rem; font-weight:700; color:#475569; background:#e2e8f0; padding:0.3rem 0.65rem; border-radius:6px; border:1px solid #cbd5e1; display:inline-flex; align-items:center; gap:0.3rem;">
-                🏖️ Off Day (${{session.holidayReason}})
-              </span>
-            </td>
-            <td>
-              <button class="btn btn-sm" onclick="openNoteModal('${{session.id}}')" style="font-size:0.75rem; width:100%; justify-content:flex-start; text-overflow:ellipsis; overflow:hidden; background:#e2e8f0; color:#64748b; border:1px solid #cbd5e1;">
-                📝 ${{note ? note : "Holiday Notes..."}}
-              </button>
-            </td>
-          `;
-          tbody.appendChild(row);
-          return;
-        }}
 
         const status = attendanceRecords[session.id] || "unmarked";
         const row = document.createElement("tr");
@@ -2804,7 +2858,7 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
       container.innerHTML = "";
 
       USER_SEM1_COURSES.forEach(course => {{
-        const courseSessions = generatedSessions.filter(s => s.courseCode === course.code && !s.isHoliday);
+        const courseSessions = generatedSessions.filter(s => s.courseCode === course.code);
         const total = courseSessions.length;
         let attended = 0;
         let cancelled = 0;
@@ -2942,6 +2996,72 @@ def render_full_dashboard_html(active_semester, config, catalog, timetable_data,
     return full_html
 
 
+def generate_ics_calendar(user_sem1_courses, active_semester=1):
+    """
+    Generates a standard RFC 5545 iCalendar (.ics) string for all 16 instruction weeks
+    including course codes, names, faculty, Moodle join links, and 15-min popup alarms.
+    """
+    import datetime
+
+    ics_lines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//StudyTrac//IIT Patna MTech Lecture Schedule//EN",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        "X-WR-CALNAME:IIT Patna M.Tech Classes",
+        "X-WR-TIMEZONE:Asia/Kolkata"
+    ]
+
+    start_date = datetime.date(2026, 8, 16)
+    end_date = datetime.date(2026, 11, 30)
+    cur = start_date
+
+    while cur <= end_date:
+        iso_str = cur.strftime("%Y-%m-%d")
+        # Python weekday: Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6
+        # JS/Timetable day: Sun=0, Mon=1, Tue=2, Wed=3, Thu=4, Fri=5, Sat=6
+        day_of_week = (cur.weekday() + 1) % 7
+
+        day_slots = []
+        for course in user_sem1_courses:
+            for slot in course.get("slots", []):
+                if slot.get("day") == day_of_week:
+                    day_slots.append((slot.get("start", "18:00"), slot.get("end", "20:00"), course, slot))
+
+        day_slots.sort(key=lambda x: x[0])
+
+        for idx, (s_time, e_time, course, slot) in enumerate(day_slots):
+            date_clean = iso_str.replace("-", "")
+            s_clean = s_time.replace(":", "")
+            e_clean = e_time.replace(":", "")
+            dt_start = f"{date_clean}T{s_clean}00"
+            dt_end = f"{date_clean}T{e_clean}00"
+            uid = f"sess_{iso_str}_{course['code'].replace(' ', '_')}_{idx}@studytrac.iitp"
+
+            ics_lines.extend([
+                "BEGIN:VEVENT",
+                f"UID:{uid}",
+                f"DTSTAMP:{date_clean}T000000Z",
+                f"DTSTART;TZID=Asia/Kolkata:{dt_start}",
+                f"DTEND;TZID=Asia/Kolkata:{dt_end}",
+                f"SUMMARY:{course['code']} - {course['name']}",
+                f"DESCRIPTION:Faculty: {course.get('faculty', 'Faculty')} | Credits: {course.get('credits', '')}\\nJoin Moodle: https://cetpgex.iitp.ac.in/moodle/login/index.php",
+                "LOCATION:IIT Patna Moodle Virtual Classroom",
+                "BEGIN:VALARM",
+                "TRIGGER:-PT15M",
+                "ACTION:DISPLAY",
+                f"DESCRIPTION:Reminder: {course['code']} starts in 15 minutes!",
+                "END:VALARM",
+                "END:VEVENT"
+            ])
+
+        cur += datetime.timedelta(days=1)
+
+    ics_lines.append("END:VCALENDAR")
+    return "\r\n".join(ics_lines)
+
+
 def run_curriculum_sync(config=MY_CURRICULUM_SELECTION, target_files=None, active_semester=1):
     """
     Master pipeline: Reads timetable & catalog, applies user selections, and generates index.html files.
@@ -2959,13 +3079,9 @@ def run_curriculum_sync(config=MY_CURRICULUM_SELECTION, target_files=None, activ
     print(f"[*] Active Semester     : Semester {active_semester}")
     print("=" * 80)
 
-    # 0. On-Demand Live Timetable & Holiday Calendar Sync from Official Portal
+    # 0. On-Demand Live Timetable Sync from Official Portal
     synced, sync_msg = synchronizer.fetch_live_timetable(target_file=timetable_file)
     print(f"[*] Timetable Sync     : {sync_msg}")
-
-    holidays_file = os.path.join(ROOT_DIR, 'courses', 'holidays.json')
-    synced_h, msg_h, holidays_map = synchronizer.fetch_live_holidays(target_file=holidays_file)
-    print(f"[*] Holiday Sync       : {msg_h}")
 
     # 1. Load Catalog & Timetable
     catalog = synchronizer.load_courses_catalog(courses_file)
@@ -2986,17 +3102,27 @@ def run_curriculum_sync(config=MY_CURRICULUM_SELECTION, target_files=None, activ
     total_slots = sum(len(c['slots']) for c in user_sem1_courses)
     print(f"[*] Generated {len(user_sem1_courses)} courses with {total_slots} weekly lecture slots.")
 
-    # 4. Generate Full Single-Semester Dashboard HTML with Synchronized Holidays
+    # 4. Generate Full Single-Semester Dashboard HTML
     full_html = render_full_dashboard_html(
         active_semester,
         config,
         catalog,
         timetable_data,
-        user_sem1_courses,
-        holidays_map=holidays_map
+        user_sem1_courses
     )
 
-    # 5. Write to Target HTML Files
+    # 5. Generate & Save iCalendar (.ics) File for Phone Reminders
+    ics_content = generate_ics_calendar(user_sem1_courses, active_semester=active_semester)
+    ics_file_path = os.path.join(ROOT_DIR, 'output', f'studytrac_timetable_sem{active_semester}.ics')
+    try:
+        os.makedirs(os.path.dirname(os.path.abspath(ics_file_path)), exist_ok=True)
+        with open(ics_file_path, 'w', encoding='utf-8') as f:
+            f.write(ics_content)
+        print(f"[SUCCESS] Generated Calendar file (.ics): {ics_file_path}")
+    except Exception as e:
+        print(f"[WARNING] Could not save .ics file: {e}")
+
+    # 6. Write to Target HTML Files
     success = True
     for tf in target_files:
         try:

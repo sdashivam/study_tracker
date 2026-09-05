@@ -27,12 +27,7 @@
 * **One-Click Week Collapsing:** All 16 weeks default to collapsed view with a global `📁 Expand All / 📂 Collapse All` toggle.
 * **Personal Notes per Session:** Persistent in-browser note-taking for every class slot.
 
-### 3. 🏖️ Live Institute Holiday Calendar & Grey Off-Day Styling
-* **Automated Holiday Sync:** Connects to the official IIT Patna holiday calendar portal with end-of-year rollover.
-* **Explicit Reason Badges:** Classes falling on official holidays (*e.g., Gandhi Jayanti, Dussehra, Diwali, Chhath Puja*) are rendered in muted slate grey with `🏖️ No Class: <Reason>` badges.
-* **No False Absence Penalties:** Holiday dates and faculty cancellations are excluded from attendance absence penalties.
-
-### 4. 🎓 Post-Instruction Exam, Evaluation & Result Roadmap
+### 3. 🎓 Post-Instruction Exam, Evaluation & Result Roadmap
 * **Official Academic Calendar Integration:** Extracted directly from the official timetable schedule (`Classes/1sem_timetable.pdf`).
 * **Emerald Green Section:** Dedicated timeline for December 2026 – January 2027:
   * **Dec 01 – Dec 30, 2026:** End Semester Examinations (ESE — 50% Weightage, Weekends Only).
@@ -42,7 +37,7 @@
   * **Jan 22, 2027:** Final Result Declaration.
   * **Jan 23, 2027:** Commencement of Spring Semester 2026–27.
 
-### 5. 🔄 Live Portal Timetable Auto-Fetch
+### 4. 🔄 Live Portal Timetable Auto-Fetch
 * **On-Demand Startup Check:** Automatically fetches the live timetable HTML from the IIT Patna portal on app startup (cached for 30 minutes).
 * **Smart Interval Normalization:** Merges consecutive hourly slots (*e.g., 6–7 PM + 7–8 PM*) into single continuous sessions (*6:00 PM – 8:00 PM*).
 * **Offline Resilience:** Gracefully falls back to local cache if network connectivity is unavailable.
@@ -71,12 +66,11 @@ d:/IITP/
 │
 ├── src/                        # Core Python sync & generation pipelines
 │   ├── main.py                 # Dashboard HTML generator & evaluation engine
-│   ├── sync_timetable_and_courses.py # Live portal fetcher for timetable & holidays
+│   ├── sync_timetable_and_courses.py # Live portal fetcher for timetable
 │   └── generate_courses.py     # Course catalog parser
 │
-├── courses/                    # Course data & holiday catalogs
+├── courses/                    # Course data catalogs
 │   ├── all_courses.json        # 24 subjects catalog across Semesters 1 to 4
-│   ├── holidays.json           # Auto-synced IIT Patna official holiday calendar
 │   └── *.json                  # Individual course syllabus JSON files
 │
 ├── Classes/                    # Reference documents & timetable assets
@@ -127,10 +121,88 @@ python src/main.py
 
 ---
 
+## 🔄 Data Architecture: Collection, Storage & Processing
+
+StudyTrac follows a privacy-first, local-native architecture designed to keep academic data synchronized, accurate, and completely under the student's control.
+
+```mermaid
+flowchart TD
+    subgraph Collection ["1. Data Collection"]
+        C1["Official Portal Scraping<br/>(Live Timetable Grid)"]
+        C2["Curriculum Documents<br/>(Syllabus PDF & Course Outlines)"]
+        C3["User Interactions<br/>(Electives, Attendance Clicks, Class Notes)"]
+    end
+
+    subgraph Processing ["2. Data Processing Engine"]
+        P1["HTML Grid Parser & Interval Normalizer<br/>(src/sync_timetable_and_courses.py)"]
+        P2["16-Week Schedule Generator<br/>(src/main.py)"]
+        P3["Attendance Analytics & Policy Engine<br/>(75% Compliance, Bunks Allowed)"]
+        P4["Dynamic Dashboard Compiler<br/>(Generates output/index.html)"]
+    end
+
+    subgraph Storage ["3. Data Storage & Persistence"]
+        S1["User Personal C: Drive<br/>(C:\\Users\\<Username>\\.studytrac\\)<br/>• preferences.json (Electives & Lock)<br/>• attendance.json (Live/Rec/Cancel)<br/>• notes.json (Session Notes)"]
+        S2["Browser Cache (localStorage)<br/>• Instant UI mirror<br/>• Auto-migrated on first launch"]
+        S3["Repository Catalogs (courses/)<br/>• Master 24-course JSON"]
+    end
+
+    C1 --> P1
+    C2 --> P2
+    C3 --> S1
+    C3 --> S2
+    P1 --> P2
+    P2 --> P3
+    P3 --> P4
+    S1 <-->|Two-Way Python Sync| P4
+    S2 <-->|Fast Local Mirror| P4
+```
+
+### 1. 📥 Data Collection
+* **Live CETPG Portal Scraping:**
+  * Connects directly to the official IIT Patna CETPG portal (`https://cetpgex.iitp.ac.in/`) using `urllib.request` and `BeautifulSoup4`.
+  * Fetches the latest published M.Tech/MS HTML timetable grid.
+  * Employs on-demand 30-minute caching with local fallback for offline resilience.
+* **Curriculum Syllabus Ingestion:**
+  * Official curriculum guidelines from `Classes/syllabus.pdf` are structured into master JSON schemas in `courses/` covering course codes, titles, credits, lecture schedules, learning objectives, detailed modules, and recommended textbooks.
+* **Student Input Capture:**
+  * **Elective Selection:** Captures user choices per semester and selection locks via the Streamlit interface.
+  * **Attendance Marking:** Captures user clicks on session states (`✅ Live`, `🎥 Recorded`, `🚫 Cancel`, `⚪ Clear`).
+  * **Session Notes:** Captures markdown/plain-text personal notes recorded for individual lectures.
+
+### 2. 💾 Data Storage & Privacy
+* **Local User Directory (`C:\Users\<Username>\.studytrac\`):**
+  * Data is saved directly to the student's personal operating system home directory (`Path.home() / ".studytrac"`).
+  * **`preferences.json`:** Stores chosen electives and configuration lock state (`locked: true`).
+  * **`attendance.json`:** Stores marked attendance records (`live`, `rec`, `cancelled`, `absent`) keyed by session ID.
+  * **`notes.json`:** Stores personal lecture notes.
+  * **100% Private & Isolated:** Files live only on the student's physical hard drive. Neither central server hosts nor other students have access to personal attendance or notes.
+  * **Browser Reset Immune:** Data survives clearing browser caches, cookies, site history, and incognito sessions.
+* **Client-Side Mirror (`localStorage`):**
+  * Serves as an immediate zero-latency cache in the browser for fluid UI rendering.
+  * Synchronizes bidirectionally with the Python `.studytrac` storage, with automatic one-time migration for existing users.
+* **Repository Catalogs (`courses/`):**
+  * `courses/all_courses.json`: Master syllabus registry for all 24 courses across Semesters 1 to 4.
+  * `Classes/timetable_web.html`: Cached portal timetable markup.
+
+### 3. ⚙️ Data Processing & Analytics
+* **Grid Parsing & Interval Normalization:**
+  * Parses raw HTML timetable tables, maps day-of-week slots, extracts faculties, and merges consecutive 1-hour slots into single coherent class sessions (*e.g., merging 6:00–7:00 PM and 7:00–8:00 PM into a single 6:00–8:00 PM session*).
+* **16-Week Schedule Generation:**
+  * Generates a date-by-date calendar sequence across all 16 semester weeks (August 16 to November 30, 2026).
+  * Generates unique, stable session IDs (`sess_<date>_<course>_<slot>`) for precise state association.
+* **Attendance Policy & Health Calculation:**
+  * **Formula:** $\text{Attendance Compliance \%} = \left(\frac{\text{Live Sessions} + \text{Recorded Sessions}}{\text{Conducted Sessions}}\right) \times 100$
+  * **Excused Cancellations:** Faculty cancellations (`🚫 Cancel`) are deducted from total conducted classes so students are never penalized for classes not held.
+  * **Safe Bunk Margins:** Dynamically computes remaining allowable bunks while ensuring $\ge 75\%$ compliance with IIT Patna academic regulations.
+* **Dynamic Dashboard Compilation:**
+  * Compiles active courses, timetable slots, evaluation roadmaps, and client sync hooks into a standalone interactive web application (`output/index.html`).
+
+---
+
 ## 🛠️ Technology Stack
 * **Frontend:** Streamlit 1.40+, HTML5, CSS3 (Warm White & High-Contrast Dark Mode), Vanilla JavaScript.
 * **Backend:** Python 3.10+, BeautifulSoup4, `urllib.request`.
-* **State Management & Persistence:** Browser `localStorage` (Attendance & Notes) + Streamlit `session_state`.
+* **State Management & Persistence:** Local OS Storage (`~/.studytrac/`) + Browser `localStorage` + Streamlit `session_state`.
 * **Deployment Compatibility:** Localhost, Streamlit Community Cloud, Docker.
 
 ---
@@ -144,5 +216,3 @@ python src/main.py
 
 ## ✍️ Author & Maintainer
 **Crafted with ❤️ by Shivam Bhatt | IIT Patna (Batch 2026–2028)**
-
->>>>>>> 2dbd364 (Initial commit: IIT Patna M.Tech (AI & Data Science) Study & Attendance Tracker)

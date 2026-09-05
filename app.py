@@ -20,7 +20,6 @@ SRC_DIR = os.path.join(ROOT_DIR, 'src')
 COURSES_JSON_PATH = os.path.join(ROOT_DIR, 'courses', 'all_courses.json')
 OUTPUT_HTML_PATH = os.path.join(ROOT_DIR, 'output', 'index.html')
 TIMETABLE_FILE = os.path.join(ROOT_DIR, 'Classes', 'timetable_web.html')
-HOLIDAYS_FILE = os.path.join(ROOT_DIR, 'courses', 'holidays.json')
 USER_PREFERENCES_PATH = os.path.join(ROOT_DIR, 'courses', 'user_preferences.json')
 LOGO_IMAGE_PATH = os.path.join(ROOT_DIR, 'image', 'logo.png')
 
@@ -37,17 +36,13 @@ if SRC_DIR not in sys.path:
 import sync_timetable_and_courses as synchronizer
 import main
 
-# Automatically check and fetch the live timetable and holiday calendar from IIT Patna portal on startup
+# Automatically check and fetch the live timetable from IIT Patna portal on startup
 @st.cache_data(ttl=1800)
 def auto_sync_live_data():
     t_synced, t_msg = synchronizer.fetch_live_timetable(target_file=TIMETABLE_FILE)
-    h_synced, h_msg, h_data = synchronizer.fetch_live_holidays(target_file=HOLIDAYS_FILE)
     return {
         "timetable_synced": t_synced,
-        "timetable_msg": t_msg,
-        "holidays_synced": h_synced,
-        "holidays_msg": h_msg,
-        "holidays_data": h_data
+        "timetable_msg": t_msg
     }
 
 _sync_status = auto_sync_live_data()
@@ -537,6 +532,9 @@ def page_curriculum_selector():
             st.info(msg_text)
         else:
             st.success(msg_text)
+    # Remember active semester if saved
+    if "active_semester" not in st.session_state and "active_semester" in saved_prefs:
+        st.session_state["active_semester"] = saved_prefs["active_semester"]
 
     # Semester Selection Banner
     st.markdown("### 📌 Select Academic Semester")
@@ -636,29 +634,28 @@ def page_curriculum_selector():
         st.write("")
         col_btn_save, col_btn_reset = st.columns([1.3, 1])
         with col_btn_save:
-            if st.button("💾 Save Electives Configuration", key="save_electives_btn", use_container_width=True, help="Saves your elective selections across all semesters so you never have to select them again."):
-                prefs = {
-                    "semester_1": st.session_state.get("selected_electives_sem_1", ["EAI 6103"]),
-                    "semester_2": st.session_state.get("selected_electives_sem_2", ["EAI 6202", "EAI 6204"]),
-                    "semester_3": st.session_state.get("selected_electives_sem_3", ["EAI 6301", "EAI 6302"]),
-                    "semester_4": st.session_state.get("selected_electives_sem_4", ["EAI 6401", "EAI 6402"]),
-                }
+            if st.button("💾 Save Electives Configuration", key="save_electives_btn", use_container_width=True, help=f"Saves your elective selections for Semester {selected_sem} so you don't have to reconfigure every time."):
+                prefs = load_user_preferences()
+                prefs["active_semester"] = selected_sem
+                prefs[f"semester_{selected_sem}"] = st.session_state.get(f"selected_electives_sem_{selected_sem}", [])
                 save_user_preferences(prefs)
-                st.session_state["preferences_saved_msg"] = "✅ Elective preferences saved successfully! Your configuration will persist across all sessions."
+                st.session_state["preferences_saved_msg"] = f"💾 Semester {selected_sem} elective preferences saved successfully!"
                 st.rerun()
 
         with col_btn_reset:
-            if st.button("🔄 Reset to Defaults", key="reset_electives_btn", use_container_width=True, help="Reverts all elective choices back to default curriculum recommendations."):
-                reset_user_preferences_file()
-                for s in [1, 2, 3, 4]:
-                    avail_codes = [c['subject_code'] for c in courses_by_sem[s]['elective']]
-                    limit = ELECTIVE_LIMITS[s]
-                    default_selected = avail_codes[:limit]
-                    st.session_state[f"selected_electives_sem_{s}"] = default_selected
-                    w_key = f"widget_sem_{s}"
-                    if w_key in st.session_state:
-                        st.session_state[w_key] = default_selected[0] if limit == 1 else default_selected
-                st.session_state["preferences_saved_msg"] = "🔄 Elective selections have been reset to curriculum defaults."
+            if st.button("🔄 Reset to Defaults", key="reset_electives_btn", use_container_width=True, help=f"Reverts Semester {selected_sem} elective choice back to default curriculum recommendations."):
+                avail_codes = [c['subject_code'] for c in courses_by_sem[selected_sem]['elective']]
+                limit = ELECTIVE_LIMITS[selected_sem]
+                default_selected = avail_codes[:limit]
+                st.session_state[f"selected_electives_sem_{selected_sem}"] = default_selected
+                w_key = f"widget_sem_{selected_sem}"
+                if w_key in st.session_state:
+                    st.session_state[w_key] = default_selected[0] if limit == 1 else default_selected
+                prefs = load_user_preferences()
+                if f"semester_{selected_sem}" in prefs:
+                    del prefs[f"semester_{selected_sem}"]
+                    save_user_preferences(prefs)
+                st.session_state["preferences_saved_msg"] = f"🔄 Semester {selected_sem} elective selection reset to defaults."
                 st.rerun()
 
         st.markdown("#### 📚 Available Electives Pool:")
@@ -681,32 +678,14 @@ def page_curriculum_selector():
     with m3:
         st.metric(label="Selected Electives", value=f"{', '.join(selected_electives_list) if selected_electives_list else 'None'}")
 
-    # Synced Holidays Viewer
-    holidays_dict = _sync_status.get("holidays_data", {})
-    with st.expander(f"🎉 View Official IIT Patna Holiday Calendar ({len(holidays_dict)} Synced Holidays)"):
-        if holidays_dict:
-            cols = st.columns(2)
-            sorted_items = sorted(holidays_dict.items())
-            mid = (len(sorted_items) + 1) // 2
-            with cols[0]:
-                for d_iso, h_name in sorted_items[:mid]:
-                    st.markdown(f"- 📅 **`{d_iso}`**: {h_name}")
-            with cols[1]:
-                for d_iso, h_name in sorted_items[mid:]:
-                    st.markdown(f"- 📅 **`{d_iso}`**: {h_name}")
-        else:
-            st.caption("No holiday data available.")
-
+    st.write("")
     _, col_center_btn, _ = st.columns([1, 1.8, 1])
     with col_center_btn:
         if st.button("🚀 Apply Selection & View Academic Dashboard →", type="primary", use_container_width=True):
-            # Auto-save current selections on Apply
-            prefs_to_save = {
-                "semester_1": st.session_state.get("selected_electives_sem_1", ["EAI 6103"]),
-                "semester_2": st.session_state.get("selected_electives_sem_2", ["EAI 6202", "EAI 6204"]),
-                "semester_3": st.session_state.get("selected_electives_sem_3", ["EAI 6301", "EAI 6302"]),
-                "semester_4": st.session_state.get("selected_electives_sem_4", ["EAI 6401", "EAI 6402"]),
-            }
+            # Save active selection
+            prefs_to_save = load_user_preferences()
+            prefs_to_save["active_semester"] = selected_sem
+            prefs_to_save[f"semester_{selected_sem}"] = st.session_state.get(f"selected_electives_sem_{selected_sem}", [])
             save_user_preferences(prefs_to_save)
 
             user_config = {
@@ -765,7 +744,7 @@ def page_academic_dashboard():
 
     # Top Action Bar with clear Return / Home Button
     active_s = st.session_state.get('active_semester', 1)
-    top_col1, top_col2 = st.columns([1.5, 1], vertical_alignment="center")
+    top_col1, top_col2 = st.columns([2, 1], vertical_alignment="center")
     with top_col1:
         st.markdown(
             f"""
