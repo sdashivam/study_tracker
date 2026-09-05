@@ -763,8 +763,14 @@ def page_academic_dashboard():
 
     st.write("")
 
-    # Auto-generate dashboard if missing (e.g., fresh cloud clone)
+    # Auto-generate dashboard if missing or older than generator script
+    needs_sync = False
     if not os.path.exists(OUTPUT_HTML_PATH):
+        needs_sync = True
+    elif hasattr(main, '__file__') and os.path.exists(main.__file__) and os.path.getmtime(OUTPUT_HTML_PATH) < os.path.getmtime(main.__file__):
+        needs_sync = True
+
+    if needs_sync:
         saved_prefs = load_user_preferences()
         user_config = {
             "semester_1": {
